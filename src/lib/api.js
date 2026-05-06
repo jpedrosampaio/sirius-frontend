@@ -1,11 +1,35 @@
 import axios from "axios";
 import { OFFLINE_MODE, OFFLINE_USER, OFFLINE_DEMO_DATA } from "./offline-mode";
+import { toast } from "sonner";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
 const API = `${BACKEND_URL}/api`;
 
 // Re-export for convenience
 export { OFFLINE_MODE };
+
+// Check if user needs to add their Gemini API key
+export const checkGeminiApiKey = async () => {
+  if (OFFLINE_MODE) return true;
+  
+  try {
+    const response = await axios.get(`${API}/auth/me`, { withCredentials: true });
+    return !!response.data.gemini_api_key;
+  } catch (error) {
+    return false;
+  }
+};
+
+// Prompt user to add Gemini API key
+export const promptGeminiApiKey = () => {
+  toast.error("Você precisa configurar uma API key do Gemini para usar recursos de IA", {
+    action: {
+      label: "Configurar",
+      onClick: () => window.location.href = "/profile?section=gemini"
+    }
+  });
+  return false;
+};
 
 // Session token management via localStorage
 const TOKEN_KEY = "sirius_session_token";

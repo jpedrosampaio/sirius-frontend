@@ -11,6 +11,7 @@ import { ChatSkeleton } from "@/components/SkeletonLoader";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 import { toast } from "sonner";
+import { checkGeminiApiKey, promptGeminiApiKey } from "@/lib/api";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -43,6 +44,13 @@ export default function Chat() {
   const handleSend = async (e) => {
     e.preventDefault();
     if (!content.trim()) return;
+    
+    // Check if user has a Gemini API key
+    const hasApiKey = await checkGeminiApiKey();
+    if (!hasApiKey) {
+      promptGeminiApiKey();
+      return;
+    }
 
     setLoading(true);
     const userMsg = { message_id: `temp_${Date.now()}`, role: "user", content, created_at: new Date().toISOString() };
