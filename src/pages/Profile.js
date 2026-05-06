@@ -54,6 +54,7 @@ export default function Profile() {
         document.getElementById('gemini-section')?.scrollIntoView({ behavior: 'smooth' });
       }, 500);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchUser = async () => {
