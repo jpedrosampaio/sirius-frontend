@@ -190,19 +190,20 @@ export default function Profile() {
   const handleSaveGeminiKey = async () => {
     setSavingGeminiKey(true);
     try {
-      const res = await axios.patch(`${API}/auth/profile`, 
-        { gemini_api_key: geminiKeyForm || null },
-        { 
-          withCredentials: true,
-          headers: { 'Content-Type': 'application/json' }
-        }
-      );
-      setUser(res.data);
-      setEditingGeminiKey(false);
-      toast.success(res.data.gemini_api_key ? "Chave API atualizada!" : "Chave API removida!");
+      const res = await axios({
+        method: 'PATCH',
+        url: `${API}/auth/profile`,
+        data: { gemini_api_key: geminiKeyForm || null },
+        withCredentials: true,
+        headers: { 'Content-Type': 'application/json' }
+      });
+      if (res.status === 200 || res.status === 201) {
+        setEditingGeminiKey(false);
+        toast.success(geminiKeyForm ? "Chave API atualizada!" : "Chave API removida!");
+      }
     } catch (error) {
       console.error("Erro ao salvar:", error.response?.data || error.message);
-      toast.error(error.response?.data?.detail || "Erro ao salvar chave API");
+      toast.error(error.response?.data?.detail || "Erro ao salvar. Tente novamente.");
     } finally {
       setSavingGeminiKey(false);
     }
