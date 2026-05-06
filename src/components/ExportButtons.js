@@ -48,7 +48,7 @@ export default function ExportButtons({ module, className }) {
         size="sm"
         onClick={() => handleExport("excel")}
         disabled={exporting !== null}
-        className="border-[#2a2a2a] text-[#888888] hover:text-white hover:border-[#22C55E] transition-colors text-xs gap-1.5"
+        className="border-[#27272A] text-[#A1A1AA] hover:text-white hover:border-[#22C55E] transition-colors text-xs gap-1.5"
       >
         {exporting === "excel" ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <FileSpreadsheet className="w-3.5 h-3.5" />}
         Excel
@@ -58,7 +58,7 @@ export default function ExportButtons({ module, className }) {
         size="sm"
         onClick={() => handleExport("pdf")}
         disabled={exporting !== null}
-        className="border-[#2a2a2a] text-[#888888] hover:text-white hover:border-[#FF3B30] transition-colors text-xs gap-1.5"
+        className="border-[#27272A] text-[#A1A1AA] hover:text-white hover:border-[#FF3B30] transition-colors text-xs gap-1.5"
       >
         {exporting === "pdf" ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <FileText className="w-3.5 h-3.5" />}
         PDF

@@ -236,47 +236,47 @@ export default function Notifications() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
             <div>
               <h1 className="font-heading text-3xl md:text-4xl mb-2" data-testid="notifications-title">NOTIFICAÇÕES</h1>
-              <p className="text-[#888888]">Configure lembretes personalizados</p>
+              <p className="text-[#A1A1AA]">Configure lembretes personalizados</p>
             </div>
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
-                <Button data-testid="create-notification-btn" className="bg-[#00c896] hover:bg-[#0066DD] text-white">
+                <Button data-testid="create-notification-btn" className="bg-[#007AFF] hover:bg-[#0066DD] text-white">
                   <Plus className="w-4 h-4 mr-2" /> Novo Lembrete
                 </Button>
               </DialogTrigger>
-              <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] text-white max-w-lg max-h-[90vh] overflow-y-auto">
+              <DialogContent className="bg-[#0A0A0A] border-[#27272A] text-white max-w-lg max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
                   <DialogTitle className="font-heading text-xl">CRIAR LEMBRETE</DialogTitle>
                 </DialogHeader>
                 <div className="space-y-4 mt-4">
                   <div>
                     <Label className="text-xs uppercase tracking-wider">Título</Label>
-                    <Input value={newNotification.title} onChange={(e) => setNewNotification({...newNotification, title: e.target.value})} placeholder="Ex: Hora de beber água" className="bg-[#1a1a1a] border-[#2a2a2a] text-white mt-1" />
+                    <Input value={newNotification.title} onChange={(e) => setNewNotification({...newNotification, title: e.target.value})} placeholder="Ex: Hora de beber água" className="bg-[#121212] border-[#27272A] text-white mt-1" />
                   </div>
                   <div>
                     <Label className="text-xs uppercase tracking-wider">Mensagem</Label>
-                    <Textarea value={newNotification.message} onChange={(e) => setNewNotification({...newNotification, message: e.target.value})} className="bg-[#1a1a1a] border-[#2a2a2a] text-white mt-1" />
+                    <Textarea value={newNotification.message} onChange={(e) => setNewNotification({...newNotification, message: e.target.value})} className="bg-[#121212] border-[#27272A] text-white mt-1" />
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <Label className="text-xs uppercase tracking-wider">Categoria</Label>
                       <Select value={newNotification.category} onValueChange={(v) => setNewNotification({...newNotification, category: v})}>
-                        <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a] text-white mt-1"><SelectValue /></SelectTrigger>
-                        <SelectContent className="bg-[#1a1a1a] border-[#2a2a2a] text-white">
+                        <SelectTrigger className="bg-[#121212] border-[#27272A] text-white mt-1"><SelectValue /></SelectTrigger>
+                        <SelectContent className="bg-[#121212] border-[#27272A] text-white">
                           {CATEGORIES.map(cat => <SelectItem key={cat.value} value={cat.value}>{cat.label}</SelectItem>)}
                         </SelectContent>
                       </Select>
                     </div>
                     <div>
                       <Label className="text-xs uppercase tracking-wider">Horário</Label>
-                      <Input type="time" value={newNotification.scheduled_time} onChange={(e) => setNewNotification({...newNotification, scheduled_time: e.target.value})} className="bg-[#1a1a1a] border-[#2a2a2a] text-white mt-1" />
+                      <Input type="time" value={newNotification.scheduled_time} onChange={(e) => setNewNotification({...newNotification, scheduled_time: e.target.value})} className="bg-[#121212] border-[#27272A] text-white mt-1" />
                     </div>
                   </div>
                   <div>
                     <Label className="text-xs uppercase tracking-wider">Repetição</Label>
                     <Select value={newNotification.repeat} onValueChange={(v) => setNewNotification({...newNotification, repeat: v})}>
-                      <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a] text-white mt-1"><SelectValue /></SelectTrigger>
-                      <SelectContent className="bg-[#1a1a1a] border-[#2a2a2a] text-white">
+                      <SelectTrigger className="bg-[#121212] border-[#27272A] text-white mt-1"><SelectValue /></SelectTrigger>
+                      <SelectContent className="bg-[#121212] border-[#27272A] text-white">
                         <SelectItem value="none">Única vez</SelectItem>
                         <SelectItem value="daily">Diariamente</SelectItem>
                         <SelectItem value="weekly">Semanal</SelectItem>
@@ -289,7 +289,7 @@ export default function Notifications() {
                       <Label className="text-xs uppercase tracking-wider mb-2 block">Dias da Semana</Label>
                       <div className="flex flex-wrap gap-2">
                         {DAYS.map(day => (
-                          <Button key={day.value} type="button" variant={newNotification.repeat_days.includes(day.value) ? "default" : "outline"} size="sm" onClick={() => toggleDay(day.value)} className={newNotification.repeat_days.includes(day.value) ? "bg-[#00c896]" : "border-[#2a2a2a]"}>
+                          <Button key={day.value} type="button" variant={newNotification.repeat_days.includes(day.value) ? "default" : "outline"} size="sm" onClick={() => toggleDay(day.value)} className={newNotification.repeat_days.includes(day.value) ? "bg-[#007AFF]" : "border-[#27272A]"}>
                             {day.label}
                           </Button>
                         ))}
@@ -299,30 +299,30 @@ export default function Notifications() {
                   <div>
                     <Label className="text-xs uppercase tracking-wider mb-2 block">Canais</Label>
                     <div className="space-y-2">
-                      <div className="flex items-center justify-between bg-[#1a1a1a] p-3 rounded">
+                      <div className="flex items-center justify-between bg-[#121212] p-3 rounded">
                         <span className="flex items-center gap-2"><Bell className="w-4 h-4" /> No App</span>
                         <Switch checked={newNotification.channels.includes("in_app")} onCheckedChange={() => toggleChannel("in_app")} />
                       </div>
-                      <div className="flex items-center justify-between bg-[#1a1a1a] p-3 rounded">
+                      <div className="flex items-center justify-between bg-[#121212] p-3 rounded">
                         <span className="flex items-center gap-2"><BellRing className="w-4 h-4" /> Navegador</span>
                         <Switch checked={newNotification.channels.includes("browser")} onCheckedChange={() => toggleChannel("browser")} />
                       </div>
                     </div>
                   </div>
-                  <Button onClick={handleCreateNotification} className="w-full bg-[#00c896] hover:bg-[#0066DD] text-white">Criar Lembrete</Button>
+                  <Button onClick={handleCreateNotification} className="w-full bg-[#007AFF] hover:bg-[#0066DD] text-white">Criar Lembrete</Button>
                 </div>
               </DialogContent>
             </Dialog>
           </div>
 
           {browserPermission !== "granted" && (
-            <Card className="bg-[#1A1A2E] border-[#2a2a2a] p-4 mb-6">
+            <Card className="bg-[#1A1A2E] border-[#27272A] p-4 mb-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <BellRing className="w-6 h-6 text-[#F59E0B]" />
                   <div>
                     <p className="font-medium">Ativar notificações do navegador</p>
-                    <p className="text-sm text-[#888888]">Receba lembretes mesmo quando não estiver no app</p>
+                    <p className="text-sm text-[#A1A1AA]">Receba lembretes mesmo quando não estiver no app</p>
                   </div>
                 </div>
                 <Button onClick={requestBrowserPermission} className="bg-[#F59E0B] hover:bg-[#D97706] text-black">Ativar</Button>
@@ -331,13 +331,13 @@ export default function Notifications() {
           )}
 
           {browserPermission === "granted" && (
-            <Card className="bg-[#0A2E1A] border-[#2a2a2a] p-4 mb-6">
+            <Card className="bg-[#0A2E1A] border-[#27272A] p-4 mb-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-6 h-6 text-green-400" />
                   <div>
                     <p className="font-medium text-green-300">Notificações ativadas</p>
-                    <p className="text-sm text-[#888888]">Verificando lembretes a cada 30 segundos</p>
+                    <p className="text-sm text-[#A1A1AA]">Verificando lembretes a cada 30 segundos</p>
                   </div>
                 </div>
                 <Button onClick={() => {
@@ -350,17 +350,17 @@ export default function Notifications() {
           )}
 
           {recentAlerts.length > 0 && (
-            <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4 mb-6">
-              <h3 className="font-heading text-sm mb-3 flex items-center gap-2"><BellRing className="w-4 h-4 text-[#00c896]" />Alertas Recentes</h3>
+            <Card className="bg-[#0A0A0A] border-[#27272A] p-4 mb-6">
+              <h3 className="font-heading text-sm mb-3 flex items-center gap-2"><BellRing className="w-4 h-4 text-[#00F0FF]" />Alertas Recentes</h3>
               <div className="space-y-2">
                 {recentAlerts.map((alert, i) => (
-                  <div key={i} className="flex items-center gap-3 p-2 bg-[#1a1a1a] rounded-lg">
+                  <div key={i} className="flex items-center gap-3 p-2 bg-[#121212] rounded-lg">
                     <Bell className="w-4 h-4 text-[#F59E0B]" />
                     <div className="flex-1">
                       <p className="text-sm font-medium">{alert.title}</p>
-                      <p className="text-xs text-[#888888]">{alert.message}</p>
+                      <p className="text-xs text-[#A1A1AA]">{alert.message}</p>
                     </div>
-                    <span className="text-xs text-[#555555]">{alert.triggered_at}</span>
+                    <span className="text-xs text-[#52525B]">{alert.triggered_at}</span>
                   </div>
                 ))}
               </div>
@@ -368,23 +368,23 @@ export default function Notifications() {
           )}
 
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="bg-[#0d0d0d] border border-[#2a2a2a] mb-6 overflow-x-auto flex-nowrap w-full justify-start md:justify-center">
-              <TabsTrigger value="active" className="data-[state=active]:bg-[#2a2a2a]"><Bell className="w-4 h-4 mr-2" /> Ativos</TabsTrigger>
-              <TabsTrigger value="templates" className="data-[state=active]:bg-[#2a2a2a]"><Settings className="w-4 h-4 mr-2" /> Templates</TabsTrigger>
+            <TabsList className="bg-[#0A0A0A] border border-[#27272A] mb-6 overflow-x-auto flex-nowrap w-full justify-start md:justify-center">
+              <TabsTrigger value="active" className="data-[state=active]:bg-[#27272A]"><Bell className="w-4 h-4 mr-2" /> Ativos</TabsTrigger>
+              <TabsTrigger value="templates" className="data-[state=active]:bg-[#27272A]"><Settings className="w-4 h-4 mr-2" /> Templates</TabsTrigger>
             </TabsList>
 
             <TabsContent value="active">
               <div className="grid gap-4">
                 {notifications.length === 0 ? (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-8 text-center">
-                    <Bell className="w-12 h-12 text-[#555555] mx-auto mb-4" />
-                    <p className="text-[#888888]">Nenhum lembrete configurado</p>
+                  <Card className="bg-[#0A0A0A] border-[#27272A] p-8 text-center">
+                    <Bell className="w-12 h-12 text-[#52525B] mx-auto mb-4" />
+                    <p className="text-[#A1A1AA]">Nenhum lembrete configurado</p>
                   </Card>
                 ) : (
                   notifications.map(notif => {
                     const catInfo = getCategoryInfo(notif.category);
                     return (
-                      <Card key={notif.notification_id} className={`bg-[#0d0d0d] border-[#2a2a2a] p-4 ${!notif.enabled ? 'opacity-50' : ''}`}>
+                      <Card key={notif.notification_id} className={`bg-[#0A0A0A] border-[#27272A] p-4 ${!notif.enabled ? 'opacity-50' : ''}`}>
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-4">
                             <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: catInfo.color + "20" }}>
@@ -392,7 +392,7 @@ export default function Notifications() {
                             </div>
                             <div>
                               <h3 className="font-heading">{notif.title}</h3>
-                              <div className="flex items-center gap-2 text-sm text-[#888888]">
+                              <div className="flex items-center gap-2 text-sm text-[#A1A1AA]">
                                 <Clock className="w-3 h-3" /> {notif.scheduled_time} - {getRepeatLabel(notif.repeat, notif.repeat_days)}
                               </div>
                             </div>
@@ -416,15 +416,15 @@ export default function Notifications() {
                 {templates.map(template => {
                   const catInfo = getCategoryInfo(template.category);
                   return (
-                    <Card key={template.id} className="bg-[#0d0d0d] border-[#2a2a2a] p-4 hover:border-[#00c896] transition-colors cursor-pointer" onClick={() => handleUseTemplate(template)}>
+                    <Card key={template.id} className="bg-[#0A0A0A] border-[#27272A] p-4 hover:border-[#007AFF] transition-colors cursor-pointer" onClick={() => handleUseTemplate(template)}>
                       <div className="flex items-start gap-3">
                         <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: catInfo.color + "20" }}>
                           <span style={{ color: catInfo.color }}>{getCategoryIcon(template.category)}</span>
                         </div>
                         <div className="flex-1">
                           <h3 className="font-heading">{template.title}</h3>
-                          <p className="text-sm text-[#888888] mt-1">{template.message}</p>
-                          <div className="flex items-center gap-2 mt-2 text-xs text-[#555555]">
+                          <p className="text-sm text-[#A1A1AA] mt-1">{template.message}</p>
+                          <div className="flex items-center gap-2 mt-2 text-xs text-[#52525B]">
                             <Clock className="w-3 h-3" /> Sugerido: {(template.suggested_times || []).join(", ")}
                           </div>
                         </div>

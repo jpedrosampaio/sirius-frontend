@@ -2,13 +2,13 @@ import React from 'react';
 
 function Skeleton({ className = '' }) {
   return (
-    <div className={`animate-pulse bg-[#2a2a2a]/50 rounded-sm ${className}`} />
+    <div className={`animate-pulse bg-[#27272A]/50 rounded-sm ${className}`} />
   );
 }
 
 export function CardSkeleton() {
   return (
-    <div className="bg-[#0d0d0d] border border-[#2a2a2a] rounded-sm p-4 space-y-3">
+    <div className="bg-[#0A0A0A] border border-[#27272A] rounded-sm p-4 space-y-3">
       <Skeleton className="h-4 w-1/3" />
       <Skeleton className="h-8 w-1/2" />
       <Skeleton className="h-3 w-2/3" />
@@ -20,7 +20,7 @@ export function ListSkeleton({ rows = 5 }) {
   return (
     <div className="space-y-3">
       {Array.from({ length: rows }).map((_, i) => (
-        <div key={i} className="bg-[#0d0d0d] border border-[#2a2a2a] rounded-sm p-3 flex items-center space-x-3">
+        <div key={i} className="bg-[#0A0A0A] border border-[#27272A] rounded-sm p-3 flex items-center space-x-3">
           <Skeleton className="w-10 h-10 rounded-sm flex-shrink-0" />
           <div className="flex-1 space-y-2">
             <Skeleton className="h-4 w-3/4" />
@@ -66,7 +66,7 @@ export function DashboardSkeleton() {
       {/* Stats row */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="bg-[#0d0d0d] border border-[#2a2a2a] rounded-sm p-4">
+          <div key={i} className="bg-[#0A0A0A] border border-[#27272A] rounded-sm p-4">
             <Skeleton className="h-3 w-20 mb-2" />
             <Skeleton className="h-8 w-16" />
           </div>
@@ -74,11 +74,11 @@ export function DashboardSkeleton() {
       </div>
       {/* Content */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="bg-[#0d0d0d] border border-[#2a2a2a] rounded-sm p-4 space-y-3">
+        <div className="bg-[#0A0A0A] border border-[#27272A] rounded-sm p-4 space-y-3">
           <Skeleton className="h-5 w-32" />
           <Skeleton className="h-24 w-full" />
         </div>
-        <div className="bg-[#0d0d0d] border border-[#2a2a2a] rounded-sm p-4 space-y-3">
+        <div className="bg-[#0A0A0A] border border-[#27272A] rounded-sm p-4 space-y-3">
           <Skeleton className="h-5 w-32" />
           <ListSkeleton rows={3} />
         </div>

@@ -112,47 +112,47 @@ export default function Goals() {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
             <div>
               <h1 className="font-heading text-3xl md:text-4xl mb-2" data-testid="goals-title">METAS & SPRINTS</h1>
-              <p className="text-[#888888]">Defina objetivos, marque dias, conquiste resultados</p>
+              <p className="text-[#A1A1AA]">Defina objetivos, marque dias, conquiste resultados</p>
             </div>
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
-                <Button data-testid="goals-create-btn" className="bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs tracking-widest shadow-[0_0_10px_rgba(0,122,255,0.3)] w-full md:w-auto">
+                <Button data-testid="goals-create-btn" className="bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs tracking-widest shadow-[0_0_10px_rgba(0,122,255,0.3)] w-full md:w-auto">
                   <Plus className="w-4 h-4 mr-2" />
                   Nova Meta
                 </Button>
               </DialogTrigger>
-              <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] text-white max-w-lg">
+              <DialogContent className="bg-[#0A0A0A] border-[#27272A] text-white max-w-lg">
                 <DialogHeader>
                   <DialogTitle className="font-heading text-2xl">CRIAR META</DialogTitle>
                 </DialogHeader>
                 <div className="space-y-4 mt-4">
                   <div>
-                    <Label className="text-[#888888] uppercase text-xs tracking-wider mb-2 block">Título</Label>
+                    <Label className="text-[#A1A1AA] uppercase text-xs tracking-wider mb-2 block">Título</Label>
                     <Input
                       value={newGoal.title}
                       onChange={(e) => setNewGoal({...newGoal, title: e.target.value})}
-                      className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                      className="bg-[#121212] border-[#27272A] text-white"
                     />
                   </div>
                   <div>
-                    <Label className="text-[#888888] uppercase text-xs tracking-wider mb-2 block">Descrição</Label>
+                    <Label className="text-[#A1A1AA] uppercase text-xs tracking-wider mb-2 block">Descrição</Label>
                     <Textarea
                       value={newGoal.description}
                       onChange={(e) => setNewGoal({...newGoal, description: e.target.value})}
-                      className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                      className="bg-[#121212] border-[#27272A] text-white"
                     />
                   </div>
                   <div>
-                    <Label className="text-[#888888] uppercase text-xs tracking-wider mb-2 block">Data Alvo</Label>
+                    <Label className="text-[#A1A1AA] uppercase text-xs tracking-wider mb-2 block">Data Alvo</Label>
                     <Input
                       type="date"
                       value={newGoal.target_date}
                       onChange={(e) => setNewGoal({...newGoal, target_date: e.target.value})}
-                      className="bg-[#1a1a1a] border-[#2a2a2a] text-white font-mono"
+                      className="bg-[#121212] border-[#27272A] text-white font-mono"
                     />
                   </div>
                   <div>
-                    <Label className="text-[#888888] uppercase text-xs tracking-wider mb-2 block">
+                    <Label className="text-[#A1A1AA] uppercase text-xs tracking-wider mb-2 block">
                       Duração do Sprint (dias): {newGoal.sprint_duration}
                     </Label>
                     <Slider
@@ -164,7 +164,7 @@ export default function Goals() {
                       className="w-full"
                     />
                   </div>
-                  <Button onClick={handleCreateGoal} className="w-full bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs tracking-widest">
+                  <Button onClick={handleCreateGoal} className="w-full bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs tracking-widest">
                     Criar
                   </Button>
                 </div>
@@ -174,9 +174,9 @@ export default function Goals() {
 
           <div className="grid grid-cols-1 gap-6">
             {goals.length === 0 ? (
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-8 text-center">
-                <Target className="w-12 h-12 text-[#555555] mx-auto mb-4" />
-                <p className="text-[#888888]">Nenhuma meta criada</p>
+              <Card className="bg-[#0A0A0A] border-[#27272A] p-8 text-center">
+                <Target className="w-12 h-12 text-[#52525B] mx-auto mb-4" />
+                <p className="text-[#A1A1AA]">Nenhuma meta criada</p>
               </Card>
             ) : (
               goals.map((goal) => {
@@ -185,27 +185,27 @@ export default function Goals() {
                 const progress = (dailyChecks.length / (goal.sprint_duration || 1)) * 100;
                 
                 return (
-                  <Card key={goal.goal_id} className="bg-[#0d0d0d] border-[#2a2a2a] p-4 md:p-6">
+                  <Card key={goal.goal_id} className="bg-[#0A0A0A] border-[#27272A] p-4 md:p-6">
                     <div className="flex flex-col md:flex-row items-start justify-between mb-4 gap-4">
                       <div className="flex-1">
                         <h3 className="font-heading text-xl md:text-2xl mb-2">{goal.title}</h3>
                         {goal.description && (
-                          <p className="text-sm text-[#888888] mb-3">{goal.description}</p>
+                          <p className="text-sm text-[#A1A1AA] mb-3">{goal.description}</p>
                         )}
-                        <div className="flex flex-wrap items-center gap-4 text-xs text-[#888888]">
+                        <div className="flex flex-wrap items-center gap-4 text-xs text-[#A1A1AA]">
                           <div className="flex items-center space-x-1">
                             <Calendar className="w-4 h-4" />
                             <span>Alvo: {goal.target_date}</span>
                           </div>
                           <span>Sprint: {goal.sprint_duration} dias</span>
-                          <span className="text-[#00c896]">{dailyChecks.length}/{goal.sprint_duration} dias</span>
+                          <span className="text-[#007AFF]">{dailyChecks.length}/{goal.sprint_duration} dias</span>
                         </div>
                       </div>
                       <Button
                         variant="ghost"
                         size="icon"
                         onClick={() => handleDeleteGoal(goal.goal_id)}
-                        className="text-[#555555] hover:text-[#FF3B30] hover:bg-[#FF3B30]/10"
+                        className="text-[#52525B] hover:text-[#FF3B30] hover:bg-[#FF3B30]/10"
                       >
                         <Trash2 className="w-4 h-4" />
                       </Button>
@@ -213,18 +213,18 @@ export default function Goals() {
 
                     <div className="space-y-3">
                       <div className="flex justify-between items-center">
-                        <span className="text-sm text-[#888888]">Progresso</span>
-                        <span className="font-data text-lg text-[#00c896]">{(progress ?? 0).toFixed(0)}%</span>
+                        <span className="text-sm text-[#A1A1AA]">Progresso</span>
+                        <span className="font-data text-lg text-[#007AFF]">{(progress ?? 0).toFixed(0)}%</span>
                       </div>
-                      <div className="h-2 bg-[#2a2a2a] rounded-full overflow-hidden">
+                      <div className="h-2 bg-[#27272A] rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-[#00c896] transition-all"
+                          className="h-full bg-[#007AFF] transition-all"
                           style={{ width: `${progress}%` }}
                         />
                       </div>
                       
                       <div className="pt-4">
-                        <Label className="text-[#888888] text-xs mb-3 block uppercase tracking-wider">Marcar Dias do Sprint</Label>
+                        <Label className="text-[#A1A1AA] text-xs mb-3 block uppercase tracking-wider">Marcar Dias do Sprint</Label>
                         <div className="grid grid-cols-7 sm:grid-cols-10 md:grid-cols-15 gap-2">
                           {days.map((date, idx) => {
                             const isChecked = dailyChecks.includes(date);
@@ -236,10 +236,10 @@ export default function Goals() {
                                 onClick={() => handleCheckDay(goal.goal_id, date)}
                                 className={`w-8 h-8 md:w-10 md:h-10 rounded-sm flex items-center justify-center text-xs font-mono transition-all ${
                                   isChecked
-                                    ? 'bg-[#00c896] text-white shadow-[0_0_10px_rgba(0,122,255,0.3)]'
+                                    ? 'bg-[#007AFF] text-white shadow-[0_0_10px_rgba(0,122,255,0.3)]'
                                     : isToday
-                                    ? 'bg-[#1a1a1a] border-2 border-[#00c896] text-[#00c896]'
-                                    : 'bg-[#1a1a1a] border border-[#2a2a2a] text-[#555555] hover:border-[#00c896]'
+                                    ? 'bg-[#121212] border-2 border-[#007AFF] text-[#007AFF]'
+                                    : 'bg-[#121212] border border-[#27272A] text-[#52525B] hover:border-[#007AFF]'
                                 }`}
                                 title={date}
                               >
@@ -248,7 +248,7 @@ export default function Goals() {
                             );
                           })}
                         </div>
-                        <p className="text-xs text-[#555555] mt-2">Clique nas caixas para marcar os dias concluídos. +5 XP por dia!</p>
+                        <p className="text-xs text-[#52525B] mt-2">Clique nas caixas para marcar os dias concluídos. +5 XP por dia!</p>
                       </div>
                     </div>
                   </Card>

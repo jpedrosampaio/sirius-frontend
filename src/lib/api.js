@@ -2,12 +2,8 @@ import axios from "axios";
 import { OFFLINE_MODE, OFFLINE_USER, OFFLINE_DEMO_DATA } from "./offline-mode";
 import { toast } from "sonner";
 
-// For web (Vercel): use env var or localhost
-// For native (APK): use hardcoded production URL
-const isNative = window.Capacitor?.isNativePlatform?.();
-const BACKEND_URL = isNative 
-  ? 'https://sirius-backend-1hsi.onrender.com'  // APK uses this
-  : (process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000');  // Web uses this
+// Use environment variable or fallback to production URL
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://sirius-backend-1hsi.onrender.com';
 const API = `${BACKEND_URL}/api`;
 
 // Re-export for convenience

@@ -18,7 +18,7 @@ const steps = [
   },
   {
     icon: DollarSign,
-    color: "#00c896",
+    color: "#39FF14",
     title: "Finanças Inteligentes",
     description: "Controle transações, orçamentos, cartões de crédito e projeções. Use o Chat Financeiro com IA para insights.",
     tip: "Crie categorias personalizadas na aba 'Categorias'"
@@ -46,7 +46,7 @@ const steps = [
   },
   {
     icon: Target,
-    color: "#00c896",
+    color: "#00F0FF",
     title: "Tudo Conectado",
     description: "Dashboard com resumo semanal, busca global, lembretes inteligentes e sugestões entre módulos. Vamos começar!",
     tip: "Use a barra de busca no Dashboard para encontrar qualquer coisa"
@@ -85,20 +85,20 @@ export default function Onboarding({ onComplete }) {
 
   return (
     <div className="fixed inset-0 z-[200] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-[#0d0d0d] border border-[#2a2a2a] rounded-2xl max-w-md w-full overflow-hidden">
+      <div className="bg-[#0A0A0A] border border-[#27272A] rounded-2xl max-w-md w-full overflow-hidden">
         {/* Header with close */}
-        <div className="flex justify-between items-center p-4 border-b border-[#2a2a2a]">
+        <div className="flex justify-between items-center p-4 border-b border-[#27272A]">
           <div className="flex gap-1">
             {steps.map((_, i) => (
               <div 
                 key={i} 
                 className={`h-1.5 rounded-full transition-all ${
-                  i === currentStep ? 'w-8 bg-[#00c896]' : i < currentStep ? 'w-4 bg-[#00c896]/50' : 'w-4 bg-[#2a2a2a]'
+                  i === currentStep ? 'w-8 bg-[#007AFF]' : i < currentStep ? 'w-4 bg-[#007AFF]/50' : 'w-4 bg-[#27272A]'
                 }`} 
               />
             ))}
           </div>
-          <button onClick={handleComplete} className="text-[#555555] hover:text-white">
+          <button onClick={handleComplete} className="text-[#52525B] hover:text-white">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -113,10 +113,10 @@ export default function Onboarding({ onComplete }) {
           </div>
 
           <h2 className="font-heading text-2xl mb-3">{step.title}</h2>
-          <p className="text-[#888888] text-sm leading-relaxed mb-4">{step.description}</p>
+          <p className="text-[#A1A1AA] text-sm leading-relaxed mb-4">{step.description}</p>
 
           {step.tip && (
-            <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg p-3 mb-6">
+            <div className="bg-[#121212] border border-[#27272A] rounded-lg p-3 mb-6">
               <p className="text-xs text-[#FFD700] flex items-center gap-2 justify-center">
                 <Sparkles className="w-3 h-3" /> {step.tip}
               </p>
@@ -125,11 +125,11 @@ export default function Onboarding({ onComplete }) {
         </div>
 
         {/* Actions */}
-        <div className="p-4 border-t border-[#2a2a2a] flex justify-between items-center">
-          <button onClick={handleComplete} className="text-sm text-[#555555] hover:text-white">
+        <div className="p-4 border-t border-[#27272A] flex justify-between items-center">
+          <button onClick={handleComplete} className="text-sm text-[#52525B] hover:text-white">
             Pular tour
           </button>
-          <Button onClick={handleNext} className="bg-[#00c896] hover:bg-[#0062CC]">
+          <Button onClick={handleNext} className="bg-[#007AFF] hover:bg-[#0062CC]">
             {currentStep < steps.length - 1 ? (
               <>Próximo <ChevronRight className="w-4 h-4 ml-1" /></>
             ) : (

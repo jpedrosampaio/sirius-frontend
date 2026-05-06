@@ -50,46 +50,48 @@ function MobileNav({ user }) {
   };
 
   const mainItems = [
-    { icon: Home, label: "Início", path: "/dashboard" },
-    { icon: CheckSquare, label: "Tarefas", path: "/tasks" },
-    { icon: TrendingUp, label: "Hábitos", path: "/habits" },
-    { icon: DollarSign, label: "Finanças", path: "/finance" },
-    { icon: MessageSquare, label: "IA", path: "/chat" },
+    { icon: Home, label: "Início", path: "/dashboard", color: "#007AFF" },
+    { icon: CheckSquare, label: "Tarefas", path: "/tasks", color: "#007AFF" },
+    { icon: TrendingUp, label: "Hábitos", path: "/habits", color: "#39FF14" },
+    { icon: DollarSign, label: "Finanças", path: "/finance", color: "#FF9500" },
+    { icon: MessageSquare, label: "IA", path: "/chat", color: "#00F0FF" },
   ];
 
   const moreItems = [
-    { icon: Dumbbell, label: "Treinos", path: "/workouts" },
-    { icon: Apple, label: "Alimentação", path: "/nutrition" },
-    { icon: BookOpen, label: "Estudos", path: "/studies" },
-    { icon: Target, label: "Metas", path: "/goals" },
-    { icon: Trophy, label: "Conquistas", path: "/achievements" },
-    { icon: Calendar, label: "Calendário", path: "/calendar" },
-    { icon: Bell, label: "Notificações", path: "/notifications" },
-    { icon: FileText, label: "Relatórios", path: "/reports" },
-    { icon: User, label: "Perfil", path: "/profile" },
+    { icon: Dumbbell, label: "Treinos", path: "/workouts", color: "#EF4444" },
+    { icon: Apple, label: "Alimentação", path: "/nutrition", color: "#22C55E" },
+    { icon: BookOpen, label: "Estudos", path: "/studies", color: "#A855F7" },
+    { icon: Target, label: "Metas", path: "/goals", color: "#F59E0B" },
+    { icon: Trophy, label: "Conquistas", path: "/achievements", color: "#FFD700" },
+    { icon: Calendar, label: "Calendário", path: "/calendar", color: "#14B8A6" },
+    { icon: Bell, label: "Notificações", path: "/notifications", color: "#EC4899" },
+    { icon: FileText, label: "Relatórios", path: "/reports", color: "#8B5CF6" },
+    { icon: User, label: "Perfil", path: "/profile", color: "#007AFF" },
   ];
 
   return (
     <>
-      <div className="md:hidden fixed top-0 left-0 right-0 bg-[#0d0d0d]/95 backdrop-blur-lg border-b border-[#2a2a2a] z-50 safe-area-inset-top">
+      {/* Mobile Header */}
+      <div className="md:hidden fixed top-0 left-0 right-0 bg-[#0A0A0A]/95 backdrop-blur-lg border-b border-[#1A1A1A] z-50 safe-area-inset-top">
         <div className="flex items-center justify-between px-4 h-14">
           <div className="flex items-center space-x-2">
             <SiriusLogo size="w-7 h-7" />
-            <span className="text-base font-semibold text-[#f0f0f0]">SIRIUS</span>
+            <span className="font-heading text-base bg-gradient-to-r from-[#00F0FF] to-[#007AFF] bg-clip-text text-transparent">SIRIUS</span>
           </div>
           {user && (
             <div className="flex items-center space-x-2">
-              <div className="flex items-center space-x-1.5 bg-[#1a1a1a] rounded-full px-2.5 py-1 border border-[#2a2a2a]">
-                <Award className="w-3 h-3 text-[#00c896]" />
-                <span className="text-[10px] font-medium text-[#888888]">{user.rank || 'Recruta'}</span>
-                <span className="text-[10px] text-[#555555]">{user.xp ?? 0} XP</span>
+              <div className="flex items-center space-x-1.5 bg-[#121212] rounded-full px-2.5 py-1 border border-[#27272A]">
+                <Award className="w-3 h-3 text-[#007AFF]" />
+                <span className="text-[10px] font-medium text-[#A1A1AA]">{user.rank || 'Recruta'}</span>
+                <span className="text-[10px] text-[#52525B]">{user.xp ?? 0} XP</span>
               </div>
             </div>
           )}
         </div>
       </div>
 
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[#0d0d0d]/95 backdrop-blur-lg border-t border-[#2a2a2a] z-50 safe-area-inset-bottom">
+      {/* Bottom Navigation */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[#0A0A0A]/95 backdrop-blur-lg border-t border-[#1A1A1A] z-50 safe-area-inset-bottom">
         <div className="flex items-center justify-around h-[60px] px-1">
           {mainItems.map((item) => {
             const Icon = item.icon;
@@ -98,70 +100,73 @@ function MobileNav({ user }) {
               <button
                 key={item.path}
                 onClick={() => navigate(item.path)}
-                className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-xl transition-all duration-150 min-w-[56px] ${
+                className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-xl transition-all duration-200 min-w-[56px] ${
                   isActive
-                    ? "text-[#f0f0f0]"
-                    : "text-[#888888] active:scale-95"
+                    ? "text-white"
+                    : "text-[#71717A] active:scale-95"
                 }`}
               >
-                <div className={`relative p-1.5 rounded-lg transition-all duration-150 ${
-                  isActive ? "bg-[#1a1a1a]" : ""
+                <div className={`relative p-1.5 rounded-lg transition-all duration-200 ${
+                  isActive ? "bg-[#007AFF]/20" : ""
                 }`}>
-                  <Icon className={`w-[22px] h-[22px] transition-colors ${isActive ? 'text-[#00c896]' : ''}`} />
+                  <Icon className={`w-[22px] h-[22px] transition-colors ${isActive ? 'text-[#007AFF]' : ''}`} />
                   {isActive && (
-                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#00c896]" />
+                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#007AFF]" />
                   )}
                 </div>
-                <span className={`text-[10px] mt-0.5 font-medium transition-colors ${isActive ? 'text-[#00c896]' : ''}`}>{item.label}</span>
+                <span className={`text-[10px] mt-0.5 font-medium transition-colors ${isActive ? 'text-[#007AFF]' : ''}`}>{item.label}</span>
               </button>
             );
           })}
           
           <Sheet open={moreOpen} onOpenChange={setMoreOpen}>
             <SheetTrigger asChild>
-              <button className="flex flex-col items-center justify-center py-1.5 px-3 rounded-xl text-[#888888] active:scale-95 min-w-[56px]">
+              <button className="flex flex-col items-center justify-center py-1.5 px-3 rounded-xl text-[#71717A] active:scale-95 min-w-[56px]">
                 <div className="p-1.5">
                   <MoreHorizontal className="w-[22px] h-[22px]" />
                 </div>
                 <span className="text-[10px] mt-0.5 font-medium">Mais</span>
               </button>
             </SheetTrigger>
-            <SheetContent side="bottom" className="bg-[#0d0d0d] border-t border-[#2a2a2a] rounded-t-2xl px-4 pb-8">
-              <div className="w-10 h-1 bg-[#2a2a2a] rounded-full mx-auto mb-5" />
+            <SheetContent side="bottom" className="bg-[#0A0A0A] border-t border-[#1A1A1A] rounded-t-3xl px-4 pb-8">
+              <div className="w-10 h-1 bg-[#27272A] rounded-full mx-auto mb-5" />
               
+              {/* User info */}
               {user && (
                 <div className="flex items-center justify-between mb-5 px-1">
                   <div className="flex items-center space-x-3">
-                    <div className="w-11 h-11 rounded-xl bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center">
-                      <span className="font-semibold text-[#f0f0f0] text-base">
+                    <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#007AFF] to-[#00F0FF] flex items-center justify-center shadow-lg shadow-[#007AFF]/20">
+                      <span className="font-bold text-white text-base">
                         {(user.name || 'U').charAt(0).toUpperCase()}
                       </span>
                     </div>
                     <div>
-                      <p className="font-medium text-sm text-[#f0f0f0]">{user.name || 'Usuário'}</p>
+                      <p className="font-medium text-sm text-white">{user.name || 'Usuário'}</p>
                       <div className="flex items-center space-x-2 mt-0.5">
-                        <span className="bg-[#1a1a1a] text-[#888888] px-2 py-0.5 rounded-full text-[10px] font-medium border border-[#2a2a2a]">
+                        <span className="bg-[#007AFF]/20 text-[#007AFF] px-2 py-0.5 rounded-md text-[10px] font-medium">
                           {user.rank || 'Recruta'}
                         </span>
-                        <span className="text-xs text-[#555555]">{user.xp ?? 0} XP</span>
+                        <span className="text-xs text-[#52525B]">{user.xp ?? 0} XP</span>
                       </div>
                     </div>
                   </div>
                   <button
                     onClick={handleLogout}
-                    className="p-2.5 text-[#555555] hover:text-[#ff4d4f] rounded-lg active:bg-[#1a1a1a] transition-colors"
+                    className="p-2.5 text-[#52525B] hover:text-red-400 rounded-lg active:bg-[#121212] transition-colors"
                   >
                     <LogOut className="w-5 h-5" />
                   </button>
                 </div>
               )}
 
-              <div className="mb-5 flex items-center justify-center space-x-2 px-3 py-2.5 rounded-xl bg-[#1a1a1a] border border-[#2a2a2a]">
-                <Clock className="w-4 h-4 text-[#00c896] flex-shrink-0" />
-                <span className="font-mono text-sm text-[#00c896] tracking-wider tabular-nums">{brasiliaTime}</span>
-                <span className="text-[10px] text-[#555555] capitalize">{brasiliaDate} — Brasília</span>
+              {/* Brasilia Clock */}
+              <div className="mb-5 flex items-center justify-center space-x-2 px-3 py-2.5 rounded-xl bg-[#121212] border border-[#1A1A1A]">
+                <Clock className="w-4 h-4 text-[#00F0FF] flex-shrink-0" />
+                <span className="font-data text-sm text-[#00F0FF] tracking-wider tabular-nums">{brasiliaTime}</span>
+                <span className="text-[10px] text-[#52525B] capitalize">{brasiliaDate} — Brasília</span>
               </div>
               
+              {/* Menu grid */}
               <div className="grid grid-cols-3 gap-3">
                 {moreItems.map((item) => {
                   const Icon = item.icon;
@@ -173,14 +178,14 @@ function MobileNav({ user }) {
                         navigate(item.path);
                         setMoreOpen(false);
                       }}
-                      className={`flex flex-col items-center justify-center py-3.5 rounded-xl transition-all duration-150 active:scale-95 ${
+                      className={`flex flex-col items-center justify-center py-3.5 rounded-xl transition-all active:scale-95 ${
                         isActive
-                          ? "bg-[#1a1a1a] border border-[#2a2a2a]"
-                          : "bg-[#1a1a1a] border border-[#2a2a2a] active:bg-[#222222]"
+                          ? "bg-[#007AFF]/15 border border-[#007AFF]/30"
+                          : "bg-[#121212] border border-[#1A1A1A] active:bg-[#1A1A1A]"
                       }`}
                     >
-                      <Icon className={`w-6 h-6 mb-1.5 ${isActive ? 'text-[#00c896]' : 'text-[#888888]'}`} />
-                      <span className={`text-[11px] font-medium ${isActive ? 'text-[#f0f0f0]' : 'text-[#888888]'}`}>{item.label}</span>
+                      <Icon className="w-6 h-6 mb-1.5" style={{ color: isActive ? item.color : '#71717A' }} />
+                      <span className={`text-[11px] font-medium ${isActive ? 'text-white' : 'text-[#A1A1AA]'}`}>{item.label}</span>
                     </button>
                   );
                 })}

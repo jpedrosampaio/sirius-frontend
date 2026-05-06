@@ -18,7 +18,7 @@ import ExportButtons from "@/components/ExportButtons";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-const COLORS = ['#00c896', '#00c896', '#FF9500', '#FF3B30', '#00c896', '#FFD700', '#FF00FF', '#A855F7', '#10B981'];
+const COLORS = ['#007AFF', '#39FF14', '#FF9500', '#FF3B30', '#00F0FF', '#FFD700', '#FF00FF', '#A855F7', '#10B981'];
 
 export default function Finance() {
   const [user, setUser] = useState(null);
@@ -537,42 +537,42 @@ export default function Finance() {
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div>
                 <h1 className="font-heading text-3xl md:text-4xl mb-2">FINANÇAS</h1>
-                <p className="text-[#888888]">Controle total do seu dinheiro</p>
+                <p className="text-[#A1A1AA]">Controle total do seu dinheiro</p>
               </div>
               <ExportButtons module="finance" />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-            <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-6">
+            <Card className="bg-[#0A0A0A] border-[#27272A] p-6">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[#888888] uppercase text-xs tracking-wider">Receitas</span>
-                <TrendingUp className="w-5 h-5 text-[#00c896]" />
+                <span className="text-[#A1A1AA] uppercase text-xs tracking-wider">Receitas</span>
+                <TrendingUp className="w-5 h-5 text-[#39FF14]" />
               </div>
-              <p className="font-data text-2xl md:text-3xl text-[#00c896]">R$ {(income ?? 0).toFixed(2)}</p>
+              <p className="font-data text-2xl md:text-3xl text-[#39FF14]">R$ {(income ?? 0).toFixed(2)}</p>
             </Card>
 
-            <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-6">
+            <Card className="bg-[#0A0A0A] border-[#27272A] p-6">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[#888888] uppercase text-xs tracking-wider">Despesas</span>
+                <span className="text-[#A1A1AA] uppercase text-xs tracking-wider">Despesas</span>
                 <TrendingDown className="w-5 h-5 text-[#FF3B30]" />
               </div>
               <p className="font-data text-2xl md:text-3xl text-[#FF3B30]">R$ {(expenses ?? 0).toFixed(2)}</p>
             </Card>
 
-            <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-6">
+            <Card className="bg-[#0A0A0A] border-[#27272A] p-6">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[#888888] uppercase text-xs tracking-wider">Saldo</span>
-                <DollarSign className="w-5 h-5 text-[#00c896]" />
+                <span className="text-[#A1A1AA] uppercase text-xs tracking-wider">Saldo</span>
+                <DollarSign className="w-5 h-5 text-[#007AFF]" />
               </div>
-              <p className={`font-data text-2xl md:text-3xl ${(balance ?? 0) >= 0 ? 'text-[#00c896]' : 'text-[#FF3B30]'}`}>
+              <p className={`font-data text-2xl md:text-3xl ${(balance ?? 0) >= 0 ? 'text-[#39FF14]' : 'text-[#FF3B30]'}`}>
                 R$ {(balance ?? 0).toFixed(2)}
               </p>
             </Card>
           </div>
 
           {chartData.length > 0 && (
-            <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4 md:p-6 mb-8">
+            <Card className="bg-[#0A0A0A] border-[#27272A] p-4 md:p-6 mb-8">
               <h3 className="font-heading text-xl mb-4 uppercase">Gastos por Categoria</h3>
               <ResponsiveContainer width="100%" height={isMobile ? 250 : 350}>
                 <PieChart>
@@ -599,62 +599,62 @@ export default function Finance() {
           {/* Finance Trend - Last 6 Months */}
           {financeTrend && financeTrend.trend && financeTrend.trend.length > 0 && (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8">
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4 md:p-6 lg:col-span-2">
-                <h3 className="font-heading text-lg mb-4 uppercase flex items-center gap-2"><TrendingUp className="w-4 h-4 text-[#00c896]" />Evolução Financeira (6 meses)</h3>
+              <Card className="bg-[#0A0A0A] border-[#27272A] p-4 md:p-6 lg:col-span-2">
+                <h3 className="font-heading text-lg mb-4 uppercase flex items-center gap-2"><TrendingUp className="w-4 h-4 text-[#007AFF]" />Evolução Financeira (6 meses)</h3>
                 <ResponsiveContainer width="100%" height={250}>
                   <AreaChart data={financeTrend.trend}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
-                    <XAxis dataKey="month" tick={{ fill: '#888888', fontSize: 11 }} />
-                    <YAxis tick={{ fill: '#888888', fontSize: 11 }} />
-                    <Tooltip contentStyle={{ backgroundColor: '#0d0d0d', border: '1px solid #2a2a2a', color: '#fff' }} formatter={(v) => `R$ ${v.toFixed(2)}`} />
-                    <Area type="monotone" dataKey="receitas" stroke="#00c896" fill="#00c89620" name="Receitas" />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#27272A" />
+                    <XAxis dataKey="month" tick={{ fill: '#71717A', fontSize: 11 }} />
+                    <YAxis tick={{ fill: '#71717A', fontSize: 11 }} />
+                    <Tooltip contentStyle={{ backgroundColor: '#0A0A0A', border: '1px solid #27272A', color: '#fff' }} formatter={(v) => `R$ ${v.toFixed(2)}`} />
+                    <Area type="monotone" dataKey="receitas" stroke="#39FF14" fill="#39FF1420" name="Receitas" />
                     <Area type="monotone" dataKey="despesas" stroke="#FF3B30" fill="#FF3B3020" name="Despesas" />
-                    <Line type="monotone" dataKey="saldo" stroke="#00c896" strokeWidth={2} name="Saldo" dot={false} />
+                    <Line type="monotone" dataKey="saldo" stroke="#007AFF" strokeWidth={2} name="Saldo" dot={false} />
                     <Legend />
                   </AreaChart>
                 </ResponsiveContainer>
               </Card>
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4 md:p-6">
+              <Card className="bg-[#0A0A0A] border-[#27272A] p-4 md:p-6">
                 <h3 className="font-heading text-lg mb-4 uppercase">Resumo 6 Meses</h3>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-[#888888] text-xs">Taxa de Economia</span>
-                    <span className={`font-data text-lg ${financeTrend.summary.savings_rate >= 0 ? 'text-[#00c896]' : 'text-[#FF3B30]'}`}>
+                    <span className="text-[#A1A1AA] text-xs">Taxa de Economia</span>
+                    <span className={`font-data text-lg ${financeTrend.summary.savings_rate >= 0 ? 'text-[#39FF14]' : 'text-[#FF3B30]'}`}>
                       {financeTrend.summary.savings_rate}%
                     </span>
                   </div>
-                  <div className="w-full bg-[#2a2a2a] rounded-full h-2">
-                    <div className="h-2 rounded-full bg-gradient-to-r from-[#00c896] to-[#00c896]" style={{ width: `${Math.min(Math.max(financeTrend.summary.savings_rate, 0), 100)}%` }}></div>
+                  <div className="w-full bg-[#27272A] rounded-full h-2">
+                    <div className="h-2 rounded-full bg-gradient-to-r from-[#39FF14] to-[#007AFF]" style={{ width: `${Math.min(Math.max(financeTrend.summary.savings_rate, 0), 100)}%` }}></div>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-[#888888] text-xs">Receitas (6m)</span>
-                    <span className="font-data text-sm text-[#00c896]">R$ {financeTrend.summary.total_income_6m.toFixed(2)}</span>
+                    <span className="text-[#A1A1AA] text-xs">Receitas (6m)</span>
+                    <span className="font-data text-sm text-[#39FF14]">R$ {financeTrend.summary.total_income_6m.toFixed(2)}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-[#888888] text-xs">Despesas (6m)</span>
+                    <span className="text-[#A1A1AA] text-xs">Despesas (6m)</span>
                     <span className="font-data text-sm text-[#FF3B30]">R$ {financeTrend.summary.total_expense_6m.toFixed(2)}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-[#888888] text-xs">Média Mensal Despesas</span>
+                    <span className="text-[#A1A1AA] text-xs">Média Mensal Despesas</span>
                     <span className="font-data text-sm text-white">R$ {financeTrend.summary.avg_monthly_expense.toFixed(2)}</span>
                   </div>
                   {financeTrend.summary.best_month && (
                     <div className="flex items-center justify-between">
-                      <span className="text-[#888888] text-xs">Melhor Mês</span>
-                      <span className="font-data text-sm text-[#00c896]">{financeTrend.summary.best_month}</span>
+                      <span className="text-[#A1A1AA] text-xs">Melhor Mês</span>
+                      <span className="font-data text-sm text-[#39FF14]">{financeTrend.summary.best_month}</span>
                     </div>
                   )}
                   {financeTrend.trend.length > 0 && (
-                    <div className="mt-3 pt-3 border-t border-[#2a2a2a]">
-                      <p className="text-[10px] text-[#555555] uppercase tracking-wider mb-2">Economia por Mês</p>
+                    <div className="mt-3 pt-3 border-t border-[#27272A]">
+                      <p className="text-[10px] text-[#52525B] uppercase tracking-wider mb-2">Economia por Mês</p>
                       <div className="space-y-1">
                         {financeTrend.trend.map((m, i) => (
                           <div key={i} className="flex items-center gap-2">
-                            <span className="text-[10px] text-[#888888] w-12">{m.month}</span>
-                            <div className="flex-1 bg-[#2a2a2a] rounded-full h-1.5">
-                              <div className={`h-1.5 rounded-full ${m.economia >= 0 ? 'bg-[#00c896]' : 'bg-[#FF3B30]'}`} style={{ width: `${Math.min(Math.abs(m.economia), 100)}%` }}></div>
+                            <span className="text-[10px] text-[#71717A] w-12">{m.month}</span>
+                            <div className="flex-1 bg-[#27272A] rounded-full h-1.5">
+                              <div className={`h-1.5 rounded-full ${m.economia >= 0 ? 'bg-[#39FF14]' : 'bg-[#FF3B30]'}`} style={{ width: `${Math.min(Math.abs(m.economia), 100)}%` }}></div>
                             </div>
-                            <span className={`text-[10px] font-data ${m.economia >= 0 ? 'text-[#00c896]' : 'text-[#FF3B30]'}`}>{m.economia}%</span>
+                            <span className={`text-[10px] font-data ${m.economia >= 0 ? 'text-[#39FF14]' : 'text-[#FF3B30]'}`}>{m.economia}%</span>
                           </div>
                         ))}
                       </div>
@@ -670,12 +670,12 @@ export default function Finance() {
               type="month"
               value={selectedMonth}
               onChange={(e) => setSelectedMonth(e.target.value)}
-              className="bg-[#0d0d0d] border-[#2a2a2a] text-white font-mono max-w-xs"
+              className="bg-[#0A0A0A] border-[#27272A] text-white font-mono max-w-xs"
             />
           </div>
 
           <Tabs defaultValue="transactions" className="w-full">
-            <TabsList className="bg-[#0d0d0d] border-[#2a2a2a] overflow-x-auto flex-nowrap w-full justify-start md:justify-center">
+            <TabsList className="bg-[#0A0A0A] border-[#27272A] overflow-x-auto flex-nowrap w-full justify-start md:justify-center">
               <TabsTrigger value="transactions">Transações</TabsTrigger>
               <TabsTrigger value="budgets">Orçamentos</TabsTrigger>
               <TabsTrigger value="cards">Cartões</TabsTrigger>
@@ -689,25 +689,25 @@ export default function Finance() {
               <div className="flex justify-end mb-4">
                 <Dialog open={openTransaction} onOpenChange={setOpenTransaction}>
                   <DialogTrigger asChild>
-                    <Button className="bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs tracking-widest">
+                    <Button className="bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs tracking-widest">
                       <Plus className="w-4 h-4 mr-2" />
                       Nova Transação
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] text-white max-w-md">
+                  <DialogContent className="bg-[#0A0A0A] border-[#27272A] text-white max-w-md">
                     <DialogHeader>
                       <DialogTitle className="font-heading text-2xl">NOVA TRANSAÇÃO</DialogTitle>
                     </DialogHeader>
                     <div className="space-y-4 mt-4">
                       <div>
-                        <Label className="text-[#888888] uppercase text-xs tracking-wider mb-2 block">Tipo</Label>
+                        <Label className="text-[#A1A1AA] uppercase text-xs tracking-wider mb-2 block">Tipo</Label>
                         <div className="flex gap-2">
                           {[{value: 'income', label: 'Receita'}, {value: 'expense', label: 'Despesa'}].map((type) => (
                             <button
                               key={type.value}
                               onClick={() => setNewTransaction({...newTransaction, type: type.value})}
                               className={`flex-1 py-2 px-4 rounded-sm uppercase text-xs transition-colors ${
-                                newTransaction.type === type.value ? 'bg-[#00c896] text-white' : 'bg-[#1a1a1a] text-[#888888]'
+                                newTransaction.type === type.value ? 'bg-[#007AFF] text-white' : 'bg-[#121212] text-[#A1A1AA]'
                               }`}
                             >
                               {type.label}
@@ -722,7 +722,7 @@ export default function Finance() {
                           step="0.01"
                           value={newTransaction.amount}
                           onChange={(e) => setNewTransaction({...newTransaction, amount: e.target.value})}
-                          className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                          className="bg-[#121212] border-[#27272A] text-white"
                         />
                       </div>
                       <div>
@@ -733,7 +733,7 @@ export default function Finance() {
                               key={cat}
                               onClick={() => setNewTransaction({...newTransaction, category: cat})}
                               className={`py-2 px-3 rounded-sm text-xs uppercase transition-colors ${
-                                newTransaction.category === cat ? 'bg-[#00c896] text-white' : 'bg-[#1a1a1a] text-[#888888]'
+                                newTransaction.category === cat ? 'bg-[#007AFF] text-white' : 'bg-[#121212] text-[#A1A1AA]'
                               }`}
                             >
                               {cat}
@@ -746,7 +746,7 @@ export default function Finance() {
                         <Input
                           value={newTransaction.description}
                           onChange={(e) => setNewTransaction({...newTransaction, description: e.target.value})}
-                          className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                          className="bg-[#121212] border-[#27272A] text-white"
                         />
                       </div>
                       <div>
@@ -755,10 +755,10 @@ export default function Finance() {
                           type="date"
                           value={newTransaction.date}
                           onChange={(e) => setNewTransaction({...newTransaction, date: e.target.value})}
-                          className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                          className="bg-[#121212] border-[#27272A] text-white"
                         />
                       </div>
-                      <Button onClick={handleCreateTransaction} className="w-full bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs">
+                      <Button onClick={handleCreateTransaction} className="w-full bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs">
                         Criar
                       </Button>
                     </div>
@@ -768,34 +768,34 @@ export default function Finance() {
 
               <div className="space-y-3">
                 {transactions.length === 0 ? (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-8 text-center">
-                    <p className="text-[#888888]">Nenhuma transação neste período</p>
+                  <Card className="bg-[#0A0A0A] border-[#27272A] p-8 text-center">
+                    <p className="text-[#A1A1AA]">Nenhuma transação neste período</p>
                   </Card>
                 ) : (
                   <>
                     {transactions
                       .slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
                       .map((t) => (
-                      <Card key={t.transaction_id} className="bg-[#0d0d0d] border-[#2a2a2a] p-4">
+                      <Card key={t.transaction_id} className="bg-[#0A0A0A] border-[#27272A] p-4">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center space-x-4 flex-1">
                             <div className={`w-10 h-10 rounded-sm flex items-center justify-center ${
-                              t.type === 'income' ? 'bg-[#00c896]/20' : 'bg-[#FF3B30]/20'
+                              t.type === 'income' ? 'bg-[#39FF14]/20' : 'bg-[#FF3B30]/20'
                             }`}>
-                              {t.type === 'income' ? <TrendingUp className="w-5 h-5 text-[#00c896]" /> : <TrendingDown className="w-5 h-5 text-[#FF3B30]" />}
+                              {t.type === 'income' ? <TrendingUp className="w-5 h-5 text-[#39FF14]" /> : <TrendingDown className="w-5 h-5 text-[#FF3B30]" />}
                             </div>
                             <div className="flex-1">
                               <div className="flex items-center space-x-2 mb-1">
                                 <span className="font-medium">{t.category}</span>
-                                <span className="text-xs text-[#888888]">{t.date}</span>
+                                <span className="text-xs text-[#A1A1AA]">{t.date}</span>
                               </div>
-                              {t.description && <p className="text-sm text-[#888888]">{t.description}</p>}
+                              {t.description && <p className="text-sm text-[#A1A1AA]">{t.description}</p>}
                             </div>
-                            <div className={`font-data text-xl ${t.type === 'income' ? 'text-[#00c896]' : 'text-[#FF3B30]'}`}>
+                            <div className={`font-data text-xl ${t.type === 'income' ? 'text-[#39FF14]' : 'text-[#FF3B30]'}`}>
                               {t.type === 'income' ? '+' : '-'}R$ {(t.amount ?? 0).toFixed(2)}
                             </div>
                             <Button variant="ghost" size="icon" onClick={() => handleDeleteTransaction(t.transaction_id)}>
-                              <Trash2 className="w-4 h-4 text-[#555555] hover:text-[#FF3B30]" />
+                              <Trash2 className="w-4 h-4 text-[#52525B] hover:text-[#FF3B30]" />
                             </Button>
                           </div>
                         </div>
@@ -805,7 +805,7 @@ export default function Finance() {
                     {/* Pagination Controls */}
                     {transactions.length > ITEMS_PER_PAGE && (
                       <div className="flex items-center justify-between pt-4">
-                        <p className="text-sm text-[#888888]">
+                        <p className="text-sm text-[#A1A1AA]">
                           Mostrando {((currentPage - 1) * ITEMS_PER_PAGE) + 1}-{Math.min(currentPage * ITEMS_PER_PAGE, transactions.length)} de {transactions.length} transações
                         </p>
                         <div className="flex items-center space-x-2">
@@ -814,7 +814,7 @@ export default function Finance() {
                             size="sm"
                             onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                             disabled={currentPage === 1}
-                            className="bg-[#1a1a1a] border-[#2a2a2a] text-[#888888] hover:bg-[#1A1A1A] disabled:opacity-30"
+                            className="bg-[#121212] border-[#27272A] text-[#A1A1AA] hover:bg-[#1A1A1A] disabled:opacity-30"
                           >
                             <ChevronLeft className="w-4 h-4" />
                           </Button>
@@ -830,7 +830,7 @@ export default function Finance() {
                               const elements = [];
                               if (idx > 0 && page - arr[idx - 1] > 1) {
                                 elements.push(
-                                  <span key={`dots-${page}`} className="text-[#555555] px-1">...</span>
+                                  <span key={`dots-${page}`} className="text-[#52525B] px-1">...</span>
                                 );
                               }
                               elements.push(
@@ -841,8 +841,8 @@ export default function Finance() {
                                   onClick={() => setCurrentPage(page)}
                                   className={`min-w-[36px] ${
                                     currentPage === page
-                                      ? 'bg-[#00c896] border-[#00c896] text-white hover:bg-[#0062CC]'
-                                      : 'bg-[#1a1a1a] border-[#2a2a2a] text-[#888888] hover:bg-[#1A1A1A]'
+                                      ? 'bg-[#007AFF] border-[#007AFF] text-white hover:bg-[#0062CC]'
+                                      : 'bg-[#121212] border-[#27272A] text-[#A1A1AA] hover:bg-[#1A1A1A]'
                                   }`}
                                 >
                                   {page}
@@ -855,7 +855,7 @@ export default function Finance() {
                             size="sm"
                             onClick={() => setCurrentPage(p => Math.min(Math.ceil(transactions.length / ITEMS_PER_PAGE), p + 1))}
                             disabled={currentPage >= Math.ceil(transactions.length / ITEMS_PER_PAGE)}
-                            className="bg-[#1a1a1a] border-[#2a2a2a] text-[#888888] hover:bg-[#1A1A1A] disabled:opacity-30"
+                            className="bg-[#121212] border-[#27272A] text-[#A1A1AA] hover:bg-[#1A1A1A] disabled:opacity-30"
                           >
                             <ChevronRight className="w-4 h-4" />
                           </Button>
@@ -871,12 +871,12 @@ export default function Finance() {
               <div className="flex justify-end mb-4">
                 <Dialog open={openBudget} onOpenChange={setOpenBudget}>
                   <DialogTrigger asChild>
-                    <Button className="bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs tracking-widest">
+                    <Button className="bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs tracking-widest">
                       <Plus className="w-4 h-4 mr-2" />
                       Novo Orçamento
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] text-white max-w-md">
+                  <DialogContent className="bg-[#0A0A0A] border-[#27272A] text-white max-w-md">
                     <DialogHeader>
                       <DialogTitle className="font-heading text-2xl">NOVO ORÇAMENTO</DialogTitle>
                     </DialogHeader>
@@ -889,7 +889,7 @@ export default function Finance() {
                               key={cat}
                               onClick={() => setNewBudget({...newBudget, category: cat})}
                               className={`py-2 px-3 rounded-sm text-xs uppercase transition-colors ${
-                                newBudget.category === cat ? 'bg-[#00c896] text-white' : 'bg-[#1a1a1a] text-[#888888]'
+                                newBudget.category === cat ? 'bg-[#007AFF] text-white' : 'bg-[#121212] text-[#A1A1AA]'
                               }`}
                             >
                               {cat}
@@ -905,7 +905,7 @@ export default function Finance() {
                               key={type.value}
                               onClick={() => setNewBudget({...newBudget, budget_type: type.value})}
                               className={`flex-1 py-2 px-4 rounded-sm uppercase text-xs transition-colors ${
-                                newBudget.budget_type === type.value ? 'bg-[#00c896] text-white' : 'bg-[#1a1a1a] text-[#888888]'
+                                newBudget.budget_type === type.value ? 'bg-[#007AFF] text-white' : 'bg-[#121212] text-[#A1A1AA]'
                               }`}
                             >
                               {type.label}
@@ -920,7 +920,7 @@ export default function Finance() {
                             type="number"
                             value={newBudget.limit}
                             onChange={(e) => setNewBudget({...newBudget, limit: e.target.value})}
-                            className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                            className="bg-[#121212] border-[#27272A] text-white"
                           />
                         </div>
                       ) : (
@@ -930,11 +930,11 @@ export default function Finance() {
                             type="number"
                             value={newBudget.percentage}
                             onChange={(e) => setNewBudget({...newBudget, percentage: e.target.value})}
-                            className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                            className="bg-[#121212] border-[#27272A] text-white"
                           />
                         </div>
                       )}
-                      <Button onClick={handleCreateBudget} className="w-full bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs">
+                      <Button onClick={handleCreateBudget} className="w-full bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs">
                         Criar
                       </Button>
                     </div>
@@ -944,15 +944,15 @@ export default function Finance() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {budgets.length === 0 ? (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-8 text-center col-span-full">
-                    <p className="text-[#888888]">Nenhum orçamento definido</p>
+                  <Card className="bg-[#0A0A0A] border-[#27272A] p-8 text-center col-span-full">
+                    <p className="text-[#A1A1AA]">Nenhum orçamento definido</p>
                   </Card>
                 ) : (
                   budgets.map((budget) => {
                     const percentage = (budget.spent / budget.limit) * 100;
                     const isOver = percentage > 100;
                     return (
-                      <Card key={budget.budget_id} className={`bg-[#0d0d0d] border-[#2a2a2a] p-6 ${isOver ? 'border-[#FF3B30]' : ''}`}>
+                      <Card key={budget.budget_id} className={`bg-[#0A0A0A] border-[#27272A] p-6 ${isOver ? 'border-[#FF3B30]' : ''}`}>
                         {isOver && (
                           <div className="flex items-center space-x-2 mb-3 text-[#FF3B30]">
                             <AlertCircle className="w-5 h-5" />
@@ -962,15 +962,15 @@ export default function Finance() {
                         <h3 className="font-heading text-xl mb-4">{budget.category.toUpperCase()}</h3>
                         <div className="space-y-2">
                           <div className="flex justify-between text-sm">
-                            <span className="text-[#888888]">Gasto</span>
+                            <span className="text-[#A1A1AA]">Gasto</span>
                             <span>R$ {(budget.spent ?? 0).toFixed(2)}</span>
                           </div>
                           <div className="flex justify-between text-sm">
-                            <span className="text-[#888888]">Limite</span>
+                            <span className="text-[#A1A1AA]">Limite</span>
                             <span>R$ {(budget.limit ?? 0).toFixed(2)}</span>
                           </div>
-                          <div className="h-2 bg-[#2a2a2a] rounded-full overflow-hidden mt-3">
-                            <div className={`h-full ${isOver ? 'bg-[#FF3B30]' : 'bg-[#00c896]'}`} style={{ width: `${Math.min(percentage, 100)}%` }} />
+                          <div className="h-2 bg-[#27272A] rounded-full overflow-hidden mt-3">
+                            <div className={`h-full ${isOver ? 'bg-[#FF3B30]' : 'bg-[#007AFF]'}`} style={{ width: `${Math.min(percentage, 100)}%` }} />
                           </div>
                         </div>
                       </Card>
@@ -984,12 +984,12 @@ export default function Finance() {
               <div className="flex justify-end mb-4 space-x-2">
                 <Dialog open={openCard} onOpenChange={setOpenCard}>
                   <DialogTrigger asChild>
-                    <Button className="bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs tracking-widest">
+                    <Button className="bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs tracking-widest">
                       <Plus className="w-4 h-4 mr-2" />
                       Novo Cartão
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] text-white max-w-md">
+                  <DialogContent className="bg-[#0A0A0A] border-[#27272A] text-white max-w-md">
                     <DialogHeader>
                       <DialogTitle className="font-heading text-2xl">CADASTRAR CARTÃO</DialogTitle>
                     </DialogHeader>
@@ -1000,7 +1000,7 @@ export default function Finance() {
                           value={newCard.name}
                           onChange={(e) => setNewCard({...newCard, name: e.target.value})}
                           placeholder="Ex: Nubank, Itaú"
-                          className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                          className="bg-[#121212] border-[#27272A] text-white"
                         />
                       </div>
                       <div>
@@ -1009,7 +1009,7 @@ export default function Finance() {
                           type="number"
                           value={newCard.limit}
                           onChange={(e) => setNewCard({...newCard, limit: e.target.value})}
-                          className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                          className="bg-[#121212] border-[#27272A] text-white"
                         />
                       </div>
                       <div className="grid grid-cols-2 gap-4">
@@ -1021,7 +1021,7 @@ export default function Finance() {
                             max="31"
                             value={newCard.closing_day}
                             onChange={(e) => setNewCard({...newCard, closing_day: e.target.value})}
-                            className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                            className="bg-[#121212] border-[#27272A] text-white"
                           />
                         </div>
                         <div>
@@ -1032,11 +1032,11 @@ export default function Finance() {
                             max="31"
                             value={newCard.due_day}
                             onChange={(e) => setNewCard({...newCard, due_day: e.target.value})}
-                            className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                            className="bg-[#121212] border-[#27272A] text-white"
                           />
                         </div>
                       </div>
-                      <Button onClick={handleCreateCard} className="w-full bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs">
+                      <Button onClick={handleCreateCard} className="w-full bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs">
                         Cadastrar
                       </Button>
                     </div>
@@ -1046,29 +1046,29 @@ export default function Finance() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {creditCards.length === 0 ? (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-8 text-center col-span-full">
-                    <CreditCardIcon className="w-12 h-12 text-[#555555] mx-auto mb-4" />
-                    <p className="text-[#888888]">Nenhum cartão cadastrado</p>
+                  <Card className="bg-[#0A0A0A] border-[#27272A] p-8 text-center col-span-full">
+                    <CreditCardIcon className="w-12 h-12 text-[#52525B] mx-auto mb-4" />
+                    <p className="text-[#A1A1AA]">Nenhum cartão cadastrado</p>
                   </Card>
                 ) : (
                   creditCards.map((card) => (
-                    <Card key={card.card_id} className="bg-[#0d0d0d] border-[#2a2a2a] p-6">
+                    <Card key={card.card_id} className="bg-[#0A0A0A] border-[#27272A] p-6">
                       <div className="flex items-center space-x-3 mb-4">
-                        <div className="w-12 h-12 bg-[#00c896]/20 rounded-sm flex items-center justify-center">
-                          <CreditCardIcon className="w-6 h-6 text-[#00c896]" />
+                        <div className="w-12 h-12 bg-[#007AFF]/20 rounded-sm flex items-center justify-center">
+                          <CreditCardIcon className="w-6 h-6 text-[#007AFF]" />
                         </div>
                         <div>
                           <h3 className="font-heading text-lg">{card.name}</h3>
-                          <p className="text-xs text-[#888888]">Limite: R$ {(card.limit ?? 0).toFixed(2)}</p>
+                          <p className="text-xs text-[#A1A1AA]">Limite: R$ {(card.limit ?? 0).toFixed(2)}</p>
                         </div>
                       </div>
                       <div className="space-y-2 text-sm mb-4">
                         <div className="flex justify-between">
-                          <span className="text-[#888888]">Fechamento</span>
+                          <span className="text-[#A1A1AA]">Fechamento</span>
                           <span>Dia {card.closing_day}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-[#888888]">Vencimento</span>
+                          <span className="text-[#A1A1AA]">Vencimento</span>
                           <span>Dia {card.due_day}</span>
                         </div>
                       </div>
@@ -1079,12 +1079,12 @@ export default function Finance() {
                         <DialogTrigger asChild>
                           <Button 
                             onClick={() => setSelectedCard(card.card_id)}
-                            className="w-full bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs"
+                            className="w-full bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs"
                           >
                             Lançar Compra
                           </Button>
                         </DialogTrigger>
-                        <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] text-white max-w-md">
+                        <DialogContent className="bg-[#0A0A0A] border-[#27272A] text-white max-w-md">
                           <DialogHeader>
                             <DialogTitle className="font-heading text-xl">LANÇAR NO {card.name.toUpperCase()}</DialogTitle>
                           </DialogHeader>
@@ -1096,7 +1096,7 @@ export default function Finance() {
                                 step="0.01"
                                 value={newCharge.amount}
                                 onChange={(e) => setNewCharge({...newCharge, amount: e.target.value})}
-                                className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                                className="bg-[#121212] border-[#27272A] text-white"
                               />
                             </div>
                             <div>
@@ -1104,7 +1104,7 @@ export default function Finance() {
                               <Input
                                 value={newCharge.description}
                                 onChange={(e) => setNewCharge({...newCharge, description: e.target.value})}
-                                className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                                className="bg-[#121212] border-[#27272A] text-white"
                               />
                             </div>
                             <div>
@@ -1115,7 +1115,7 @@ export default function Finance() {
                                     key={cat}
                                     onClick={() => setNewCharge({...newCharge, category: cat})}
                                     className={`py-2 px-3 rounded-sm text-xs uppercase transition-colors ${
-                                      newCharge.category === cat ? 'bg-[#00c896] text-white' : 'bg-[#1a1a1a] text-[#888888]'
+                                      newCharge.category === cat ? 'bg-[#007AFF] text-white' : 'bg-[#121212] text-[#A1A1AA]'
                                     }`}
                                   >
                                     {cat}
@@ -1126,14 +1126,14 @@ export default function Finance() {
                             
                             {/* Payment Type Selection */}
                             <div>
-                              <Label className="text-[#888888] uppercase text-xs tracking-wider mb-2 block">Forma de Pagamento</Label>
+                              <Label className="text-[#A1A1AA] uppercase text-xs tracking-wider mb-2 block">Forma de Pagamento</Label>
                               <div className="flex gap-2">
                                 {[{value: 'vista', label: 'À Vista'}, {value: 'parcelado', label: 'Parcelado'}].map((type) => (
                                   <button
                                     key={type.value}
                                     onClick={() => setNewCharge({...newCharge, payment_type: type.value})}
                                     className={`flex-1 py-2 px-4 rounded-sm uppercase text-xs transition-colors ${
-                                      newCharge.payment_type === type.value ? 'bg-[#00c896] text-white' : 'bg-[#1a1a1a] text-[#888888]'
+                                      newCharge.payment_type === type.value ? 'bg-[#007AFF] text-white' : 'bg-[#121212] text-[#A1A1AA]'
                                     }`}
                                   >
                                     {type.label}
@@ -1153,22 +1153,22 @@ export default function Finance() {
                                     max="24"
                                     value={newCharge.installments}
                                     onChange={(e) => setNewCharge({...newCharge, installments: e.target.value})}
-                                    className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                                    className="bg-[#121212] border-[#27272A] text-white"
                                   />
                                   {newCharge.amount && newCharge.installments >= 2 && (
-                                    <p className="text-sm text-[#888888] mt-2">
+                                    <p className="text-sm text-[#A1A1AA] mt-2">
                                       {newCharge.installments}x de R$ {(parseFloat(newCharge.amount) / parseInt(newCharge.installments)).toFixed(2)}
                                     </p>
                                   )}
                                 </div>
                                 
                                 <div>
-                                  <Label className="text-[#888888] uppercase text-xs tracking-wider mb-2 block">Primeira Parcela</Label>
+                                  <Label className="text-[#A1A1AA] uppercase text-xs tracking-wider mb-2 block">Primeira Parcela</Label>
                                   <div className="flex gap-2">
                                     <button
                                       onClick={() => setNewCharge({...newCharge, start_month: 'current'})}
                                       className={`flex-1 py-2 px-4 rounded-sm uppercase text-xs transition-colors ${
-                                        newCharge.start_month === 'current' ? 'bg-[#22C55E] text-white' : 'bg-[#1a1a1a] text-[#888888]'
+                                        newCharge.start_month === 'current' ? 'bg-[#22C55E] text-white' : 'bg-[#121212] text-[#A1A1AA]'
                                       }`}
                                     >
                                       Mês Atual
@@ -1176,13 +1176,13 @@ export default function Finance() {
                                     <button
                                       onClick={() => setNewCharge({...newCharge, start_month: 'next'})}
                                       className={`flex-1 py-2 px-4 rounded-sm uppercase text-xs transition-colors ${
-                                        newCharge.start_month === 'next' ? 'bg-[#F59E0B] text-white' : 'bg-[#1a1a1a] text-[#888888]'
+                                        newCharge.start_month === 'next' ? 'bg-[#F59E0B] text-white' : 'bg-[#121212] text-[#A1A1AA]'
                                       }`}
                                     >
                                       Próximo Mês
                                     </button>
                                   </div>
-                                  <p className="text-xs text-[#555555] mt-1">
+                                  <p className="text-xs text-[#52525B] mt-1">
                                     {newCharge.start_month === 'current' 
                                       ? 'A primeira parcela será cobrada neste mês' 
                                       : 'A primeira parcela será cobrada no próximo mês'}
@@ -1191,7 +1191,7 @@ export default function Finance() {
                               </>
                             )}
                             
-                            <Button onClick={handleChargeCard} className="w-full bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs">
+                            <Button onClick={handleChargeCard} className="w-full bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs">
                               Lançar
                             </Button>
                           </div>
@@ -1208,8 +1208,8 @@ export default function Finance() {
               {/* Month Selector */}
               <div className="flex flex-wrap items-center gap-4 mb-6">
                 <div className="flex items-center space-x-2">
-                  <Calendar className="w-5 h-5 text-[#00c896]" />
-                  <span className="text-[#888888] uppercase text-xs">Projeção para:</span>
+                  <Calendar className="w-5 h-5 text-[#007AFF]" />
+                  <span className="text-[#A1A1AA] uppercase text-xs">Projeção para:</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {futureMonths.slice(0, 6).map((month) => (
@@ -1217,7 +1217,7 @@ export default function Finance() {
                       key={month}
                       onClick={() => setProjectionMonth(month)}
                       className={`py-2 px-4 rounded-sm text-xs uppercase transition-colors ${
-                        projectionMonth === month ? 'bg-[#00c896] text-white' : 'bg-[#1a1a1a] text-[#888888] hover:bg-[#1a1a1a]'
+                        projectionMonth === month ? 'bg-[#007AFF] text-white' : 'bg-[#121212] text-[#A1A1AA] hover:bg-[#1a1a1a]'
                       }`}
                     >
                       {getMonthLabel(month)}
@@ -1229,38 +1229,38 @@ export default function Finance() {
               {/* Summary Cards */}
               {projectionSummary && (
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4">
+                  <Card className="bg-[#0A0A0A] border-[#27272A] p-4">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[#888888] uppercase text-xs">Receita Estimada</span>
-                      <TrendingUp className="w-4 h-4 text-[#00c896]" />
+                      <span className="text-[#A1A1AA] uppercase text-xs">Receita Estimada</span>
+                      <TrendingUp className="w-4 h-4 text-[#39FF14]" />
                     </div>
-                    <p className="font-data text-xl text-[#00c896]">R$ {(projectionSummary.estimated_income ?? 0).toFixed(2)}</p>
+                    <p className="font-data text-xl text-[#39FF14]">R$ {(projectionSummary.estimated_income ?? 0).toFixed(2)}</p>
                   </Card>
                   
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4">
+                  <Card className="bg-[#0A0A0A] border-[#27272A] p-4">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[#888888] uppercase text-xs">Despesas Projetadas</span>
+                      <span className="text-[#A1A1AA] uppercase text-xs">Despesas Projetadas</span>
                       <TrendingDown className="w-4 h-4 text-[#FF9500]" />
                     </div>
                     <p className="font-data text-xl text-[#FF9500]">R$ {(projectionSummary.total_projected_expenses ?? 0).toFixed(2)}</p>
                   </Card>
                   
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4">
+                  <Card className="bg-[#0A0A0A] border-[#27272A] p-4">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[#888888] uppercase text-xs">Saldo Estimado</span>
-                      <DollarSign className="w-4 h-4 text-[#00c896]" />
+                      <span className="text-[#A1A1AA] uppercase text-xs">Saldo Estimado</span>
+                      <DollarSign className="w-4 h-4 text-[#007AFF]" />
                     </div>
-                    <p className={`font-data text-xl ${(projectionSummary.estimated_balance ?? 0) >= 0 ? 'text-[#00c896]' : 'text-[#FF3B30]'}`}>
+                    <p className={`font-data text-xl ${(projectionSummary.estimated_balance ?? 0) >= 0 ? 'text-[#39FF14]' : 'text-[#FF3B30]'}`}>
                       R$ {(projectionSummary.estimated_balance ?? 0).toFixed(2)}
                     </p>
                   </Card>
                   
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4">
+                  <Card className="bg-[#0A0A0A] border-[#27272A] p-4">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[#888888] uppercase text-xs">Parcelas</span>
-                      <CreditCardIcon className="w-4 h-4 text-[#00c896]" />
+                      <span className="text-[#A1A1AA] uppercase text-xs">Parcelas</span>
+                      <CreditCardIcon className="w-4 h-4 text-[#00F0FF]" />
                     </div>
-                    <p className="font-data text-xl text-[#00c896]">R$ {(projectionSummary.installment_expenses ?? 0).toFixed(2)}</p>
+                    <p className="font-data text-xl text-[#00F0FF]">R$ {(projectionSummary.installment_expenses ?? 0).toFixed(2)}</p>
                   </Card>
                 </div>
               )}
@@ -1278,12 +1278,12 @@ export default function Finance() {
                 
                 <Dialog open={openProjection} onOpenChange={setOpenProjection}>
                   <DialogTrigger asChild>
-                    <Button className="bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs tracking-widest">
+                    <Button className="bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs tracking-widest">
                       <Plus className="w-4 h-4 mr-2" />
                       Nova Projeção
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] text-white max-w-md">
+                  <DialogContent className="bg-[#0A0A0A] border-[#27272A] text-white max-w-md">
                     <DialogHeader>
                       <DialogTitle className="font-heading text-2xl">NOVA PROJEÇÃO</DialogTitle>
                     </DialogHeader>
@@ -1294,7 +1294,7 @@ export default function Finance() {
                           value={newProjection.description}
                           onChange={(e) => setNewProjection({...newProjection, description: e.target.value})}
                           placeholder="Ex: Aluguel, Netflix, etc."
-                          className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                          className="bg-[#121212] border-[#27272A] text-white"
                         />
                       </div>
                       <div>
@@ -1304,7 +1304,7 @@ export default function Finance() {
                           step="0.01"
                           value={newProjection.amount}
                           onChange={(e) => setNewProjection({...newProjection, amount: e.target.value})}
-                          className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                          className="bg-[#121212] border-[#27272A] text-white"
                         />
                       </div>
                       <div>
@@ -1315,7 +1315,7 @@ export default function Finance() {
                               key={cat}
                               onClick={() => setNewProjection({...newProjection, category: cat})}
                               className={`py-2 px-3 rounded-sm text-xs uppercase transition-colors ${
-                                newProjection.category === cat ? 'bg-[#00c896] text-white' : 'bg-[#1a1a1a] text-[#888888]'
+                                newProjection.category === cat ? 'bg-[#007AFF] text-white' : 'bg-[#121212] text-[#A1A1AA]'
                               }`}
                             >
                               {cat}
@@ -1329,18 +1329,18 @@ export default function Finance() {
                           type="month"
                           value={newProjection.month || projectionMonth}
                           onChange={(e) => setNewProjection({...newProjection, month: e.target.value})}
-                          className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                          className="bg-[#121212] border-[#27272A] text-white"
                         />
                       </div>
                       
                       {/* Fixed or Repeat */}
                       <div>
-                        <Label className="text-[#888888] uppercase text-xs tracking-wider mb-2 block">Recorrência</Label>
+                        <Label className="text-[#A1A1AA] uppercase text-xs tracking-wider mb-2 block">Recorrência</Label>
                         <div className="flex gap-2 mb-3">
                           <button
                             onClick={() => setNewProjection({...newProjection, is_fixed: true, repeat_count: 1})}
                             className={`flex-1 py-2 px-4 rounded-sm uppercase text-xs transition-colors flex items-center justify-center gap-2 ${
-                              newProjection.is_fixed ? 'bg-[#00c896] text-white' : 'bg-[#1a1a1a] text-[#888888]'
+                              newProjection.is_fixed ? 'bg-[#007AFF] text-white' : 'bg-[#121212] text-[#A1A1AA]'
                             }`}
                           >
                             <Repeat className="w-4 h-4" />
@@ -1349,7 +1349,7 @@ export default function Finance() {
                           <button
                             onClick={() => setNewProjection({...newProjection, is_fixed: false})}
                             className={`flex-1 py-2 px-4 rounded-sm uppercase text-xs transition-colors ${
-                              !newProjection.is_fixed ? 'bg-[#00c896] text-white' : 'bg-[#1a1a1a] text-[#888888]'
+                              !newProjection.is_fixed ? 'bg-[#007AFF] text-white' : 'bg-[#121212] text-[#A1A1AA]'
                             }`}
                           >
                             Temporária
@@ -1365,13 +1365,13 @@ export default function Finance() {
                               max="24"
                               value={newProjection.repeat_count}
                               onChange={(e) => setNewProjection({...newProjection, repeat_count: e.target.value})}
-                              className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                              className="bg-[#121212] border-[#27272A] text-white"
                             />
                           </div>
                         )}
                       </div>
                       
-                      <Button onClick={handleCreateProjection} className="w-full bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs">
+                      <Button onClick={handleCreateProjection} className="w-full bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs">
                         Criar Projeção
                       </Button>
                     </div>
@@ -1381,7 +1381,7 @@ export default function Finance() {
 
               {/* AI Insights */}
               {projectionInsights && (
-                <Card className="bg-[#0d0d0d] border-[#FFD700]/30 p-6 mb-6">
+                <Card className="bg-[#0A0A0A] border-[#FFD700]/30 p-6 mb-6">
                   <div className="flex items-center space-x-2 mb-4">
                     <Lightbulb className="w-5 h-5 text-[#FFD700]" />
                     <h3 className="font-heading text-lg text-[#FFD700]">INSIGHTS DA IA</h3>
@@ -1394,18 +1394,18 @@ export default function Finance() {
 
               {/* Projection Chart */}
               {projectionChartData.length > 0 && (
-                <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-6 mb-6">
+                <Card className="bg-[#0A0A0A] border-[#27272A] p-6 mb-6">
                   <h3 className="font-heading text-lg mb-4 uppercase">Projeção por Categoria</h3>
                   <ResponsiveContainer width="100%" height={250}>
                     <BarChart data={projectionChartData}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
-                      <XAxis dataKey="name" tick={{ fill: '#888888', fontSize: 12 }} />
-                      <YAxis tick={{ fill: '#888888', fontSize: 12 }} />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#27272A" />
+                      <XAxis dataKey="name" tick={{ fill: '#A1A1AA', fontSize: 12 }} />
+                      <YAxis tick={{ fill: '#A1A1AA', fontSize: 12 }} />
                       <Tooltip 
                         formatter={(value) => `R$ ${(value ?? 0).toFixed(2)}`}
-                        contentStyle={{ backgroundColor: '#0d0d0d', border: '1px solid #2a2a2a' }}
+                        contentStyle={{ backgroundColor: '#0A0A0A', border: '1px solid #27272A' }}
                       />
-                      <Bar dataKey="value" fill="#00c896" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="value" fill="#007AFF" radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </Card>
@@ -1414,33 +1414,33 @@ export default function Finance() {
               {/* Projections List */}
               <div className="space-y-3">
                 {projections.length === 0 ? (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-8 text-center">
-                    <Calendar className="w-12 h-12 text-[#555555] mx-auto mb-4" />
-                    <p className="text-[#888888]">Nenhuma projeção para {getMonthLabel(projectionMonth)}</p>
-                    <p className="text-xs text-[#555555] mt-2">Adicione compras parceladas ou crie projeções manuais</p>
+                  <Card className="bg-[#0A0A0A] border-[#27272A] p-8 text-center">
+                    <Calendar className="w-12 h-12 text-[#52525B] mx-auto mb-4" />
+                    <p className="text-[#A1A1AA]">Nenhuma projeção para {getMonthLabel(projectionMonth)}</p>
+                    <p className="text-xs text-[#52525B] mt-2">Adicione compras parceladas ou crie projeções manuais</p>
                   </Card>
                 ) : (
                   projections.map((proj) => (
-                    <Card key={proj.projection_id} className="bg-[#0d0d0d] border-[#2a2a2a] p-4">
+                    <Card key={proj.projection_id} className="bg-[#0A0A0A] border-[#27272A] p-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4 flex-1">
                           <div className={`w-10 h-10 rounded-sm flex items-center justify-center ${
-                            proj.projection_type === 'installment' ? 'bg-[#00c896]/20' : 
-                            proj.is_fixed ? 'bg-[#FFD700]/20' : 'bg-[#00c896]/20'
+                            proj.projection_type === 'installment' ? 'bg-[#00F0FF]/20' : 
+                            proj.is_fixed ? 'bg-[#FFD700]/20' : 'bg-[#007AFF]/20'
                           }`}>
                             {proj.projection_type === 'installment' ? (
-                              <CreditCardIcon className="w-5 h-5 text-[#00c896]" />
+                              <CreditCardIcon className="w-5 h-5 text-[#00F0FF]" />
                             ) : proj.is_fixed ? (
                               <Repeat className="w-5 h-5 text-[#FFD700]" />
                             ) : (
-                              <Calendar className="w-5 h-5 text-[#00c896]" />
+                              <Calendar className="w-5 h-5 text-[#007AFF]" />
                             )}
                           </div>
                           <div className="flex-1">
                             <div className="flex items-center space-x-2 mb-1">
                               <span className="font-medium">{proj.description}</span>
                               {proj.projection_type === 'installment' && (
-                                <span className="text-xs bg-[#00c896]/20 text-[#00c896] px-2 py-0.5 rounded">
+                                <span className="text-xs bg-[#00F0FF]/20 text-[#00F0FF] px-2 py-0.5 rounded">
                                   Parcela {proj.installment_number}/{proj.total_installments}
                                 </span>
                               )}
@@ -1450,7 +1450,7 @@ export default function Finance() {
                                 </span>
                               )}
                             </div>
-                            <p className="text-sm text-[#888888]">{proj.category}</p>
+                            <p className="text-sm text-[#A1A1AA]">{proj.category}</p>
                           </div>
                           <div className="font-data text-xl text-[#FF9500]">
                             R$ {(proj.amount ?? 0).toFixed(2)}
@@ -1465,14 +1465,14 @@ export default function Finance() {
                                 setOpenEditProjection(true);
                               }}
                             >
-                              <Edit2 className="w-4 h-4 text-[#555555] hover:text-[#00c896]" />
+                              <Edit2 className="w-4 h-4 text-[#52525B] hover:text-[#007AFF]" />
                             </Button>
                             <Button 
                               variant="ghost" 
                               size="icon" 
                               onClick={() => handleDeleteProjection(proj.projection_id)}
                             >
-                              <Trash2 className="w-4 h-4 text-[#555555] hover:text-[#FF3B30]" />
+                              <Trash2 className="w-4 h-4 text-[#52525B] hover:text-[#FF3B30]" />
                             </Button>
                           </div>
                         </div>
@@ -1484,7 +1484,7 @@ export default function Finance() {
 
               {/* Edit Projection Dialog */}
               <Dialog open={openEditProjection} onOpenChange={setOpenEditProjection}>
-                <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] text-white max-w-md">
+                <DialogContent className="bg-[#0A0A0A] border-[#27272A] text-white max-w-md">
                   <DialogHeader>
                     <DialogTitle className="font-heading text-2xl">EDITAR PROJEÇÃO</DialogTitle>
                   </DialogHeader>
@@ -1494,7 +1494,7 @@ export default function Finance() {
                       <Input
                         value={editProjectionData.description}
                         onChange={(e) => setEditProjectionData({...editProjectionData, description: e.target.value})}
-                        className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                        className="bg-[#121212] border-[#27272A] text-white"
                       />
                     </div>
                     <div>
@@ -1504,10 +1504,10 @@ export default function Finance() {
                         step="0.01"
                         value={editProjectionData.amount}
                         onChange={(e) => setEditProjectionData({...editProjectionData, amount: e.target.value})}
-                        className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                        className="bg-[#121212] border-[#27272A] text-white"
                       />
                     </div>
-                    <Button onClick={handleUpdateProjection} className="w-full bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs">
+                    <Button onClick={handleUpdateProjection} className="w-full bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs">
                       Salvar Alterações
                     </Button>
                   </div>
@@ -1524,13 +1524,13 @@ export default function Finance() {
                   <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => { const d = new Date(billsMonth + "-01"); d.setMonth(d.getMonth() + 1); const m = getLocalMonthStr(d); setBillsMonth(m); fetchMonthlyBills(m); }}><ChevronRight className="w-4 h-4" /></Button>
                 </div>
                 <Dialog open={openAddBill} onOpenChange={setOpenAddBill}>
-                  <Button onClick={() => setOpenAddBill(true)} size="sm" className="bg-[#00c896] text-xs"><Plus className="w-3 h-3 mr-1" />Adicionar Conta</Button>
-                  <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <Button onClick={() => setOpenAddBill(true)} size="sm" className="bg-[#007AFF] text-xs"><Plus className="w-3 h-3 mr-1" />Adicionar Conta</Button>
+                  <DialogContent className="bg-[#0A0A0A] border-[#27272A]">
                     <DialogHeader><DialogTitle>Nova Conta</DialogTitle></DialogHeader>
                     <div className="space-y-3 py-2">
-                      <div><Label className="text-sm">Descrição</Label><Input value={newBill.description} onChange={e => setNewBill({...newBill, description: e.target.value})} className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
-                      <div><Label className="text-sm">Valor (R$)</Label><Input type="number" step="0.01" value={newBill.amount} onChange={e => setNewBill({...newBill, amount: e.target.value})} className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
-                      <Button onClick={handleAddBill} className="w-full bg-[#00c896]">Adicionar</Button>
+                      <div><Label className="text-sm">Descrição</Label><Input value={newBill.description} onChange={e => setNewBill({...newBill, description: e.target.value})} className="bg-[#121212] border-[#27272A]" /></div>
+                      <div><Label className="text-sm">Valor (R$)</Label><Input type="number" step="0.01" value={newBill.amount} onChange={e => setNewBill({...newBill, amount: e.target.value})} className="bg-[#121212] border-[#27272A]" /></div>
+                      <Button onClick={handleAddBill} className="w-full bg-[#007AFF]">Adicionar</Button>
                     </div>
                   </DialogContent>
                 </Dialog>
@@ -1539,42 +1539,42 @@ export default function Finance() {
               {monthlyBills && (
                 <>
                   <div className="grid grid-cols-3 gap-4 mb-4">
-                    <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4 text-center">
-                      <p className="text-xs text-[#888888]">Total</p>
+                    <Card className="bg-[#0A0A0A] border-[#27272A] p-4 text-center">
+                      <p className="text-xs text-[#A1A1AA]">Total</p>
                       <p className="text-lg font-bold text-white">R$ {monthlyBills.total?.toFixed(2)}</p>
                     </Card>
-                    <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4 text-center">
-                      <p className="text-xs text-[#888888]">Pago</p>
+                    <Card className="bg-[#0A0A0A] border-[#27272A] p-4 text-center">
+                      <p className="text-xs text-[#A1A1AA]">Pago</p>
                       <p className="text-lg font-bold text-green-400">R$ {monthlyBills.total_paid?.toFixed(2)}</p>
                     </Card>
-                    <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4 text-center">
-                      <p className="text-xs text-[#888888]">Pendente</p>
+                    <Card className="bg-[#0A0A0A] border-[#27272A] p-4 text-center">
+                      <p className="text-xs text-[#A1A1AA]">Pendente</p>
                       <p className="text-lg font-bold text-red-400">R$ {monthlyBills.total_pending?.toFixed(2)}</p>
                     </Card>
                   </div>
 
                   <div className="space-y-2">
                     {(monthlyBills.bills || []).length === 0 ? (
-                      <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-8 text-center">
-                        <Calendar className="w-10 h-10 text-[#555555] mx-auto mb-3" />
-                        <p className="text-[#888888]">Nenhuma conta para este mês</p>
-                        <p className="text-xs text-[#555555]">Adicione manualmente ou as projeções serão importadas automaticamente</p>
+                      <Card className="bg-[#0A0A0A] border-[#27272A] p-8 text-center">
+                        <Calendar className="w-10 h-10 text-[#52525B] mx-auto mb-3" />
+                        <p className="text-[#A1A1AA]">Nenhuma conta para este mês</p>
+                        <p className="text-xs text-[#52525B]">Adicione manualmente ou as projeções serão importadas automaticamente</p>
                       </Card>
                     ) : (
                       (monthlyBills.bills || []).map(bill => (
-                        <Card key={bill.bill_id} className={`bg-[#0d0d0d] border-[#2a2a2a] p-3 flex items-center gap-3 ${bill.paid ? 'opacity-60' : ''}`}>
+                        <Card key={bill.bill_id} className={`bg-[#0A0A0A] border-[#27272A] p-3 flex items-center gap-3 ${bill.paid ? 'opacity-60' : ''}`}>
                           <button onClick={() => handleToggleBill(bill.bill_id)} className="flex-shrink-0">
-                            {bill.paid ? <CheckSquare className="w-5 h-5 text-green-400" /> : <Square className="w-5 h-5 text-[#555555]" />}
+                            {bill.paid ? <CheckSquare className="w-5 h-5 text-green-400" /> : <Square className="w-5 h-5 text-[#52525B]" />}
                           </button>
                           <div className="flex-1 min-w-0">
-                            <p className={`text-sm font-medium truncate ${bill.paid ? 'line-through text-[#555555]' : ''}`}>{bill.description}</p>
+                            <p className={`text-sm font-medium truncate ${bill.paid ? 'line-through text-[#52525B]' : ''}`}>{bill.description}</p>
                             <div className="flex items-center gap-2">
                               {bill.installment_info && <span className="text-[10px] text-purple-400">Parcela {bill.installment_info}</span>}
                               {bill.source === 'projection' && <span className="text-[10px] text-blue-400">Via projeção</span>}
                             </div>
                           </div>
                           <span className={`text-sm font-bold ${bill.paid ? 'text-green-400' : 'text-red-400'}`}>R$ {bill.amount?.toFixed(2)}</span>
-                          <Button variant="ghost" size="icon" className="h-7 w-7 text-[#555555] hover:text-red-400" onClick={() => handleDeleteBill(bill.bill_id)}><Trash2 className="w-3 h-3" /></Button>
+                          <Button variant="ghost" size="icon" className="h-7 w-7 text-[#52525B] hover:text-red-400" onClick={() => handleDeleteBill(bill.bill_id)}><Trash2 className="w-3 h-3" /></Button>
                         </Card>
                       ))
                     )}
@@ -1585,29 +1585,29 @@ export default function Finance() {
 
             {/* ===== CHAT FINANCEIRO TAB ===== */}
             <TabsContent value="finance_chat" className="mt-6">
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a] h-[500px] flex flex-col">
-                <div className="p-4 border-b border-[#2a2a2a]">
-                  <h3 className="text-sm font-medium flex items-center gap-2"><MessageSquare className="w-4 h-4 text-[#00c896]" />Assistente Financeiro</h3>
-                  <p className="text-xs text-[#555555]">Pergunte sobre finanças, investimentos, economia...</p>
+              <Card className="bg-[#0A0A0A] border-[#27272A] h-[500px] flex flex-col">
+                <div className="p-4 border-b border-[#27272A]">
+                  <h3 className="text-sm font-medium flex items-center gap-2"><MessageSquare className="w-4 h-4 text-[#007AFF]" />Assistente Financeiro</h3>
+                  <p className="text-xs text-[#52525B]">Pergunte sobre finanças, investimentos, economia...</p>
                 </div>
                 <div className="flex-1 overflow-y-auto p-4 space-y-3">
                   {chatMessages.length === 0 && (
                     <div className="text-center py-10">
-                      <DollarSign className="w-10 h-10 text-[#555555] mx-auto mb-2" />
-                      <p className="text-sm text-[#888888]">Pergunte qualquer coisa sobre finanças!</p>
-                      <p className="text-xs text-[#555555]">Ex: "Como economizar mais?" ou "Devo investir em renda fixa?"</p>
+                      <DollarSign className="w-10 h-10 text-[#52525B] mx-auto mb-2" />
+                      <p className="text-sm text-[#A1A1AA]">Pergunte qualquer coisa sobre finanças!</p>
+                      <p className="text-xs text-[#52525B]">Ex: "Como economizar mais?" ou "Devo investir em renda fixa?"</p>
                     </div>
                   )}
                   {chatMessages.map(msg => (
                     <div key={msg.message_id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                      <div className={`max-w-[85%] p-3 rounded-lg text-sm whitespace-pre-wrap ${msg.role === 'user' ? 'bg-[#00c896] text-white' : 'bg-[#1a1a1a] text-[#E4E4E7]'}`}>{msg.content}</div>
+                      <div className={`max-w-[85%] p-3 rounded-lg text-sm whitespace-pre-wrap ${msg.role === 'user' ? 'bg-[#007AFF] text-white' : 'bg-[#121212] text-[#E4E4E7]'}`}>{msg.content}</div>
                     </div>
                   ))}
-                  {chatLoading && <div className="flex justify-start"><div className="bg-[#1a1a1a] p-3 rounded-lg"><Loader2 className="w-4 h-4 animate-spin text-[#00c896]" /></div></div>}
+                  {chatLoading && <div className="flex justify-start"><div className="bg-[#121212] p-3 rounded-lg"><Loader2 className="w-4 h-4 animate-spin text-[#007AFF]" /></div></div>}
                 </div>
-                <form onSubmit={handleSendFinanceChat} className="p-3 border-t border-[#2a2a2a] flex gap-2">
-                  <Input value={chatInput} onChange={e => setChatInput(e.target.value)} placeholder="Pergunte sobre finanças..." className="bg-[#1a1a1a] border-[#2a2a2a] text-sm" disabled={chatLoading} />
-                  <Button type="submit" disabled={chatLoading || !chatInput.trim()} size="icon" className="bg-[#00c896] shrink-0"><Send className="w-4 h-4" /></Button>
+                <form onSubmit={handleSendFinanceChat} className="p-3 border-t border-[#27272A] flex gap-2">
+                  <Input value={chatInput} onChange={e => setChatInput(e.target.value)} placeholder="Pergunte sobre finanças..." className="bg-[#121212] border-[#27272A] text-sm" disabled={chatLoading} />
+                  <Button type="submit" disabled={chatLoading || !chatInput.trim()} size="icon" className="bg-[#007AFF] shrink-0"><Send className="w-4 h-4" /></Button>
                 </form>
               </Card>
             </TabsContent>
@@ -1616,42 +1616,42 @@ export default function Finance() {
             <TabsContent value="categories" className="mt-6">
               <div className="space-y-6">
                 {/* Add new category */}
-                <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-6">
+                <Card className="bg-[#0A0A0A] border-[#27272A] p-6">
                   <h3 className="font-heading text-lg mb-4">ADICIONAR CATEGORIA</h3>
                   <div className="flex gap-2">
                     <Input
                       value={newCategoryName}
                       onChange={(e) => setNewCategoryName(e.target.value)}
                       placeholder="Nome da nova categoria..."
-                      className="bg-[#1a1a1a] border-[#2a2a2a] text-white flex-1"
+                      className="bg-[#121212] border-[#27272A] text-white flex-1"
                       onKeyDown={(e) => e.key === 'Enter' && handleCreateCategory()}
                       maxLength={30}
                     />
                     <Button 
                       onClick={handleCreateCategory} 
                       disabled={categoryLoading || !newCategoryName.trim()}
-                      className="bg-[#00c896] hover:bg-[#0062CC]"
+                      className="bg-[#007AFF] hover:bg-[#0062CC]"
                     >
                       <Plus className="w-4 h-4 mr-2" /> Adicionar
                     </Button>
                   </div>
-                  <p className="text-xs text-[#555555] mt-2">Máximo 30 caracteres. A categoria será convertida para minúsculas.</p>
+                  <p className="text-xs text-[#52525B] mt-2">Máximo 30 caracteres. A categoria será convertida para minúsculas.</p>
                 </Card>
 
                 {/* Category List */}
-                <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-6">
+                <Card className="bg-[#0A0A0A] border-[#27272A] p-6">
                   <h3 className="font-heading text-lg mb-4">SUAS CATEGORIAS ({categories.length})</h3>
                   <div className="space-y-2">
                     {allCategoriesData.length > 0 ? allCategoriesData.map((cat, idx) => (
                       <div 
                         key={cat.name} 
-                        className="flex items-center justify-between p-3 rounded bg-[#1a1a1a] border border-[#2a2a2a] hover:border-[#333333] transition-colors"
+                        className="flex items-center justify-between p-3 rounded bg-[#121212] border border-[#27272A] hover:border-[#3f3f46] transition-colors"
                       >
                         <div className="flex items-center gap-3">
-                          <span className="text-[#555555] text-sm font-mono w-6">{idx + 1}.</span>
+                          <span className="text-[#52525B] text-sm font-mono w-6">{idx + 1}.</span>
                           <span className="text-white capitalize">{cat.name}</span>
                           {cat.is_default && (
-                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#00c896]/20 text-[#00c896] border border-[#00c896]/30">
+                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#007AFF]/20 text-[#007AFF] border border-[#007AFF]/30">
                               padrão
                             </span>
                           )}
@@ -1670,10 +1670,10 @@ export default function Finance() {
                     )) : categories.map((cat, idx) => (
                       <div 
                         key={cat} 
-                        className="flex items-center justify-between p-3 rounded bg-[#1a1a1a] border border-[#2a2a2a]"
+                        className="flex items-center justify-between p-3 rounded bg-[#121212] border border-[#27272A]"
                       >
                         <div className="flex items-center gap-3">
-                          <span className="text-[#555555] text-sm font-mono w-6">{idx + 1}.</span>
+                          <span className="text-[#52525B] text-sm font-mono w-6">{idx + 1}.</span>
                           <span className="text-white capitalize">{cat}</span>
                         </div>
                       </div>

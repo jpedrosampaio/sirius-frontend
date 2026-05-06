@@ -129,7 +129,7 @@ function PomodoroTimer({ notebooks, onComplete }) {
   const progress = ((totalSecs - timeLeft) / totalSecs) * 100;
 
   return (
-    <Card className={`border-2 transition-all ${isBreak ? 'bg-emerald-950/30 border-emerald-500/30' : isRunning ? 'bg-red-950/20 border-red-500/30' : 'bg-[#0d0d0d] border-[#2a2a2a]'}`}>
+    <Card className={`border-2 transition-all ${isBreak ? 'bg-emerald-950/30 border-emerald-500/30' : isRunning ? 'bg-red-950/20 border-red-500/30' : 'bg-[#0A0A0A] border-[#27272A]'}`}>
       <CardContent className="p-4 md:p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
@@ -147,21 +147,21 @@ function PomodoroTimer({ notebooks, onComplete }) {
         </div>
 
         {showSettings && !isRunning && (
-          <div className="mb-4 p-3 bg-[#1a1a1a] rounded-lg space-y-3">
+          <div className="mb-4 p-3 bg-[#121212] rounded-lg space-y-3">
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <Label className="text-xs">Foco (min)</Label>
-                <Input type="number" value={focusMinutes} onChange={e => { setFocusMinutes(Number(e.target.value)); setTimeLeft(Number(e.target.value) * 60); }} className="bg-[#0d0d0d] border-[#2a2a2a] h-8 text-sm" min={1} max={120} />
+                <Input type="number" value={focusMinutes} onChange={e => { setFocusMinutes(Number(e.target.value)); setTimeLeft(Number(e.target.value) * 60); }} className="bg-[#0A0A0A] border-[#27272A] h-8 text-sm" min={1} max={120} />
               </div>
               <div>
                 <Label className="text-xs">Pausa (min)</Label>
-                <Input type="number" value={breakMinutes} onChange={e => setBreakMinutes(Number(e.target.value))} className="bg-[#0d0d0d] border-[#2a2a2a] h-8 text-sm" min={1} max={30} />
+                <Input type="number" value={breakMinutes} onChange={e => setBreakMinutes(Number(e.target.value))} className="bg-[#0A0A0A] border-[#27272A] h-8 text-sm" min={1} max={30} />
               </div>
             </div>
             <div>
               <Label className="text-xs">Matéria (opcional)</Label>
               <Select value={selectedNb} onValueChange={setSelectedNb}>
-                <SelectTrigger className="bg-[#0d0d0d] border-[#2a2a2a] h-8 text-sm">
+                <SelectTrigger className="bg-[#0A0A0A] border-[#27272A] h-8 text-sm">
                   <SelectValue placeholder="Nenhuma" />
                 </SelectTrigger>
                 <SelectContent>
@@ -266,11 +266,11 @@ function StudyAIChat({ notebooks, selectedNotebook }) {
   ];
 
   return (
-    <Card className="bg-[#0d0d0d] border-[#2a2a2a] flex flex-col h-[400px] md:h-[500px]">
-      <CardHeader className="pb-2 border-b border-[#2a2a2a]">
+    <Card className="bg-[#0A0A0A] border-[#27272A] flex flex-col h-[400px] md:h-[500px]">
+      <CardHeader className="pb-2 border-b border-[#27272A]">
         <div className="flex items-center justify-between">
           <CardTitle className="text-sm flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-[#00c896]" />
+            <Sparkles className="w-4 h-4 text-[#00F0FF]" />
             Assistente de Estudos
           </CardTitle>
         </div>
@@ -278,7 +278,7 @@ function StudyAIChat({ notebooks, selectedNotebook }) {
           {contextOptions.map(opt => {
             const Icon = opt.icon;
             return (
-              <Button key={opt.value} variant={contextType === opt.value ? "default" : "ghost"} size="sm" className={`h-6 text-xs px-2 ${contextType === opt.value ? 'bg-[#00c896]' : ''}`} onClick={() => setContextType(opt.value)}>
+              <Button key={opt.value} variant={contextType === opt.value ? "default" : "ghost"} size="sm" className={`h-6 text-xs px-2 ${contextType === opt.value ? 'bg-[#007AFF]' : ''}`} onClick={() => setContextType(opt.value)}>
                 <Icon className="w-3 h-3 mr-1" /> {opt.label}
               </Button>
             );
@@ -287,29 +287,29 @@ function StudyAIChat({ notebooks, selectedNotebook }) {
       </CardHeader>
       <CardContent className="flex-1 overflow-y-auto p-3 space-y-3">
         {messages.length === 0 && (
-          <div className="text-center text-[#888888] py-8 text-sm">
+          <div className="text-center text-[#A1A1AA] py-8 text-sm">
             <Brain className="w-8 h-8 mx-auto mb-2 opacity-50" />
             <p>Pergunte qualquer coisa sobre seus estudos!</p>
-            <p className="text-xs mt-2 text-[#555555]">📎 Envie PDFs ou imagens para resumo com IA</p>
+            <p className="text-xs mt-2 text-[#52525B]">📎 Envie PDFs ou imagens para resumo com IA</p>
           </div>
         )}
         {messages.map((msg, idx) => (
           <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-            <div className={`max-w-[85%] p-3 rounded-lg text-sm whitespace-pre-wrap ${msg.role === 'user' ? 'bg-[#00c896] text-white' : 'bg-[#1a1a1a] text-[#E4E4E7]'}`}>
+            <div className={`max-w-[85%] p-3 rounded-lg text-sm whitespace-pre-wrap ${msg.role === 'user' ? 'bg-[#007AFF] text-white' : 'bg-[#121212] text-[#E4E4E7]'}`}>
               {msg.content}
             </div>
           </div>
         ))}
         {loading && (
           <div className="flex justify-start">
-            <div className="bg-[#1a1a1a] p-3 rounded-lg"><Loader2 className="w-4 h-4 animate-spin text-[#00c896]" /></div>
+            <div className="bg-[#121212] p-3 rounded-lg"><Loader2 className="w-4 h-4 animate-spin text-[#00F0FF]" /></div>
           </div>
         )}
         <div ref={chatEndRef} />
       </CardContent>
-      <div className="p-3 border-t border-[#2a2a2a]">
+      <div className="p-3 border-t border-[#27272A]">
         {uploadFile && (
-          <div className="flex items-center gap-2 mb-2 p-2 bg-[#1a1a1a] rounded-lg">
+          <div className="flex items-center gap-2 mb-2 p-2 bg-[#121212] rounded-lg">
             <Paperclip className="w-4 h-4 text-purple-400" />
             <span className="text-xs text-purple-300 flex-1 truncate">{uploadFile.name}</span>
             <Button variant="ghost" size="icon" className="h-5 w-5" onClick={() => setUploadFile(null)}><XCircle className="w-3 h-3 text-red-400" /></Button>
@@ -317,11 +317,11 @@ function StudyAIChat({ notebooks, selectedNotebook }) {
         )}
         <div className="flex gap-2">
           <input type="file" ref={fileInputRef} className="hidden" accept=".pdf,image/*" onChange={e => { if (e.target.files[0]) setUploadFile(e.target.files[0]); e.target.value = ''; }} />
-          <Button variant="ghost" size="icon" className="shrink-0 text-[#888888] hover:text-purple-400" onClick={() => fileInputRef.current?.click()} title="Enviar PDF ou imagem">
+          <Button variant="ghost" size="icon" className="shrink-0 text-[#A1A1AA] hover:text-purple-400" onClick={() => fileInputRef.current?.click()} title="Enviar PDF ou imagem">
             <Paperclip className="w-4 h-4" />
           </Button>
-          <Input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && !e.shiftKey && sendMessage()} placeholder={uploadFile ? "Mensagem sobre o arquivo..." : "Pergunte algo..."} className="bg-[#1a1a1a] border-[#2a2a2a] text-sm" />
-          <Button onClick={sendMessage} disabled={loading || (!input.trim() && !uploadFile)} size="icon" className="bg-[#00c896] shrink-0">
+          <Input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && !e.shiftKey && sendMessage()} placeholder={uploadFile ? "Mensagem sobre o arquivo..." : "Pergunte algo..."} className="bg-[#121212] border-[#27272A] text-sm" />
+          <Button onClick={sendMessage} disabled={loading || (!input.trim() && !uploadFile)} size="icon" className="bg-[#007AFF] shrink-0">
             <Send className="w-4 h-4" />
           </Button>
         </div>
@@ -358,7 +358,7 @@ function QuestionLogger({ notebooks, onLog }) {
   const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
 
   return (
-    <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+    <Card className="bg-[#0A0A0A] border-[#27272A]">
       <CardHeader className="pb-2">
         <CardTitle className="text-sm flex items-center gap-2">
           <Hash className="w-4 h-4 text-purple-400" />
@@ -367,7 +367,7 @@ function QuestionLogger({ notebooks, onLog }) {
       </CardHeader>
       <CardContent className="space-y-3">
         <Select value={nbId} onValueChange={setNbId}>
-          <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a] h-9 text-sm">
+          <SelectTrigger className="bg-[#121212] border-[#27272A] h-9 text-sm">
             <SelectValue placeholder="Selecione a matéria" />
           </SelectTrigger>
           <SelectContent>
@@ -379,11 +379,11 @@ function QuestionLogger({ notebooks, onLog }) {
         <div className="grid grid-cols-2 gap-2">
           <div>
             <Label className="text-xs">Total</Label>
-            <Input type="number" value={total} onChange={e => setTotal(Number(e.target.value))} className="bg-[#1a1a1a] border-[#2a2a2a] h-8 text-sm" min={1} />
+            <Input type="number" value={total} onChange={e => setTotal(Number(e.target.value))} className="bg-[#121212] border-[#27272A] h-8 text-sm" min={1} />
           </div>
           <div>
             <Label className="text-xs">Acertos</Label>
-            <Input type="number" value={correct} onChange={e => setCorrect(Number(e.target.value))} className="bg-[#1a1a1a] border-[#2a2a2a] h-8 text-sm" min={0} max={total} />
+            <Input type="number" value={correct} onChange={e => setCorrect(Number(e.target.value))} className="bg-[#121212] border-[#27272A] h-8 text-sm" min={0} max={total} />
           </div>
         </div>
         <div className="flex items-center justify-between">
@@ -552,9 +552,9 @@ export default function Studies() {
   const [topicProgress, setTopicProgress] = useState({});
 
   // Forms
-  const [areaForm, setAreaForm] = useState({ name: "", description: "", color: "#00c896", icon: "book" });
-  const [programForm, setProgramForm] = useState({ name: "", description: "", color: "#00c896", icon: "book", target_date: "" });
-  const [notebookForm, setNotebookForm] = useState({ name: "", description: "", color: "#00c896", tags: [] });
+  const [areaForm, setAreaForm] = useState({ name: "", description: "", color: "#007AFF", icon: "book" });
+  const [programForm, setProgramForm] = useState({ name: "", description: "", color: "#007AFF", icon: "book", target_date: "" });
+  const [notebookForm, setNotebookForm] = useState({ name: "", description: "", color: "#007AFF", tags: [] });
   const [noteForm, setNoteForm] = useState({ title: "", content: "", tags: [], links: [] });
   const [taskForm, setTaskForm] = useState({ title: "", description: "", task_type: "reading", recurrence: "once", deadline: "", priority: "medium", estimated_minutes: 30 });
   const [flashcardForm, setFlashcardForm] = useState({ front: "", back: "", deck_name: "Geral" });
@@ -831,7 +831,7 @@ export default function Studies() {
     if (!areaForm.name) { toast.error("Digite o nome da área"); return; }
     try {
       await axios.post(`${API}/study/areas`, areaForm, { withCredentials: true });
-      toast.success("Área criada!"); setShowAreaDialog(false); setAreaForm({ name: "", description: "", color: "#00c896", icon: "book" }); fetchAllData();
+      toast.success("Área criada!"); setShowAreaDialog(false); setAreaForm({ name: "", description: "", color: "#007AFF", icon: "book" }); fetchAllData();
     } catch { toast.error("Erro ao criar área"); }
   };
 
@@ -843,7 +843,7 @@ export default function Studies() {
     if (!programForm.name || !selectedArea) { toast.error("Selecione área e digite o nome"); return; }
     try {
       await axios.post(`${API}/study/programs`, { ...programForm, area_id: selectedArea.area_id }, { withCredentials: true });
-      toast.success("Programa criado!"); setShowProgramDialog(false); setProgramForm({ name: "", description: "", color: "#00c896", icon: "book", target_date: "" }); fetchAllData();
+      toast.success("Programa criado!"); setShowProgramDialog(false); setProgramForm({ name: "", description: "", color: "#007AFF", icon: "book", target_date: "" }); fetchAllData();
     } catch { toast.error("Erro ao criar programa"); }
   };
 
@@ -1088,7 +1088,7 @@ export default function Studies() {
       
       toast.info("Gerando exportação...");
       const canvas = await html2canvas(element, {
-        backgroundColor: '#0d0d0d',
+        backgroundColor: '#0A0A0A',
         scale: 2,
         useCORS: true
       });
@@ -1180,7 +1180,7 @@ export default function Studies() {
       await axios.post(`${API}/study/notebooks`, {
         ...notebookForm, area_id: areaId, program_id: selectedProgram?.program_id || null
       }, { withCredentials: true });
-      toast.success("Matéria criada!"); setShowNotebookDialog(false); setNotebookForm({ name: "", description: "", color: "#00c896", tags: [] }); fetchAllData();
+      toast.success("Matéria criada!"); setShowNotebookDialog(false); setNotebookForm({ name: "", description: "", color: "#007AFF", tags: [] }); fetchAllData();
     } catch { toast.error("Erro ao criar matéria"); }
   };
 
@@ -1303,7 +1303,7 @@ export default function Studies() {
   };
 
   if (loading && !user) {
-    return <div className="min-h-screen bg-[#050505] flex items-center justify-center"><Loader2 className="w-8 h-8 animate-spin text-[#00c896]" /></div>;
+    return <div className="min-h-screen bg-[#050505] flex items-center justify-center"><Loader2 className="w-8 h-8 animate-spin text-[#007AFF]" /></div>;
   }
 
   const dueFlashcardsCount = flashcards.filter(f => f.next_review <= new Date().toISOString().split('T')[0]).length;
@@ -1324,8 +1324,8 @@ export default function Studies() {
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-3">
           <div>
-            <h1 className="text-2xl md:text-3xl font-heading text-[#00c896]">Área de Estudos</h1>
-            <p className="text-[#888888] text-sm">Organize, estude e evolua com inteligência</p>
+            <h1 className="text-2xl md:text-3xl font-heading text-[#00F0FF]">Área de Estudos</h1>
+            <p className="text-[#A1A1AA] text-sm">Organize, estude e evolua com inteligência</p>
           </div>
           <div className="flex items-center gap-2 flex-wrap">
             <ExportButtons module="study" />
@@ -1337,9 +1337,9 @@ export default function Studies() {
 
         {/* Motivational Quote - Daily, resets at 5AM */}
         {motivationalQuote && motivationalQuote.quote && (
-          <Card className="bg-gradient-to-r from-[#0d0d0d] to-[#1a1a2e] border-[#2a2a2a] p-4 mb-4">
+          <Card className="bg-gradient-to-r from-[#0A0A0A] to-[#1a1a2e] border-[#27272A] p-4 mb-4">
             <div className="flex items-center gap-3">
-              <Sparkles className="w-5 h-5 text-[#00c896] flex-shrink-0" />
+              <Sparkles className="w-5 h-5 text-[#00F0FF] flex-shrink-0" />
               <p className="text-sm md:text-base italic text-white flex-1">{motivationalQuote.quote}</p>
             </div>
           </Card>
@@ -1348,28 +1348,28 @@ export default function Studies() {
         {/* Breadcrumb */}
         {(selectedArea || selectedProgram || selectedNotebook) && (
           <div className="flex items-center gap-1 mb-4 text-sm flex-wrap">
-            <Button variant="link" className="text-[#888888] p-0 h-auto" onClick={() => { setSelectedArea(null); setSelectedProgram(null); setSelectedNotebook(null); setActiveTab("dashboard"); }}>
+            <Button variant="link" className="text-[#A1A1AA] p-0 h-auto" onClick={() => { setSelectedArea(null); setSelectedProgram(null); setSelectedNotebook(null); setActiveTab("dashboard"); }}>
               Início
             </Button>
             {selectedArea && (
               <>
-                <ChevronRight className="w-3 h-3 text-[#888888]" />
-                <Button variant="link" className="text-[#888888] p-0 h-auto" onClick={() => { setSelectedProgram(null); setSelectedNotebook(null); setActiveTab("programas"); }}>
+                <ChevronRight className="w-3 h-3 text-[#A1A1AA]" />
+                <Button variant="link" className="text-[#A1A1AA] p-0 h-auto" onClick={() => { setSelectedProgram(null); setSelectedNotebook(null); setActiveTab("programas"); }}>
                   {selectedArea.name}
                 </Button>
               </>
             )}
             {selectedProgram && (
               <>
-                <ChevronRight className="w-3 h-3 text-[#888888]" />
-                <Button variant="link" className="text-[#888888] p-0 h-auto" onClick={() => { setSelectedNotebook(null); setActiveTab("materias"); }}>
+                <ChevronRight className="w-3 h-3 text-[#A1A1AA]" />
+                <Button variant="link" className="text-[#A1A1AA] p-0 h-auto" onClick={() => { setSelectedNotebook(null); setActiveTab("materias"); }}>
                   {selectedProgram.name}
                 </Button>
               </>
             )}
             {selectedNotebook && (
               <>
-                <ChevronRight className="w-3 h-3 text-[#888888]" />
+                <ChevronRight className="w-3 h-3 text-[#A1A1AA]" />
                 <span className="text-white font-medium">{selectedNotebook.name}</span>
               </>
             )}
@@ -1377,7 +1377,7 @@ export default function Studies() {
         )}
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
-          <TabsList className="bg-[#1a1a1a] border border-[#2a2a2a] overflow-x-auto flex-nowrap w-full justify-start gap-0">
+          <TabsList className="bg-[#121212] border border-[#27272A] overflow-x-auto flex-nowrap w-full justify-start gap-0">
             <TabsTrigger value="dashboard" className="text-xs md:text-sm">Dashboard</TabsTrigger>
             <TabsTrigger value="programas" className="text-xs md:text-sm">Programas</TabsTrigger>
             <TabsTrigger value="materias" className="text-xs md:text-sm">Matérias</TabsTrigger>
@@ -1451,15 +1451,15 @@ export default function Studies() {
                   textColor: "text-blue-400"
                 }
               ].map((stat, idx) => (
-                <Card key={idx} className="bg-[#0d0d0d] border-[#2a2a2a] p-3 relative overflow-hidden group hover:border-[#333333] transition-colors">
+                <Card key={idx} className="bg-[#0A0A0A] border-[#27272A] p-3 relative overflow-hidden group hover:border-[#3F3F46] transition-colors">
                   <div className={`absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r ${stat.color}`} />
                   <div className="flex items-start justify-between">
                     <div>
-                      <p className="text-[9px] uppercase tracking-wider text-[#888888] mb-0.5">{stat.label}</p>
+                      <p className="text-[9px] uppercase tracking-wider text-[#71717A] mb-0.5">{stat.label}</p>
                       <p className={`text-xl md:text-2xl font-bold ${stat.textColor} font-data`}>
                         {stat.value}{stat.unit}
                       </p>
-                      {stat.sub && <p className="text-[10px] text-[#555555]">{stat.sub}</p>}
+                      {stat.sub && <p className="text-[10px] text-[#52525B]">{stat.sub}</p>}
                     </div>
                     <div className={`${stat.bgColor} p-1.5 rounded-lg ${stat.textColor}`}>
                       {stat.icon}
@@ -1474,17 +1474,17 @@ export default function Studies() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
                 {/* Focus Sessions Trend */}
                 {overallStudyStats.focus_daily && overallStudyStats.focus_daily.some(d => d.minutos > 0) && (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-sm flex items-center gap-2"><Timer className="w-4 h-4 text-red-400" />Sessões de Foco (7 dias)</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <ResponsiveContainer width="100%" height={180}>
                         <BarChart data={overallStudyStats.focus_daily}>
-                          <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
-                          <XAxis dataKey="day" tick={{ fill: '#888888', fontSize: 11 }} />
-                          <YAxis tick={{ fill: '#888888', fontSize: 10 }} unit="min" />
-                          <Tooltip contentStyle={{ backgroundColor: '#0d0d0d', border: '1px solid #2a2a2a', color: '#fff', fontSize: 11 }} formatter={(v) => `${v} min`} />
+                          <CartesianGrid strokeDasharray="3 3" stroke="#27272A" />
+                          <XAxis dataKey="day" tick={{ fill: '#71717A', fontSize: 11 }} />
+                          <YAxis tick={{ fill: '#71717A', fontSize: 10 }} unit="min" />
+                          <Tooltip contentStyle={{ backgroundColor: '#0A0A0A', border: '1px solid #27272A', color: '#fff', fontSize: 11 }} formatter={(v) => `${v} min`} />
                           <Bar dataKey="minutos" fill="#EF4444" name="Minutos" radius={[3, 3, 0, 0]} />
                         </BarChart>
                       </ResponsiveContainer>
@@ -1494,19 +1494,19 @@ export default function Studies() {
 
                 {/* Question Accuracy Trend */}
                 {overallStudyStats.question_daily && overallStudyStats.question_daily.some(d => d.questoes > 0) && (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-sm flex items-center gap-2"><BarChart3 className="w-4 h-4 text-purple-400" />Questões (7 dias)</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <ResponsiveContainer width="100%" height={180}>
                         <LineChart data={overallStudyStats.question_daily}>
-                          <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
-                          <XAxis dataKey="day" tick={{ fill: '#888888', fontSize: 11 }} />
-                          <YAxis tick={{ fill: '#888888', fontSize: 10 }} />
-                          <Tooltip contentStyle={{ backgroundColor: '#0d0d0d', border: '1px solid #2a2a2a', color: '#fff', fontSize: 11 }} />
+                          <CartesianGrid strokeDasharray="3 3" stroke="#27272A" />
+                          <XAxis dataKey="day" tick={{ fill: '#71717A', fontSize: 11 }} />
+                          <YAxis tick={{ fill: '#71717A', fontSize: 10 }} />
+                          <Tooltip contentStyle={{ backgroundColor: '#0A0A0A', border: '1px solid #27272A', color: '#fff', fontSize: 11 }} />
                           <Line type="monotone" dataKey="questoes" stroke="#A855F7" strokeWidth={2} name="Questões" dot={{ r: 3 }} />
-                          <Line type="monotone" dataKey="acertos" stroke="#00c896" strokeWidth={2} name="Acertos" dot={{ r: 3 }} />
+                          <Line type="monotone" dataKey="acertos" stroke="#39FF14" strokeWidth={2} name="Acertos" dot={{ r: 3 }} />
                           <Legend />
                         </LineChart>
                       </ResponsiveContainer>
@@ -1516,7 +1516,7 @@ export default function Studies() {
 
                 {/* Discipline Distribution - Donut Chart */}
                 {overallStudyStats.disciplinas && overallStudyStats.disciplinas.length > 0 && (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-sm flex items-center gap-2"><BookOpen className="w-4 h-4 text-blue-400" />Distribuição por Disciplina</CardTitle>
                     </CardHeader>
@@ -1534,10 +1534,10 @@ export default function Studies() {
                             dataKey="value"
                           >
                             {overallStudyStats.disciplinas.slice(0, 6).map((_, i) => (
-                              <Cell key={i} fill={['#00c896', '#A855F7', '#00c896', '#00c896', '#FF6B6B', '#FFD700'][i]} />
+                              <Cell key={i} fill={['#007AFF', '#A855F7', '#39FF14', '#00F0FF', '#FF6B6B', '#FFD700'][i]} />
                             ))}
                           </Pie>
-                          <Tooltip contentStyle={{ backgroundColor: '#0d0d0d', border: '1px solid #2a2a2a', color: '#fff', fontSize: 11 }} formatter={(v) => `${v}h`} />
+                          <Tooltip contentStyle={{ backgroundColor: '#0A0A0A', border: '1px solid #27272A', color: '#fff', fontSize: 11 }} formatter={(v) => `${v}h`} />
                           <Legend wrapperStyle={{ fontSize: 10 }} />
                         </PieChart>
                       </ResponsiveContainer>
@@ -1547,7 +1547,7 @@ export default function Studies() {
 
                 {/* Radar Chart - Performance */}
                 {overallStudyStats.disciplinas && overallStudyStats.disciplinas.length > 2 && (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-sm flex items-center gap-2"><TrendingUp className="w-4 h-4 text-green-400" />Desempenho por Disciplina</CardTitle>
                     </CardHeader>
@@ -1559,12 +1559,12 @@ export default function Studies() {
                           questoes: Math.min(d.questoes || 0, 100),
                           acuracia: d.acuracia || 0
                         }))}>
-                          <PolarGrid stroke="#2a2a2a" />
-                          <PolarAngleAxis dataKey="nome" tick={{ fill: '#888888', fontSize: 9 }} />
-                          <PolarRadiusAxis tick={{ fill: '#555555', fontSize: 8 }} />
-                          <Radar name="Horas" dataKey="horas" stroke="#00c896" fill="#00c896" fillOpacity={0.2} />
-                          <Radar name="Acurácia" dataKey="acuracia" stroke="#00c896" fill="#00c896" fillOpacity={0.15} />
-                          <Tooltip contentStyle={{ backgroundColor: '#0d0d0d', border: '1px solid #2a2a2a', color: '#fff', fontSize: 11 }} />
+                          <PolarGrid stroke="#27272A" />
+                          <PolarAngleAxis dataKey="nome" tick={{ fill: '#71717A', fontSize: 9 }} />
+                          <PolarRadiusAxis tick={{ fill: '#52525B', fontSize: 8 }} />
+                          <Radar name="Horas" dataKey="horas" stroke="#007AFF" fill="#007AFF" fillOpacity={0.2} />
+                          <Radar name="Acurácia" dataKey="acuracia" stroke="#39FF14" fill="#39FF14" fillOpacity={0.15} />
+                          <Tooltip contentStyle={{ backgroundColor: '#0A0A0A', border: '1px solid #27272A', color: '#fff', fontSize: 11 }} />
                           <Legend wrapperStyle={{ fontSize: 10 }} />
                         </RadarChart>
                       </ResponsiveContainer>
@@ -1575,19 +1575,19 @@ export default function Studies() {
             )}
 
             {/* Areas Grid */}
-            <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+            <Card className="bg-[#0A0A0A] border-[#27272A]">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-base flex items-center gap-2"><Layers className="w-4 h-4 text-[#00c896]" />Áreas de Estudo</CardTitle>
+                  <CardTitle className="text-base flex items-center gap-2"><Layers className="w-4 h-4 text-[#007AFF]" />Áreas de Estudo</CardTitle>
                   <Dialog open={showAreaDialog} onOpenChange={setShowAreaDialog}>
-                    <DialogTrigger asChild><Button size="sm" className="bg-[#00c896] h-8 text-xs"><Plus className="w-3 h-3 mr-1" />Nova Área</Button></DialogTrigger>
-                    <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a]">
+                    <DialogTrigger asChild><Button size="sm" className="bg-[#007AFF] h-8 text-xs"><Plus className="w-3 h-3 mr-1" />Nova Área</Button></DialogTrigger>
+                    <DialogContent className="bg-[#0A0A0A] border-[#27272A]">
                       <DialogHeader><DialogTitle>Nova Área de Estudo</DialogTitle></DialogHeader>
                       <div className="space-y-4 py-4">
-                        <div><Label>Nome</Label><Input value={areaForm.name} onChange={e => setAreaForm({...areaForm, name: e.target.value})} placeholder="Ex: Faculdade" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
-                        <div><Label>Descrição</Label><Input value={areaForm.description} onChange={e => setAreaForm({...areaForm, description: e.target.value})} placeholder="Opcional" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
-                        <div><Label>Cor</Label><Input type="color" value={areaForm.color} onChange={e => setAreaForm({...areaForm, color: e.target.value})} className="bg-[#1a1a1a] border-[#2a2a2a] h-10" /></div>
-                        <Button onClick={handleCreateArea} className="w-full bg-[#00c896]">Criar Área</Button>
+                        <div><Label>Nome</Label><Input value={areaForm.name} onChange={e => setAreaForm({...areaForm, name: e.target.value})} placeholder="Ex: Faculdade" className="bg-[#121212] border-[#27272A]" /></div>
+                        <div><Label>Descrição</Label><Input value={areaForm.description} onChange={e => setAreaForm({...areaForm, description: e.target.value})} placeholder="Opcional" className="bg-[#121212] border-[#27272A]" /></div>
+                        <div><Label>Cor</Label><Input type="color" value={areaForm.color} onChange={e => setAreaForm({...areaForm, color: e.target.value})} className="bg-[#121212] border-[#27272A] h-10" /></div>
+                        <Button onClick={handleCreateArea} className="w-full bg-[#007AFF]">Criar Área</Button>
                       </div>
                     </DialogContent>
                   </Dialog>
@@ -1601,12 +1601,12 @@ export default function Studies() {
                     const areaNbs = notebooks.filter(n => n.area_id === area.area_id);
                     return (
                       <div key={area.area_id} onClick={() => { setSelectedArea(area); setSelectedProgram(null); setSelectedNotebook(null); setActiveTab("programas"); }}
-                        className="p-4 rounded-lg cursor-pointer transition-all hover:scale-[1.02] hover:bg-[#1a1a1a] group"
+                        className="p-4 rounded-lg cursor-pointer transition-all hover:scale-[1.02] hover:bg-[#121212] group"
                         style={{ backgroundColor: `${area.color}10`, borderLeft: `3px solid ${area.color}` }}>
                         <AreaIcon className="w-7 h-7 mb-2" style={{ color: area.color }} />
                         <h4 className="font-medium text-sm">{area.name}</h4>
-                        <p className="text-xs text-[#888888]">{areaProgs.length} programas · {areaNbs.length} matérias</p>
-                        <ChevronRight className="w-4 h-4 text-[#888888] mt-2 group-hover:translate-x-1 transition-transform" />
+                        <p className="text-xs text-[#A1A1AA]">{areaProgs.length} programas · {areaNbs.length} matérias</p>
+                        <ChevronRight className="w-4 h-4 text-[#A1A1AA] mt-2 group-hover:translate-x-1 transition-transform" />
                       </div>
                     );
                   })}
@@ -1625,16 +1625,16 @@ export default function Studies() {
 
             {/* Tasks Summary */}
             {pendingTasksCount > 0 && (
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+              <Card className="bg-[#0A0A0A] border-[#27272A]">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-base flex items-center gap-2"><Target className="w-4 h-4 text-red-400" />Tarefas Pendentes ({pendingTasksCount})</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
                     {tasks.filter(t => !t.completed && !t.completed_today).slice(0, 5).map(task => (
-                      <div key={task.task_id} className="flex items-center justify-between bg-[#1a1a1a] p-3 rounded-lg">
+                      <div key={task.task_id} className="flex items-center justify-between bg-[#121212] p-3 rounded-lg">
                         <div className="flex items-center gap-3">
-                          <button onClick={() => handleToggleTask(task.task_id, true)} className="w-5 h-5 rounded border-2 border-[#2a2a2a] hover:border-green-500 shrink-0" />
+                          <button onClick={() => handleToggleTask(task.task_id, true)} className="w-5 h-5 rounded border-2 border-[#27272A] hover:border-green-500 shrink-0" />
                           <div>
                             <p className="text-sm font-medium">{task.title}</p>
                             <div className="flex gap-1 mt-1">
@@ -1647,7 +1647,7 @@ export default function Studies() {
                       </div>
                     ))}
                     {pendingTasksCount > 5 && (
-                      <Button variant="link" onClick={() => setActiveTab("tarefas")} className="text-[#00c896] text-xs">Ver todas ({pendingTasksCount})</Button>
+                      <Button variant="link" onClick={() => setActiveTab("tarefas")} className="text-[#007AFF] text-xs">Ver todas ({pendingTasksCount})</Button>
                     )}
                   </div>
                 </CardContent>
@@ -1672,12 +1672,12 @@ export default function Studies() {
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
                   <div>
                     <h2 className="text-lg font-bold">{selectedArea.name}</h2>
-                    <p className="text-xs text-[#888888]">{selectedArea.description || 'Programas e cursos desta área'}</p>
+                    <p className="text-xs text-[#A1A1AA]">{selectedArea.description || 'Programas e cursos desta área'}</p>
                   </div>
                   <div className="flex gap-2 flex-wrap">
                     <Dialog open={showEditalDialog} onOpenChange={setShowEditalDialog}>
                       <DialogTrigger asChild><Button size="sm" className="bg-purple-600 hover:bg-purple-700 h-8 text-xs"><FileUp className="w-3 h-3 mr-1" />Importar Edital</Button></DialogTrigger>
-                      <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] max-w-lg">
+                      <DialogContent className="bg-[#0A0A0A] border-[#27272A] max-w-lg">
                         <DialogHeader>
                           <DialogTitle className="flex items-center gap-2"><FileUp className="w-5 h-5 text-purple-400" />Importar Edital de Concurso</DialogTitle>
                           <DialogDescription>Faça upload do PDF do edital e a IA criará um programa de estudos completo com disciplinas, pesos e cronograma.</DialogDescription>
@@ -1685,7 +1685,7 @@ export default function Studies() {
                         <div className="space-y-4 py-4">
                           <div>
                             <Label className="text-sm font-medium">PDF do Edital *</Label>
-                            <div className={`mt-1 border-2 border-dashed rounded-lg p-6 text-center transition-colors ${editalFile ? 'border-purple-500 bg-purple-500/10' : 'border-[#2a2a2a] hover:border-[#333333]'}`}>
+                            <div className={`mt-1 border-2 border-dashed rounded-lg p-6 text-center transition-colors ${editalFile ? 'border-purple-500 bg-purple-500/10' : 'border-[#27272A] hover:border-[#3F3F46]'}`}>
                               {editalFile ? (
                                 <div className="flex items-center justify-center gap-2">
                                   <FileText className="w-5 h-5 text-purple-400" />
@@ -1694,9 +1694,9 @@ export default function Studies() {
                                 </div>
                               ) : (
                                 <label className="cursor-pointer">
-                                  <Upload className="w-8 h-8 mx-auto text-[#888888] mb-2" />
-                                  <p className="text-sm text-[#888888]">Clique para selecionar o PDF</p>
-                                  <p className="text-xs text-[#555555] mt-1">Máximo 20MB</p>
+                                  <Upload className="w-8 h-8 mx-auto text-[#A1A1AA] mb-2" />
+                                  <p className="text-sm text-[#A1A1AA]">Clique para selecionar o PDF</p>
+                                  <p className="text-xs text-[#52525B] mt-1">Máximo 20MB</p>
                                   <input type="file" accept=".pdf" className="hidden" onChange={e => setEditalFile(e.target.files?.[0] || null)} />
                                 </label>
                               )}
@@ -1704,14 +1704,14 @@ export default function Studies() {
                           </div>
                           <div>
                             <Label className="text-sm font-medium">Data da Prova (opcional)</Label>
-                            <Input type="date" value={editalForm.target_date} onChange={e => setEditalForm({...editalForm, target_date: e.target.value})} className="bg-[#1a1a1a] border-[#2a2a2a] mt-1" />
+                            <Input type="date" value={editalForm.target_date} onChange={e => setEditalForm({...editalForm, target_date: e.target.value})} className="bg-[#121212] border-[#27272A] mt-1" />
                           </div>
                           <div className="grid grid-cols-2 gap-3">
                             <div>
                               <Label className="text-sm font-medium">Horas por dia</Label>
                               <Select value={String(editalForm.hours_per_day)} onValueChange={v => setEditalForm({...editalForm, hours_per_day: parseFloat(v)})}>
-                                <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a] mt-1"><SelectValue /></SelectTrigger>
-                                <SelectContent className="bg-[#0d0d0d] border-[#2a2a2a]">
+                                <SelectTrigger className="bg-[#121212] border-[#27272A] mt-1"><SelectValue /></SelectTrigger>
+                                <SelectContent className="bg-[#0A0A0A] border-[#27272A]">
                                   {[1,2,3,4,5,6,7,8,10,12].map(h => <SelectItem key={h} value={String(h)}>{h}h</SelectItem>)}
                                 </SelectContent>
                               </Select>
@@ -1719,16 +1719,16 @@ export default function Studies() {
                             <div>
                               <Label className="text-sm font-medium">Dias por semana</Label>
                               <Select value={String(editalForm.days_per_week)} onValueChange={v => setEditalForm({...editalForm, days_per_week: parseInt(v)})}>
-                                <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a] mt-1"><SelectValue /></SelectTrigger>
-                                <SelectContent className="bg-[#0d0d0d] border-[#2a2a2a]">
+                                <SelectTrigger className="bg-[#121212] border-[#27272A] mt-1"><SelectValue /></SelectTrigger>
+                                <SelectContent className="bg-[#0A0A0A] border-[#27272A]">
                                   {[3,4,5,6,7].map(d => <SelectItem key={d} value={String(d)}>{d} dias</SelectItem>)}
                                 </SelectContent>
                               </Select>
                             </div>
                           </div>
-                          <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg p-3">
-                            <p className="text-xs text-[#888888]"><Sparkles className="w-3 h-3 inline mr-1 text-purple-400" />A IA vai analisar o edital e criar automaticamente:</p>
-                            <ul className="text-xs text-[#888888] mt-2 space-y-1 ml-4 list-disc">
+                          <div className="bg-[#121212] border border-[#27272A] rounded-lg p-3">
+                            <p className="text-xs text-[#A1A1AA]"><Sparkles className="w-3 h-3 inline mr-1 text-purple-400" />A IA vai analisar o edital e criar automaticamente:</p>
+                            <ul className="text-xs text-[#A1A1AA] mt-2 space-y-1 ml-4 list-disc">
                               <li>Todas as disciplinas com pesos e tópicos</li>
                               <li>Cronograma semanal otimizado</li>
                               <li>Estratégia de estudo personalizada</li>
@@ -1746,15 +1746,15 @@ export default function Studies() {
                       </DialogContent>
                     </Dialog>
                     <Dialog open={showProgramDialog} onOpenChange={setShowProgramDialog}>
-                      <DialogTrigger asChild><Button size="sm" className="bg-[#00c896] h-8 text-xs"><Plus className="w-3 h-3 mr-1" />Novo Programa</Button></DialogTrigger>
-                      <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a]">
+                      <DialogTrigger asChild><Button size="sm" className="bg-[#007AFF] h-8 text-xs"><Plus className="w-3 h-3 mr-1" />Novo Programa</Button></DialogTrigger>
+                      <DialogContent className="bg-[#0A0A0A] border-[#27272A]">
                         <DialogHeader><DialogTitle>Novo Programa em {selectedArea.name}</DialogTitle><DialogDescription>Ex: Curso de Direito, Concurso TRF5, Certificação AWS</DialogDescription></DialogHeader>
                         <div className="space-y-4 py-4">
-                          <div><Label>Nome</Label><Input value={programForm.name} onChange={e => setProgramForm({...programForm, name: e.target.value})} placeholder="Ex: Curso de Direito" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
-                          <div><Label>Descrição</Label><Input value={programForm.description} onChange={e => setProgramForm({...programForm, description: e.target.value})} placeholder="Opcional" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
-                          <div><Label>Data meta (opcional)</Label><Input type="date" value={programForm.target_date} onChange={e => setProgramForm({...programForm, target_date: e.target.value})} className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
-                          <div><Label>Cor</Label><Input type="color" value={programForm.color} onChange={e => setProgramForm({...programForm, color: e.target.value})} className="bg-[#1a1a1a] border-[#2a2a2a] h-10" /></div>
-                          <Button onClick={handleCreateProgram} className="w-full bg-[#00c896]">Criar Programa</Button>
+                          <div><Label>Nome</Label><Input value={programForm.name} onChange={e => setProgramForm({...programForm, name: e.target.value})} placeholder="Ex: Curso de Direito" className="bg-[#121212] border-[#27272A]" /></div>
+                          <div><Label>Descrição</Label><Input value={programForm.description} onChange={e => setProgramForm({...programForm, description: e.target.value})} placeholder="Opcional" className="bg-[#121212] border-[#27272A]" /></div>
+                          <div><Label>Data meta (opcional)</Label><Input type="date" value={programForm.target_date} onChange={e => setProgramForm({...programForm, target_date: e.target.value})} className="bg-[#121212] border-[#27272A]" /></div>
+                          <div><Label>Cor</Label><Input type="color" value={programForm.color} onChange={e => setProgramForm({...programForm, color: e.target.value})} className="bg-[#121212] border-[#27272A] h-10" /></div>
+                          <Button onClick={handleCreateProgram} className="w-full bg-[#007AFF]">Criar Programa</Button>
                         </div>
                       </DialogContent>
                     </Dialog>
@@ -1768,7 +1768,7 @@ export default function Studies() {
                     const pctCorrect = prog.total_questions > 0 ? Math.round((prog.correct_questions / prog.total_questions) * 100) : 0;
                     const isEditalProgram = prog.source_type === "edital_import";
                     return (
-                      <Card key={prog.program_id} className={`bg-[#0d0d0d] border-[#2a2a2a] cursor-pointer hover:scale-[1.02] transition-all group ${isEditalProgram ? 'border-l-2 border-l-purple-500' : ''}`} onClick={() => navigateToProgram(prog)}>
+                      <Card key={prog.program_id} className={`bg-[#0A0A0A] border-[#27272A] cursor-pointer hover:scale-[1.02] transition-all group ${isEditalProgram ? 'border-l-2 border-l-purple-500' : ''}`} onClick={() => navigateToProgram(prog)}>
                         <CardHeader className="pb-2">
                           <div className="flex items-start justify-between">
                             <div className="flex items-center gap-2">
@@ -1791,9 +1791,9 @@ export default function Studies() {
                         </CardHeader>
                         <CardContent className="pt-0">
                           <div className="grid grid-cols-3 gap-2 text-center text-xs mb-3">
-                            <div><p className="text-[#888888]">Matérias</p><p className="font-bold text-white">{prog.notebooks_count || 0}</p></div>
-                            <div><p className="text-[#888888]">Questões</p><p className="font-bold text-purple-400">{prog.total_questions || 0}</p></div>
-                            <div><p className="text-[#888888]">Acerto</p><p className={`font-bold ${pctCorrect >= 70 ? 'text-green-400' : pctCorrect >= 50 ? 'text-yellow-400' : 'text-red-400'}`}>{pctCorrect}%</p></div>
+                            <div><p className="text-[#A1A1AA]">Matérias</p><p className="font-bold text-white">{prog.notebooks_count || 0}</p></div>
+                            <div><p className="text-[#A1A1AA]">Questões</p><p className="font-bold text-purple-400">{prog.total_questions || 0}</p></div>
+                            <div><p className="text-[#A1A1AA]">Acerto</p><p className={`font-bold ${pctCorrect >= 70 ? 'text-green-400' : pctCorrect >= 50 ? 'text-yellow-400' : 'text-red-400'}`}>{pctCorrect}%</p></div>
                           </div>
                           {prog.target_date && (
                             <Badge variant="outline" className="text-[10px] border-purple-500 text-purple-400"><Calendar className="w-3 h-3 mr-1" />Meta: {prog.target_date}</Badge>
@@ -1805,7 +1805,7 @@ export default function Studies() {
                                 <span className="text-[10px] text-blue-400 cursor-pointer hover:underline" onClick={e => { e.stopPropagation(); handleViewVerticalizado(prog.program_id); }}>Edital verticalizado</span>
                               </div>
                             )}
-                            <span className="text-xs text-[#888888] group-hover:text-white transition-colors flex items-center gap-1 ml-auto">Ver matérias <ChevronRight className="w-3 h-3" /></span>
+                            <span className="text-xs text-[#A1A1AA] group-hover:text-white transition-colors flex items-center gap-1 ml-auto">Ver matérias <ChevronRight className="w-3 h-3" /></span>
                           </div>
                         </CardContent>
                       </Card>
@@ -1814,25 +1814,25 @@ export default function Studies() {
                 </div>
 
                 {areaPrograms.length === 0 && (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
                     <CardContent className="text-center py-10">
-                      <FolderOpen className="w-10 h-10 mx-auto text-[#888888] mb-3" />
+                      <FolderOpen className="w-10 h-10 mx-auto text-[#A1A1AA] mb-3" />
                       <h3 className="font-medium mb-1">Nenhum programa ainda</h3>
-                      <p className="text-sm text-[#888888]">Crie um programa para organizar suas matérias</p>
+                      <p className="text-sm text-[#A1A1AA]">Crie um programa para organizar suas matérias</p>
                     </CardContent>
                   </Card>
                 )}
 
                 {/* Loose notebooks (without program) */}
                 {areaNotebooksNoProgram.length > 0 && (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
-                    <CardHeader className="pb-2"><CardTitle className="text-sm text-[#888888]">Matérias avulsas (sem programa)</CardTitle></CardHeader>
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
+                    <CardHeader className="pb-2"><CardTitle className="text-sm text-[#A1A1AA]">Matérias avulsas (sem programa)</CardTitle></CardHeader>
                     <CardContent>
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                         {areaNotebooksNoProgram.map(nb => (
-                          <div key={nb.notebook_id} className="p-3 bg-[#1a1a1a] rounded-lg cursor-pointer hover:bg-[#1A1A1A] transition-colors" onClick={() => navigateToNotebook(nb)}>
+                          <div key={nb.notebook_id} className="p-3 bg-[#121212] rounded-lg cursor-pointer hover:bg-[#1A1A1A] transition-colors" onClick={() => navigateToNotebook(nb)}>
                             <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full" style={{ backgroundColor: nb.color }} /><span className="text-sm font-medium">{nb.name}</span></div>
-                            <p className="text-xs text-[#888888] mt-1">{Math.round((nb.total_study_time_minutes || 0) / 60)}h · {nb.total_questions || 0}q</p>
+                            <p className="text-xs text-[#A1A1AA] mt-1">{Math.round((nb.total_study_time_minutes || 0) / 60)}h · {nb.total_questions || 0}q</p>
                           </div>
                         ))}
                       </div>
@@ -1841,7 +1841,7 @@ export default function Studies() {
                 )}
               </>
             ) : (
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a]"><CardContent className="text-center py-10"><Folder className="w-10 h-10 mx-auto text-[#888888] mb-3" /><h3 className="font-medium mb-1">Selecione uma Área</h3><p className="text-sm text-[#888888]">Escolha uma área acima para ver os programas</p></CardContent></Card>
+              <Card className="bg-[#0A0A0A] border-[#27272A]"><CardContent className="text-center py-10"><Folder className="w-10 h-10 mx-auto text-[#A1A1AA] mb-3" /><h3 className="font-medium mb-1">Selecione uma Área</h3><p className="text-sm text-[#A1A1AA]">Escolha uma área acima para ver os programas</p></CardContent></Card>
             )}
           </TabsContent>
 
@@ -1852,18 +1852,18 @@ export default function Studies() {
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
                   <div>
                     <h2 className="text-lg font-bold" style={{ color: selectedProgram.color }}>{selectedProgram.name}</h2>
-                    <p className="text-xs text-[#888888]">{selectedProgram.description || 'Matérias e disciplinas'}</p>
+                    <p className="text-xs text-[#A1A1AA]">{selectedProgram.description || 'Matérias e disciplinas'}</p>
                   </div>
                   <div className="flex gap-2">
                     <Dialog open={showNotebookDialog} onOpenChange={setShowNotebookDialog}>
-                      <DialogTrigger asChild><Button size="sm" className="bg-[#00c896] h-8 text-xs"><Plus className="w-3 h-3 mr-1" />Nova Matéria</Button></DialogTrigger>
-                      <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a]">
+                      <DialogTrigger asChild><Button size="sm" className="bg-[#007AFF] h-8 text-xs"><Plus className="w-3 h-3 mr-1" />Nova Matéria</Button></DialogTrigger>
+                      <DialogContent className="bg-[#0A0A0A] border-[#27272A]">
                         <DialogHeader><DialogTitle>Nova Matéria em {selectedProgram.name}</DialogTitle></DialogHeader>
                         <div className="space-y-4 py-4">
-                          <div><Label>Nome</Label><Input value={notebookForm.name} onChange={e => setNotebookForm({...notebookForm, name: e.target.value})} placeholder="Ex: Direito Civil" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
-                          <div><Label>Descrição</Label><Input value={notebookForm.description} onChange={e => setNotebookForm({...notebookForm, description: e.target.value})} placeholder="Opcional" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
-                          <div><Label>Cor</Label><Input type="color" value={notebookForm.color} onChange={e => setNotebookForm({...notebookForm, color: e.target.value})} className="bg-[#1a1a1a] border-[#2a2a2a] h-10" /></div>
-                          <Button onClick={handleCreateNotebook} className="w-full bg-[#00c896]">Criar Matéria</Button>
+                          <div><Label>Nome</Label><Input value={notebookForm.name} onChange={e => setNotebookForm({...notebookForm, name: e.target.value})} placeholder="Ex: Direito Civil" className="bg-[#121212] border-[#27272A]" /></div>
+                          <div><Label>Descrição</Label><Input value={notebookForm.description} onChange={e => setNotebookForm({...notebookForm, description: e.target.value})} placeholder="Opcional" className="bg-[#121212] border-[#27272A]" /></div>
+                          <div><Label>Cor</Label><Input type="color" value={notebookForm.color} onChange={e => setNotebookForm({...notebookForm, color: e.target.value})} className="bg-[#121212] border-[#27272A] h-10" /></div>
+                          <Button onClick={handleCreateNotebook} className="w-full bg-[#007AFF]">Criar Matéria</Button>
                         </div>
                       </DialogContent>
                     </Dialog>
@@ -1874,7 +1874,7 @@ export default function Studies() {
                   {programNotebooks.map(nb => {
                     const pct = nb.total_questions > 0 ? Math.round((nb.correct_questions / nb.total_questions) * 100) : 0;
                     return (
-                      <Card key={nb.notebook_id} className={`bg-[#0d0d0d] border-[#2a2a2a] cursor-pointer hover:scale-[1.02] transition-all ${selectedNotebook?.notebook_id === nb.notebook_id ? 'ring-2 ring-[#00c896]' : ''}`} onClick={() => navigateToNotebook(nb)}>
+                      <Card key={nb.notebook_id} className={`bg-[#0A0A0A] border-[#27272A] cursor-pointer hover:scale-[1.02] transition-all ${selectedNotebook?.notebook_id === nb.notebook_id ? 'ring-2 ring-[#007AFF]' : ''}`} onClick={() => navigateToNotebook(nb)}>
                         <CardHeader className="pb-2">
                           <div className="flex items-start justify-between">
                             <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full" style={{ backgroundColor: nb.color }} /><CardTitle className="text-base">{nb.name}</CardTitle></div>
@@ -1883,7 +1883,7 @@ export default function Studies() {
                           {nb.description && <CardDescription className="text-xs">{nb.description}</CardDescription>}
                         </CardHeader>
                         <CardContent className="pt-0">
-                          <div className="flex items-center gap-3 text-xs text-[#888888]">
+                          <div className="flex items-center gap-3 text-xs text-[#A1A1AA]">
                             <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{Math.round((nb.total_study_time_minutes || 0) / 60)}h</span>
                             <span className="flex items-center gap-1"><Hash className="w-3 h-3" />{nb.total_questions || 0}q</span>
                             {pct > 0 && <span className={`font-medium ${pct >= 70 ? 'text-green-400' : pct >= 50 ? 'text-yellow-400' : 'text-red-400'}`}>{pct}%</span>}
@@ -1895,11 +1895,11 @@ export default function Studies() {
                 </div>
 
                 {programNotebooks.length === 0 && (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]"><CardContent className="text-center py-10"><BookOpen className="w-10 h-10 mx-auto text-[#888888] mb-3" /><h3 className="font-medium mb-1">Nenhuma matéria ainda</h3><p className="text-sm text-[#888888]">Adicione matérias a este programa</p></CardContent></Card>
+                  <Card className="bg-[#0A0A0A] border-[#27272A]"><CardContent className="text-center py-10"><BookOpen className="w-10 h-10 mx-auto text-[#A1A1AA] mb-3" /><h3 className="font-medium mb-1">Nenhuma matéria ainda</h3><p className="text-sm text-[#A1A1AA]">Adicione matérias a este programa</p></CardContent></Card>
                 )}
               </>
             ) : (
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a]"><CardContent className="text-center py-10"><FolderOpen className="w-10 h-10 mx-auto text-[#888888] mb-3" /><h3 className="font-medium mb-1">Selecione um Programa</h3><p className="text-sm text-[#888888]">Vá até a aba "Programas" e selecione um</p></CardContent></Card>
+              <Card className="bg-[#0A0A0A] border-[#27272A]"><CardContent className="text-center py-10"><FolderOpen className="w-10 h-10 mx-auto text-[#A1A1AA] mb-3" /><h3 className="font-medium mb-1">Selecione um Programa</h3><p className="text-sm text-[#A1A1AA]">Vá até a aba "Programas" e selecione um</p></CardContent></Card>
             )}
           </TabsContent>
 
@@ -1918,34 +1918,34 @@ export default function Studies() {
                   <div className="flex gap-2 flex-wrap">
                     <Dialog open={showNoteDialog} onOpenChange={setShowNoteDialog}>
                       <DialogTrigger asChild><Button size="sm" variant="outline" className="h-8 text-xs"><PenTool className="w-3 h-3 mr-1" />Nota</Button></DialogTrigger>
-                      <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] max-w-2xl max-h-[90vh] overflow-y-auto">
+                      <DialogContent className="bg-[#0A0A0A] border-[#27272A] max-w-2xl max-h-[90vh] overflow-y-auto">
                         <DialogHeader><DialogTitle>Nova Nota</DialogTitle></DialogHeader>
                         <div className="space-y-4 py-4">
-                          <div><Label>Título</Label><Input value={noteForm.title} onChange={e => setNoteForm({...noteForm, title: e.target.value})} placeholder="Título" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
-                          <div><Label>Conteúdo</Label><Textarea value={noteForm.content} onChange={e => setNoteForm({...noteForm, content: e.target.value})} placeholder="Escreva..." className="bg-[#1a1a1a] border-[#2a2a2a] min-h-[150px]" /></div>
+                          <div><Label>Título</Label><Input value={noteForm.title} onChange={e => setNoteForm({...noteForm, title: e.target.value})} placeholder="Título" className="bg-[#121212] border-[#27272A]" /></div>
+                          <div><Label>Conteúdo</Label><Textarea value={noteForm.content} onChange={e => setNoteForm({...noteForm, content: e.target.value})} placeholder="Escreva..." className="bg-[#121212] border-[#27272A] min-h-[150px]" /></div>
                           <div>
                             <Label>Tags</Label>
-                            <div className="flex gap-2 mb-2"><Input value={newTag} onChange={e => setNewTag(e.target.value)} placeholder="Tag" className="bg-[#1a1a1a] border-[#2a2a2a]" /><Button onClick={() => addTag(setNoteForm, noteForm.tags)} variant="outline"><Plus className="w-4 h-4" /></Button></div>
+                            <div className="flex gap-2 mb-2"><Input value={newTag} onChange={e => setNewTag(e.target.value)} placeholder="Tag" className="bg-[#121212] border-[#27272A]" /><Button onClick={() => addTag(setNoteForm, noteForm.tags)} variant="outline"><Plus className="w-4 h-4" /></Button></div>
                             <div className="flex flex-wrap gap-1">{noteForm.tags.map((tag, i) => <Badge key={i} variant="secondary" className="cursor-pointer" onClick={() => removeTag(setNoteForm, tag)}>{tag} ×</Badge>)}</div>
                           </div>
                           <div>
                             <Label>Links</Label>
-                            <div className="flex gap-2 mb-2"><Input value={newLink.title} onChange={e => setNewLink({...newLink, title: e.target.value})} placeholder="Título" className="bg-[#1a1a1a] border-[#2a2a2a] flex-1" /><Input value={newLink.url} onChange={e => setNewLink({...newLink, url: e.target.value})} placeholder="URL" className="bg-[#1a1a1a] border-[#2a2a2a] flex-1" /><Button onClick={addLink} variant="outline"><Plus className="w-4 h-4" /></Button></div>
-                            {noteForm.links.map((lnk, i) => <div key={i} className="flex items-center gap-2 bg-[#1a1a1a] p-2 rounded text-sm"><Link className="w-3 h-3 text-[#00c896]" />{lnk.title}<Button variant="ghost" size="icon" className="h-5 w-5 ml-auto" onClick={() => setNoteForm(prev => ({ ...prev, links: prev.links.filter((_, j) => j !== i) }))}><Trash2 className="w-3 h-3 text-red-500" /></Button></div>)}
+                            <div className="flex gap-2 mb-2"><Input value={newLink.title} onChange={e => setNewLink({...newLink, title: e.target.value})} placeholder="Título" className="bg-[#121212] border-[#27272A] flex-1" /><Input value={newLink.url} onChange={e => setNewLink({...newLink, url: e.target.value})} placeholder="URL" className="bg-[#121212] border-[#27272A] flex-1" /><Button onClick={addLink} variant="outline"><Plus className="w-4 h-4" /></Button></div>
+                            {noteForm.links.map((lnk, i) => <div key={i} className="flex items-center gap-2 bg-[#121212] p-2 rounded text-sm"><Link className="w-3 h-3 text-[#007AFF]" />{lnk.title}<Button variant="ghost" size="icon" className="h-5 w-5 ml-auto" onClick={() => setNoteForm(prev => ({ ...prev, links: prev.links.filter((_, j) => j !== i) }))}><Trash2 className="w-3 h-3 text-red-500" /></Button></div>)}
                           </div>
-                          <Button onClick={handleCreateNote} className="w-full bg-[#00c896]">Salvar Nota</Button>
+                          <Button onClick={handleCreateNote} className="w-full bg-[#007AFF]">Salvar Nota</Button>
                         </div>
                       </DialogContent>
                     </Dialog>
                     <Dialog open={showFlashcardDialog} onOpenChange={setShowFlashcardDialog}>
                       <DialogTrigger asChild><Button size="sm" variant="outline" className="h-8 text-xs"><Brain className="w-3 h-3 mr-1" />Flashcard</Button></DialogTrigger>
-                      <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a]">
+                      <DialogContent className="bg-[#0A0A0A] border-[#27272A]">
                         <DialogHeader><DialogTitle>Novo Flashcard</DialogTitle></DialogHeader>
                         <div className="space-y-4 py-4">
-                          <div><Label>Deck</Label><Input value={flashcardForm.deck_name} onChange={e => setFlashcardForm({...flashcardForm, deck_name: e.target.value})} placeholder="Nome do deck" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
-                          <div><Label>Frente (Pergunta)</Label><Textarea value={flashcardForm.front} onChange={e => setFlashcardForm({...flashcardForm, front: e.target.value})} placeholder="Pergunta" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
-                          <div><Label>Verso (Resposta)</Label><Textarea value={flashcardForm.back} onChange={e => setFlashcardForm({...flashcardForm, back: e.target.value})} placeholder="Resposta" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
-                          <Button onClick={handleCreateFlashcard} className="w-full bg-[#00c896]">Criar</Button>
+                          <div><Label>Deck</Label><Input value={flashcardForm.deck_name} onChange={e => setFlashcardForm({...flashcardForm, deck_name: e.target.value})} placeholder="Nome do deck" className="bg-[#121212] border-[#27272A]" /></div>
+                          <div><Label>Frente (Pergunta)</Label><Textarea value={flashcardForm.front} onChange={e => setFlashcardForm({...flashcardForm, front: e.target.value})} placeholder="Pergunta" className="bg-[#121212] border-[#27272A]" /></div>
+                          <div><Label>Verso (Resposta)</Label><Textarea value={flashcardForm.back} onChange={e => setFlashcardForm({...flashcardForm, back: e.target.value})} placeholder="Resposta" className="bg-[#121212] border-[#27272A]" /></div>
+                          <Button onClick={handleCreateFlashcard} className="w-full bg-[#007AFF]">Criar</Button>
                         </div>
                       </DialogContent>
                     </Dialog>
@@ -1958,7 +1958,7 @@ export default function Studies() {
                     </Button>
                     <Dialog open={showContentPdfDialog} onOpenChange={(open) => { setShowContentPdfDialog(open); if (!open) { setContentPdfResult(null); setContentPdfFile(null); } }}>
                       <DialogTrigger asChild><Button size="sm" variant="outline" className="h-8 text-xs border-orange-500/30 text-orange-400 hover:bg-orange-500/10"><Upload className="w-3 h-3 mr-1" />PDF → Estudo</Button></DialogTrigger>
-                      <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] max-w-lg max-h-[90vh] overflow-y-auto">
+                      <DialogContent className="bg-[#0A0A0A] border-[#27272A] max-w-lg max-h-[90vh] overflow-y-auto">
                         <DialogHeader>
                           <DialogTitle className="flex items-center gap-2"><Sparkles className="w-5 h-5 text-orange-400" />Analisar Conteúdo PDF</DialogTitle>
                           <DialogDescription>Envie um PDF de conteúdo e a IA gerará materiais de estudo automaticamente</DialogDescription>
@@ -1967,35 +1967,35 @@ export default function Studies() {
                           <div>
                             <Label>Arquivo PDF *</Label>
                             <Input type="file" accept=".pdf" onChange={e => setContentPdfFile(e.target.files[0])}
-                              className="bg-[#1a1a1a] border-[#2a2a2a] file:bg-orange-500 file:text-white file:border-0 file:rounded file:px-3 file:py-1 file:mr-3 file:cursor-pointer" />
+                              className="bg-[#121212] border-[#27272A] file:bg-orange-500 file:text-white file:border-0 file:rounded file:px-3 file:py-1 file:mr-3 file:cursor-pointer" />
                           </div>
                           <div className="space-y-3">
                             <Label className="text-sm font-medium">O que gerar:</Label>
                             <div className="grid grid-cols-1 gap-2">
-                              <label className="flex items-center gap-3 p-3 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] cursor-pointer hover:border-[#333333]">
+                              <label className="flex items-center gap-3 p-3 rounded-lg bg-[#121212] border border-[#27272A] cursor-pointer hover:border-[#3F3F46]">
                                 <input type="checkbox" checked={contentPdfOptions.generate_notes} onChange={e => setContentPdfOptions({...contentPdfOptions, generate_notes: e.target.checked})} className="rounded" />
                                 <FileText className="w-4 h-4 text-blue-400" />
-                                <div><p className="text-sm font-medium">Revisão / Resumo</p><p className="text-xs text-[#888888]">Resumo completo com pontos-chave</p></div>
+                                <div><p className="text-sm font-medium">Revisão / Resumo</p><p className="text-xs text-[#A1A1AA]">Resumo completo com pontos-chave</p></div>
                               </label>
-                              <label className="flex items-center gap-3 p-3 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] cursor-pointer hover:border-[#333333]">
+                              <label className="flex items-center gap-3 p-3 rounded-lg bg-[#121212] border border-[#27272A] cursor-pointer hover:border-[#3F3F46]">
                                 <input type="checkbox" checked={contentPdfOptions.generate_flashcards} onChange={e => setContentPdfOptions({...contentPdfOptions, generate_flashcards: e.target.checked})} className="rounded" />
                                 <Brain className="w-4 h-4 text-yellow-400" />
                                 <div className="flex-1">
                                   <p className="text-sm font-medium">Flashcards</p>
-                                  <p className="text-xs text-[#888888]">Cartões de memorização</p>
+                                  <p className="text-xs text-[#A1A1AA]">Cartões de memorização</p>
                                 </div>
                                 <Input type="number" min={1} max={50} value={contentPdfOptions.num_flashcards} onChange={e => setContentPdfOptions({...contentPdfOptions, num_flashcards: parseInt(e.target.value) || 5})}
-                                  className="w-16 h-7 text-xs bg-[#0d0d0d] border-[#2a2a2a]" />
+                                  className="w-16 h-7 text-xs bg-[#0A0A0A] border-[#27272A]" />
                               </label>
-                              <label className="flex items-center gap-3 p-3 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] cursor-pointer hover:border-[#333333]">
+                              <label className="flex items-center gap-3 p-3 rounded-lg bg-[#121212] border border-[#27272A] cursor-pointer hover:border-[#3F3F46]">
                                 <input type="checkbox" checked={contentPdfOptions.generate_quiz} onChange={e => setContentPdfOptions({...contentPdfOptions, generate_quiz: e.target.checked})} className="rounded" />
                                 <ListChecks className="w-4 h-4 text-purple-400" />
                                 <div className="flex-1">
                                   <p className="text-sm font-medium">Quiz</p>
-                                  <p className="text-xs text-[#888888]">Questões sobre o conteúdo</p>
+                                  <p className="text-xs text-[#A1A1AA]">Questões sobre o conteúdo</p>
                                 </div>
                                 <Input type="number" min={1} max={30} value={contentPdfOptions.num_quiz_questions} onChange={e => setContentPdfOptions({...contentPdfOptions, num_quiz_questions: parseInt(e.target.value) || 5})}
-                                  className="w-16 h-7 text-xs bg-[#0d0d0d] border-[#2a2a2a]" />
+                                  className="w-16 h-7 text-xs bg-[#0A0A0A] border-[#27272A]" />
                               </label>
                             </div>
                           </div>
@@ -2005,7 +2005,7 @@ export default function Studies() {
                           {contentPdfResult && (
                             <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4">
                               <p className="text-green-400 font-medium text-sm mb-2 flex items-center gap-1"><CheckCircle2 className="w-4 h-4" />Conteúdo processado!</p>
-                              <div className="space-y-1 text-xs text-[#888888]">
+                              <div className="space-y-1 text-xs text-[#A1A1AA]">
                                 {contentPdfResult.note && <p>✅ Revisão criada: {contentPdfResult.note.title}</p>}
                                 {contentPdfResult.flashcards_count && <p>✅ {contentPdfResult.flashcards_count} flashcards gerados</p>}
                                 {contentPdfResult.quiz && <p>✅ Quiz criado: {contentPdfResult.quiz.title}</p>}
@@ -2018,11 +2018,11 @@ export default function Studies() {
                     </Dialog>
                     <Dialog open={showSessionDialog} onOpenChange={setShowSessionDialog}>
                       <DialogTrigger asChild><Button size="sm" className="bg-green-600 h-8 text-xs"><Timer className="w-3 h-3 mr-1" />Sessão</Button></DialogTrigger>
-                      <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a]">
+                      <DialogContent className="bg-[#0A0A0A] border-[#27272A]">
                         <DialogHeader><DialogTitle>Registrar Sessão</DialogTitle></DialogHeader>
                         <div className="space-y-4 py-4">
-                          <div><Label>Duração (min)</Label><Input type="number" value={sessionForm.duration_minutes} onChange={e => setSessionForm({...sessionForm, duration_minutes: Number(e.target.value)})} className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
-                          <div><Label>Notas</Label><Textarea value={sessionForm.notes} onChange={e => setSessionForm({...sessionForm, notes: e.target.value})} placeholder="O que estudou?" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
+                          <div><Label>Duração (min)</Label><Input type="number" value={sessionForm.duration_minutes} onChange={e => setSessionForm({...sessionForm, duration_minutes: Number(e.target.value)})} className="bg-[#121212] border-[#27272A]" /></div>
+                          <div><Label>Notas</Label><Textarea value={sessionForm.notes} onChange={e => setSessionForm({...sessionForm, notes: e.target.value})} placeholder="O que estudou?" className="bg-[#121212] border-[#27272A]" /></div>
                           <Button onClick={handleLogSession} className="w-full bg-green-600">Registrar (+XP)</Button>
                         </div>
                       </DialogContent>
@@ -2032,7 +2032,7 @@ export default function Studies() {
 
                 {/* Conteúdo Programático with Progress Tracking */}
                 {selectedNotebook?.conteudo_programatico?.length > 0 && (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-sm flex items-center gap-2">
                         <BookOpen className="w-4 h-4 text-purple-400" />Conteúdo Programático
@@ -2047,11 +2047,11 @@ export default function Studies() {
                           const topicKey = String(idx);
                           const tp = topicProgress[topicKey] || {};
                           return (
-                            <div key={idx} className="border border-[#2a2a2a] rounded-lg overflow-hidden">
-                              <div className="flex items-center gap-2 px-3 py-2 bg-[#1a1a1a]">
+                            <div key={idx} className="border border-[#27272A] rounded-lg overflow-hidden">
+                              <div className="flex items-center gap-2 px-3 py-2 bg-[#121212]">
                                 <button
                                   onClick={() => toggleTopicProgress(topicKey, 'studied')}
-                                  className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-colors ${tp.studied ? 'bg-green-500 border-green-500' : 'border-[#555555] hover:border-green-500'}`}
+                                  className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-colors ${tp.studied ? 'bg-green-500 border-green-500' : 'border-[#52525B] hover:border-green-500'}`}
                                 >
                                   {tp.studied && <CheckCircle2 className="w-3 h-3 text-white" />}
                                 </button>
@@ -2060,17 +2060,17 @@ export default function Studies() {
                                   <button
                                     onClick={() => toggleTopicProgress(topicKey, 'reviewed')}
                                     title="Revisado"
-                                    className={`px-1.5 py-0.5 rounded text-[9px] border transition-colors ${tp.reviewed ? 'bg-blue-500/20 border-blue-500 text-blue-400' : 'border-[#333333] text-[#888888] hover:border-blue-500'}`}
+                                    className={`px-1.5 py-0.5 rounded text-[9px] border transition-colors ${tp.reviewed ? 'bg-blue-500/20 border-blue-500 text-blue-400' : 'border-[#3F3F46] text-[#71717A] hover:border-blue-500'}`}
                                   >🔄</button>
                                   <button
                                     onClick={() => toggleTopicProgress(topicKey, 'mastered')}
                                     title="Dominado"
-                                    className={`px-1.5 py-0.5 rounded text-[9px] border transition-colors ${tp.mastered ? 'bg-yellow-500/20 border-yellow-500 text-yellow-400' : 'border-[#333333] text-[#888888] hover:border-yellow-500'}`}
+                                    className={`px-1.5 py-0.5 rounded text-[9px] border transition-colors ${tp.mastered ? 'bg-yellow-500/20 border-yellow-500 text-yellow-400' : 'border-[#3F3F46] text-[#71717A] hover:border-yellow-500'}`}
                                   >⭐</button>
                                 </div>
                               </div>
                               {item.subtopicos?.length > 0 && (
-                                <div className="px-3 py-2 space-y-1.5 bg-[#0d0d0d]">
+                                <div className="px-3 py-2 space-y-1.5 bg-[#0A0A0A]">
                                   {item.subtopicos.map((sub, si) => {
                                     const subKey = `${idx}_${si}`;
                                     const stp = topicProgress[subKey] || {};
@@ -2078,15 +2078,15 @@ export default function Studies() {
                                       <div key={si} className="flex items-center gap-2 ml-4">
                                         <button
                                           onClick={() => toggleTopicProgress(subKey, 'studied')}
-                                          className={`w-4 h-4 rounded border flex items-center justify-center flex-shrink-0 transition-colors ${stp.studied ? 'bg-green-500 border-green-500' : 'border-[#555555] hover:border-green-500'}`}
+                                          className={`w-4 h-4 rounded border flex items-center justify-center flex-shrink-0 transition-colors ${stp.studied ? 'bg-green-500 border-green-500' : 'border-[#52525B] hover:border-green-500'}`}
                                         >
                                           {stp.studied && <CheckCircle2 className="w-2.5 h-2.5 text-white" />}
                                         </button>
-                                        <span className={`text-[11px] flex-1 ${stp.studied ? 'text-green-400/70 line-through' : 'text-[#888888]'}`}>{sub}</span>
+                                        <span className={`text-[11px] flex-1 ${stp.studied ? 'text-green-400/70 line-through' : 'text-[#A1A1AA]'}`}>{sub}</span>
                                         <div className="flex gap-0.5">
                                           <button
                                             onClick={() => toggleTopicProgress(subKey, 'reviewed')}
-                                            className={`px-1 py-0.5 rounded text-[8px] border ${stp.reviewed ? 'bg-blue-500/20 border-blue-500 text-blue-400' : 'border-[#2a2a2a] text-[#555555]'}`}
+                                            className={`px-1 py-0.5 rounded text-[8px] border ${stp.reviewed ? 'bg-blue-500/20 border-blue-500 text-blue-400' : 'border-[#27272A] text-[#52525B]'}`}
                                           >🔄</button>
                                         </div>
                                       </div>
@@ -2099,7 +2099,7 @@ export default function Studies() {
                         })}
                       </div>
                       {/* Quick Action Buttons for Content */}
-                      <div className="flex flex-wrap gap-2 mt-4 pt-3 border-t border-[#2a2a2a]">
+                      <div className="flex flex-wrap gap-2 mt-4 pt-3 border-t border-[#27272A]">
                         <Button size="sm" onClick={handleGenerateQuiz} className="bg-purple-600 h-7 text-[10px]" disabled={generatingQuiz}>
                           {generatingQuiz ? <Loader2 className="w-3 h-3 animate-spin" /> : <><Sparkles className="w-3 h-3 mr-1" />Gerar Questões</>}
                         </Button>
@@ -2125,13 +2125,13 @@ export default function Studies() {
                 )}
 
                 {/* Notes */}
-                <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+                <Card className="bg-[#0A0A0A] border-[#27272A]">
                   <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><PenTool className="w-4 h-4 text-blue-400" />Notas ({notes.length})</CardTitle></CardHeader>
                   <CardContent>
-                    {notes.length === 0 ? <p className="text-center text-[#888888] py-6 text-sm">Nenhuma nota. Crie a primeira!</p> : (
+                    {notes.length === 0 ? <p className="text-center text-[#A1A1AA] py-6 text-sm">Nenhuma nota. Crie a primeira!</p> : (
                       <div className="space-y-3">
                         {notes.map(note => (
-                          <div key={note.note_id} className="bg-[#1a1a1a] p-3 rounded-lg">
+                          <div key={note.note_id} className="bg-[#121212] p-3 rounded-lg">
                             <div className="flex items-start justify-between mb-1">
                               <h4 className="font-medium text-sm">{note.title}</h4>
                               <div className="flex gap-1">
@@ -2141,9 +2141,9 @@ export default function Studies() {
                                 <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => handleDeleteNote(note.note_id)}><Trash2 className="w-3 h-3 text-red-500" /></Button>
                               </div>
                             </div>
-                            <p className="text-xs text-[#888888] whitespace-pre-wrap line-clamp-3">{note.content}</p>
+                            <p className="text-xs text-[#A1A1AA] whitespace-pre-wrap line-clamp-3">{note.content}</p>
                             {note.tags?.length > 0 && <div className="flex flex-wrap gap-1 mt-2">{note.tags.map((t, i) => <Badge key={i} variant="outline" className="text-[10px] h-5">{t}</Badge>)}</div>}
-                            {note.links?.length > 0 && <div className="flex flex-wrap gap-2 mt-2">{note.links.map((lnk, i) => <a key={i} href={lnk.url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-[#00c896] hover:underline flex items-center gap-1"><Link className="w-3 h-3" />{lnk.title}</a>)}</div>}
+                            {note.links?.length > 0 && <div className="flex flex-wrap gap-2 mt-2">{note.links.map((lnk, i) => <a key={i} href={lnk.url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-[#007AFF] hover:underline flex items-center gap-1"><Link className="w-3 h-3" />{lnk.title}</a>)}</div>}
                           </div>
                         ))}
                       </div>
@@ -2153,17 +2153,17 @@ export default function Studies() {
 
                 {/* Flashcards */}
                 {flashcards.length > 0 && (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
                     <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><Brain className="w-4 h-4 text-yellow-400" />Flashcards ({flashcards.length})</CardTitle></CardHeader>
                     <CardContent>
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                         {flashcards.slice(0, 6).map(card => {
                           const isDue = card.next_review <= new Date().toISOString().split('T')[0];
                           return (
-                            <div key={card.flashcard_id} className={`bg-[#1a1a1a] p-3 rounded-lg text-sm ${isDue ? 'ring-1 ring-yellow-500/50' : ''}`}>
+                            <div key={card.flashcard_id} className={`bg-[#121212] p-3 rounded-lg text-sm ${isDue ? 'ring-1 ring-yellow-500/50' : ''}`}>
                               <div className="flex items-center justify-between mb-1"><Badge variant="outline" className="text-[10px]">{card.deck_name}</Badge>{isDue && <Badge className="bg-yellow-500/20 text-yellow-400 text-[10px]">Revisar</Badge>}</div>
                               <p className="font-medium line-clamp-1">{card.front}</p>
-                              <p className="text-xs text-[#888888] line-clamp-1 mt-1">{card.back}</p>
+                              <p className="text-xs text-[#A1A1AA] line-clamp-1 mt-1">{card.back}</p>
                             </div>
                           );
                         })}
@@ -2174,15 +2174,15 @@ export default function Studies() {
 
                 {/* Quizzes */}
                 {quizzes.length > 0 && (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
                     <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><FileText className="w-4 h-4 text-purple-400" />Quizzes ({quizzes.length})</CardTitle></CardHeader>
                     <CardContent>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {quizzes.map(quiz => (
-                          <div key={quiz.quiz_id} className="bg-[#1a1a1a] p-3 rounded-lg flex items-center justify-between">
+                          <div key={quiz.quiz_id} className="bg-[#121212] p-3 rounded-lg flex items-center justify-between">
                             <div>
                               <p className="text-sm font-medium">{quiz.title}</p>
-                              <p className="text-xs text-[#888888]">{quiz.questions?.length || 0} questões{quiz.ai_generated ? ' · IA' : ''}</p>
+                              <p className="text-xs text-[#A1A1AA]">{quiz.questions?.length || 0} questões{quiz.ai_generated ? ' · IA' : ''}</p>
                             </div>
                             <Button size="sm" onClick={() => startQuiz(quiz)} className="bg-purple-600 h-7 text-xs"><Play className="w-3 h-3 mr-1" />Iniciar</Button>
                           </div>
@@ -2194,26 +2194,26 @@ export default function Studies() {
 
                 {/* Review Dialog */}
                 <Dialog open={showReviewDialog} onOpenChange={setShowReviewDialog}>
-                  <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] max-w-lg">
+                  <DialogContent className="bg-[#0A0A0A] border-[#27272A] max-w-lg">
                     <DialogHeader><DialogTitle>Revisão Espaçada</DialogTitle><DialogDescription>Avalie sua lembrança</DialogDescription></DialogHeader>
                     {currentFlashcard && (
                       <div className="py-4">
-                        <Card className="bg-[#1a1a1a] border-[#2a2a2a] min-h-[180px] flex flex-col justify-center">
+                        <Card className="bg-[#121212] border-[#27272A] min-h-[180px] flex flex-col justify-center">
                           <CardContent className="p-6 text-center">
                             <p className="text-lg">{currentFlashcard.front}</p>
-                            {showAnswer && <div className="mt-4 pt-4 border-t border-[#2a2a2a]"><p className="text-[#00c896]">{currentFlashcard.back}</p></div>}
+                            {showAnswer && <div className="mt-4 pt-4 border-t border-[#27272A]"><p className="text-[#00F0FF]">{currentFlashcard.back}</p></div>}
                           </CardContent>
                         </Card>
                         {!showAnswer ? (
-                          <Button onClick={() => setShowAnswer(true)} className="w-full mt-4 bg-[#00c896]">Mostrar Resposta</Button>
+                          <Button onClick={() => setShowAnswer(true)} className="w-full mt-4 bg-[#007AFF]">Mostrar Resposta</Button>
                         ) : (
                           <div className="mt-4 space-y-2">
-                            <p className="text-center text-xs text-[#888888]">Como foi?</p>
+                            <p className="text-center text-xs text-[#A1A1AA]">Como foi?</p>
                             <div className="grid grid-cols-4 gap-2">
                               <Button onClick={() => handleReviewFlashcard(0)} variant="outline" className="border-red-500 text-red-500 text-xs">Esqueci</Button>
                               <Button onClick={() => handleReviewFlashcard(2)} variant="outline" className="border-yellow-500 text-yellow-500 text-xs">Difícil</Button>
                               <Button onClick={() => handleReviewFlashcard(4)} variant="outline" className="border-green-500 text-green-500 text-xs">Bom</Button>
-                              <Button onClick={() => handleReviewFlashcard(5)} variant="outline" className="border-[#00c896] text-[#00c896] text-xs">Fácil</Button>
+                              <Button onClick={() => handleReviewFlashcard(5)} variant="outline" className="border-[#00F0FF] text-[#00F0FF] text-xs">Fácil</Button>
                             </div>
                           </div>
                         )}
@@ -2224,18 +2224,18 @@ export default function Studies() {
 
                 {/* Quiz Dialog */}
                 <Dialog open={showQuizDialog} onOpenChange={setShowQuizDialog}>
-                  <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] max-w-2xl max-h-[90vh] overflow-y-auto">
+                  <DialogContent className="bg-[#0A0A0A] border-[#27272A] max-w-2xl max-h-[90vh] overflow-y-auto">
                     <DialogHeader><DialogTitle>{currentQuiz?.title}</DialogTitle></DialogHeader>
                     {currentQuiz && !quizResult && (
                       <div className="py-4 space-y-4">
                         {currentQuiz.questions?.map((q, idx) => (
-                          <div key={idx} className="bg-[#1a1a1a] p-4 rounded-lg">
+                          <div key={idx} className="bg-[#121212] p-4 rounded-lg">
                             <p className="font-medium mb-2 text-sm">{idx + 1}. {q.question}</p>
                             <div className="space-y-2">
                               {q.options?.map((option, oi) => {
                                 const letter = option.charAt(0);
                                 const isSel = quizAnswers.find(a => a.question_idx === idx)?.selected_answer === letter;
-                                return <button key={oi} onClick={() => handleQuizAnswer(idx, letter)} className={`w-full text-left p-2 rounded-lg text-sm transition-all ${isSel ? 'bg-[#00c896] text-white' : 'bg-[#0d0d0d] hover:bg-[#2a2a2a]'}`}>{option}</button>;
+                                return <button key={oi} onClick={() => handleQuizAnswer(idx, letter)} className={`w-full text-left p-2 rounded-lg text-sm transition-all ${isSel ? 'bg-[#007AFF] text-white' : 'bg-[#0A0A0A] hover:bg-[#27272A]'}`}>{option}</button>;
                               })}
                             </div>
                           </div>
@@ -2246,15 +2246,15 @@ export default function Studies() {
                     {quizResult && (
                       <div className="py-4 space-y-4">
                         <div className="text-center">
-                          <div className="text-4xl font-bold text-[#00c896] mb-1">{(quizResult.score ?? 0).toFixed(0)}%</div>
-                          <p className="text-[#888888] text-sm">{quizResult.correct_count ?? 0}/{quizResult.total_questions ?? 0} · +{quizResult.xp_earned ?? 0} XP</p>
+                          <div className="text-4xl font-bold text-[#00F0FF] mb-1">{(quizResult.score ?? 0).toFixed(0)}%</div>
+                          <p className="text-[#A1A1AA] text-sm">{quizResult.correct_count ?? 0}/{quizResult.total_questions ?? 0} · +{quizResult.xp_earned ?? 0} XP</p>
                         </div>
                         <div className="space-y-3">
                           {quizResult.answers?.map((ans, idx) => (
                             <div key={idx} className={`p-3 rounded-lg text-sm ${ans.correct ? 'bg-green-500/10 border border-green-500/30' : 'bg-red-500/10 border border-red-500/30'}`}>
                               <div className="flex items-center gap-2 mb-1">{ans.correct ? <CheckCircle2 className="w-4 h-4 text-green-500" /> : <XCircle className="w-4 h-4 text-red-500" />}<span className="font-medium">Questão {idx + 1}</span></div>
-                              {!ans.correct && <p className="text-xs text-[#888888]">Correta: {ans.correct_answer}</p>}
-                              {ans.explanation && <p className="text-xs text-[#888888] mt-1">{ans.explanation}</p>}
+                              {!ans.correct && <p className="text-xs text-[#A1A1AA]">Correta: {ans.correct_answer}</p>}
+                              {ans.explanation && <p className="text-xs text-[#A1A1AA] mt-1">{ans.explanation}</p>}
                             </div>
                           ))}
                         </div>
@@ -2265,7 +2265,7 @@ export default function Studies() {
                 </Dialog>
               </>
             ) : (
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a]"><CardContent className="text-center py-10"><BookMarked className="w-10 h-10 mx-auto text-[#888888] mb-3" /><h3 className="font-medium mb-1">Selecione uma Matéria</h3><p className="text-sm text-[#888888]">Navegue pelas áreas e programas para acessar uma matéria</p></CardContent></Card>
+              <Card className="bg-[#0A0A0A] border-[#27272A]"><CardContent className="text-center py-10"><BookMarked className="w-10 h-10 mx-auto text-[#A1A1AA] mb-3" /><h3 className="font-medium mb-1">Selecione uma Matéria</h3><p className="text-sm text-[#A1A1AA]">Navegue pelas áreas e programas para acessar uma matéria</p></CardContent></Card>
             )}
           </TabsContent>
 
@@ -2274,42 +2274,42 @@ export default function Studies() {
             <div className="flex justify-between items-center">
               <h2 className="text-lg font-bold">Tarefas de Estudo</h2>
               <Dialog open={showTaskDialog} onOpenChange={setShowTaskDialog}>
-                <DialogTrigger asChild><Button size="sm" className="bg-[#00c896] h-8 text-xs"><Plus className="w-3 h-3 mr-1" />Nova Tarefa</Button></DialogTrigger>
-                <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a]">
+                <DialogTrigger asChild><Button size="sm" className="bg-[#007AFF] h-8 text-xs"><Plus className="w-3 h-3 mr-1" />Nova Tarefa</Button></DialogTrigger>
+                <DialogContent className="bg-[#0A0A0A] border-[#27272A]">
                   <DialogHeader><DialogTitle>Nova Tarefa</DialogTitle></DialogHeader>
                   <div className="space-y-4 py-4">
-                    <div><Label>Título</Label><Input value={taskForm.title} onChange={e => setTaskForm({...taskForm, title: e.target.value})} placeholder="Ex: Ler capítulo 5" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
-                    <div><Label>Descrição</Label><Textarea value={taskForm.description} onChange={e => setTaskForm({...taskForm, description: e.target.value})} placeholder="Detalhes" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
+                    <div><Label>Título</Label><Input value={taskForm.title} onChange={e => setTaskForm({...taskForm, title: e.target.value})} placeholder="Ex: Ler capítulo 5" className="bg-[#121212] border-[#27272A]" /></div>
+                    <div><Label>Descrição</Label><Textarea value={taskForm.description} onChange={e => setTaskForm({...taskForm, description: e.target.value})} placeholder="Detalhes" className="bg-[#121212] border-[#27272A]" /></div>
                     <div className="grid grid-cols-2 gap-3">
                       <div><Label>Tipo</Label>
-                        <Select value={taskForm.task_type} onValueChange={v => setTaskForm({...taskForm, task_type: v})}><SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a]"><SelectValue /></SelectTrigger><SelectContent>{Object.entries(taskTypeLabels).map(([k, v]) => <SelectItem key={k} value={k}>{v}</SelectItem>)}</SelectContent></Select>
+                        <Select value={taskForm.task_type} onValueChange={v => setTaskForm({...taskForm, task_type: v})}><SelectTrigger className="bg-[#121212] border-[#27272A]"><SelectValue /></SelectTrigger><SelectContent>{Object.entries(taskTypeLabels).map(([k, v]) => <SelectItem key={k} value={k}>{v}</SelectItem>)}</SelectContent></Select>
                       </div>
                       <div><Label>Prioridade</Label>
-                        <Select value={taskForm.priority} onValueChange={v => setTaskForm({...taskForm, priority: v})}><SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a]"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="low">Baixa</SelectItem><SelectItem value="medium">Média</SelectItem><SelectItem value="high">Alta</SelectItem></SelectContent></Select>
+                        <Select value={taskForm.priority} onValueChange={v => setTaskForm({...taskForm, priority: v})}><SelectTrigger className="bg-[#121212] border-[#27272A]"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="low">Baixa</SelectItem><SelectItem value="medium">Média</SelectItem><SelectItem value="high">Alta</SelectItem></SelectContent></Select>
                       </div>
                     </div>
                     <div className="grid grid-cols-2 gap-3">
                       <div><Label>Recorrência</Label>
-                        <Select value={taskForm.recurrence} onValueChange={v => setTaskForm({...taskForm, recurrence: v})}><SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a]"><SelectValue /></SelectTrigger><SelectContent>{Object.entries(recurrenceLabels).map(([k, v]) => <SelectItem key={k} value={k}>{v}</SelectItem>)}</SelectContent></Select>
+                        <Select value={taskForm.recurrence} onValueChange={v => setTaskForm({...taskForm, recurrence: v})}><SelectTrigger className="bg-[#121212] border-[#27272A]"><SelectValue /></SelectTrigger><SelectContent>{Object.entries(recurrenceLabels).map(([k, v]) => <SelectItem key={k} value={k}>{v}</SelectItem>)}</SelectContent></Select>
                       </div>
-                      <div><Label>Prazo</Label><Input type="date" value={taskForm.deadline} onChange={e => setTaskForm({...taskForm, deadline: e.target.value})} className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
+                      <div><Label>Prazo</Label><Input type="date" value={taskForm.deadline} onChange={e => setTaskForm({...taskForm, deadline: e.target.value})} className="bg-[#121212] border-[#27272A]" /></div>
                     </div>
-                    <Button onClick={handleCreateTask} className="w-full bg-[#00c896]">Criar</Button>
+                    <Button onClick={handleCreateTask} className="w-full bg-[#007AFF]">Criar</Button>
                   </div>
                 </DialogContent>
               </Dialog>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+              <Card className="bg-[#0A0A0A] border-[#27272A]">
                 <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><AlertCircle className="w-4 h-4 text-yellow-500" />Pendentes ({tasks.filter(t => !t.completed_today).length})</CardTitle></CardHeader>
                 <CardContent>
                   <div className="space-y-2">
                     {tasks.filter(t => !t.completed_today).map(task => (
-                      <div key={task.task_id} className="bg-[#1a1a1a] p-3 rounded-lg">
+                      <div key={task.task_id} className="bg-[#121212] p-3 rounded-lg">
                         <div className="flex items-start justify-between">
                           <div className="flex items-start gap-2">
-                            <button onClick={() => handleToggleTask(task.task_id, true)} className="mt-0.5 w-4 h-4 rounded border-2 border-[#2a2a2a] hover:border-green-500 shrink-0" />
+                            <button onClick={() => handleToggleTask(task.task_id, true)} className="mt-0.5 w-4 h-4 rounded border-2 border-[#27272A] hover:border-green-500 shrink-0" />
                             <div>
                               <h4 className="text-sm font-medium">{task.title}</h4>
                               <div className="flex flex-wrap gap-1 mt-1">
@@ -2324,24 +2324,24 @@ export default function Studies() {
                         </div>
                       </div>
                     ))}
-                    {tasks.filter(t => !t.completed_today).length === 0 && <p className="text-center text-[#888888] py-6 text-sm">Nenhuma tarefa pendente 🎉</p>}
+                    {tasks.filter(t => !t.completed_today).length === 0 && <p className="text-center text-[#A1A1AA] py-6 text-sm">Nenhuma tarefa pendente 🎉</p>}
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+              <Card className="bg-[#0A0A0A] border-[#27272A]">
                 <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" />Concluídas ({tasks.filter(t => t.completed_today).length})</CardTitle></CardHeader>
                 <CardContent>
                   <div className="space-y-2">
                     {tasks.filter(t => t.completed_today).slice(0, 10).map(task => (
-                      <div key={task.task_id} className="bg-[#1a1a1a] p-3 rounded-lg opacity-60">
+                      <div key={task.task_id} className="bg-[#121212] p-3 rounded-lg opacity-60">
                         <div className="flex items-center gap-2">
                           <button onClick={() => task.recurrence === 'once' ? handleToggleTask(task.task_id, false) : null} className={`w-4 h-4 rounded border-2 border-green-500 bg-green-500 flex items-center justify-center shrink-0 ${task.recurrence !== 'once' ? 'cursor-default' : ''}`}><CheckCircle2 className="w-2 h-2 text-white" /></button>
                           <span className={`text-sm ${task.recurrence === 'once' ? 'line-through' : ''}`}>{task.title}</span>
                         </div>
                       </div>
                     ))}
-                    {tasks.filter(t => t.completed_today).length === 0 && <p className="text-center text-[#888888] py-6 text-sm">Nenhuma concluída hoje</p>}
+                    {tasks.filter(t => t.completed_today).length === 0 && <p className="text-center text-[#A1A1AA] py-6 text-sm">Nenhuma concluída hoje</p>}
                   </div>
                 </CardContent>
               </Card>
@@ -2361,7 +2361,7 @@ export default function Studies() {
                     </Button>
                     <div>
                       <h3 className="text-lg font-bold">{currentSimulado.title}</h3>
-                      <p className="text-xs text-[#888888]">
+                      <p className="text-xs text-[#A1A1AA]">
                         {currentSimulado.banca && <span className="mr-2">{currentSimulado.banca}</span>}
                         {currentSimulado.disciplina && <span className="mr-2">• {currentSimulado.disciplina}</span>}
                         Questão {simuladoCurrentQ + 1} de {currentSimulado.questions?.length || 0}
@@ -2369,7 +2369,7 @@ export default function Studies() {
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Badge variant="outline" className="text-[#00c896] border-[#00c896] font-mono text-base px-3 py-1">
+                    <Badge variant="outline" className="text-[#00F0FF] border-[#00F0FF] font-mono text-base px-3 py-1">
                       <Timer className="w-4 h-4 mr-1" />{formatTimer(simuladoTimer)}
                     </Badge>
                     <Badge variant="outline" className="text-green-400 border-green-400">
@@ -2380,10 +2380,10 @@ export default function Studies() {
 
                 {/* Question */}
                 {currentSimulado.questions && currentSimulado.questions[simuladoCurrentQ] && (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between mb-4">
-                        <Badge className={`${simuladoMarked.has(simuladoCurrentQ) ? 'bg-yellow-500/20 text-yellow-400' : 'bg-[#1A1A2E] text-[#888888]'}`}>
+                        <Badge className={`${simuladoMarked.has(simuladoCurrentQ) ? 'bg-yellow-500/20 text-yellow-400' : 'bg-[#1A1A2E] text-[#A1A1AA]'}`}>
                           Questão {currentSimulado.questions[simuladoCurrentQ].question_number || simuladoCurrentQ + 1}
                           {currentSimulado.questions[simuladoCurrentQ].disciplina && ` • ${currentSimulado.questions[simuladoCurrentQ].disciplina}`}
                         </Badge>
@@ -2392,15 +2392,15 @@ export default function Studies() {
                           if (newMarked.has(simuladoCurrentQ)) newMarked.delete(simuladoCurrentQ);
                           else newMarked.add(simuladoCurrentQ);
                           setSimuladoMarked(newMarked);
-                        }} className={simuladoMarked.has(simuladoCurrentQ) ? "text-yellow-400" : "text-[#888888]"}>
+                        }} className={simuladoMarked.has(simuladoCurrentQ) ? "text-yellow-400" : "text-[#A1A1AA]"}>
                           <Flag className="w-4 h-4 mr-1" />{simuladoMarked.has(simuladoCurrentQ) ? "Marcada" : "Marcar"}
                         </Button>
                       </div>
 
                       {/* Texto Base / Texto de Apoio */}
                       {currentSimulado.questions[simuladoCurrentQ].texto_base && (
-                        <div className="mb-5 p-4 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] border-l-4 border-l-[#00c896]">
-                          <p className="text-xs text-[#00c896] font-semibold uppercase tracking-wide mb-2 flex items-center gap-1">
+                        <div className="mb-5 p-4 rounded-lg bg-[#121212] border border-[#27272A] border-l-4 border-l-[#007AFF]">
+                          <p className="text-xs text-[#007AFF] font-semibold uppercase tracking-wide mb-2 flex items-center gap-1">
                             <BookOpen className="w-3 h-3" />Texto Base
                           </p>
                           <p className="text-[#D4D4D8] text-sm leading-relaxed whitespace-pre-wrap">
@@ -2419,8 +2419,8 @@ export default function Studies() {
                           const isSelected = simuladoAnswers[simuladoCurrentQ] === letter;
                           return (
                             <button key={optIdx} onClick={() => setSimuladoAnswers({ ...simuladoAnswers, [simuladoCurrentQ]: letter })}
-                              className={`w-full text-left p-4 rounded-lg border transition-all ${isSelected ? 'border-[#00c896] bg-[#00c896]/10 text-white' : 'border-[#2a2a2a] bg-[#1a1a1a] text-[#888888] hover:border-[#333333]'}`}>
-                              <span className={`font-bold mr-3 ${isSelected ? 'text-[#00c896]' : ''}`}>{letter})</span>
+                              className={`w-full text-left p-4 rounded-lg border transition-all ${isSelected ? 'border-[#007AFF] bg-[#007AFF]/10 text-white' : 'border-[#27272A] bg-[#121212] text-[#A1A1AA] hover:border-[#3F3F46]'}`}>
+                              <span className={`font-bold mr-3 ${isSelected ? 'text-[#007AFF]' : ''}`}>{letter})</span>
                               {opt.replace(/^[A-E]\)\s*/, "")}
                             </button>
                           );
@@ -2433,23 +2433,23 @@ export default function Studies() {
                 {/* Navigation */}
                 <div className="flex items-center justify-between">
                   <Button variant="outline" onClick={() => setSimuladoCurrentQ(Math.max(0, simuladoCurrentQ - 1))} disabled={simuladoCurrentQ === 0}
-                    className="border-[#2a2a2a]"><ChevronLeft className="w-4 h-4 mr-1" />Anterior</Button>
+                    className="border-[#27272A]"><ChevronLeft className="w-4 h-4 mr-1" />Anterior</Button>
 
                   <div className="flex gap-1 flex-wrap justify-center max-w-md">
                     {(currentSimulado.questions || []).map((_, idx) => (
                       <button key={idx} onClick={() => setSimuladoCurrentQ(idx)}
                         className={`w-8 h-8 rounded text-xs font-bold transition-all ${
-                          idx === simuladoCurrentQ ? 'bg-[#00c896] text-white' :
+                          idx === simuladoCurrentQ ? 'bg-[#007AFF] text-white' :
                           simuladoAnswers[idx] !== undefined ? 'bg-green-500/20 text-green-400 border border-green-500/30' :
                           simuladoMarked.has(idx) ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30' :
-                          'bg-[#1a1a1a] text-[#888888] border border-[#2a2a2a]'
+                          'bg-[#121212] text-[#A1A1AA] border border-[#27272A]'
                         }`}>{idx + 1}</button>
                     ))}
                   </div>
 
                   {simuladoCurrentQ < (currentSimulado.questions?.length || 1) - 1 ? (
                     <Button variant="outline" onClick={() => setSimuladoCurrentQ(simuladoCurrentQ + 1)}
-                      className="border-[#2a2a2a]">Próxima<ChevronRight className="w-4 h-4 ml-1" /></Button>
+                      className="border-[#27272A]">Próxima<ChevronRight className="w-4 h-4 ml-1" /></Button>
                   ) : (
                     <Button onClick={() => {
                       const unanswered = (currentSimulado.questions?.length || 0) - Object.keys(simuladoAnswers).length;
@@ -2463,11 +2463,11 @@ export default function Studies() {
                 </div>
 
                 {/* Legend */}
-                <div className="flex items-center gap-4 justify-center text-xs text-[#888888]">
-                  <span className="flex items-center gap-1"><div className="w-3 h-3 rounded bg-[#00c896]" />Atual</span>
+                <div className="flex items-center gap-4 justify-center text-xs text-[#A1A1AA]">
+                  <span className="flex items-center gap-1"><div className="w-3 h-3 rounded bg-[#007AFF]" />Atual</span>
                   <span className="flex items-center gap-1"><div className="w-3 h-3 rounded bg-green-500/20 border border-green-500/30" />Respondida</span>
                   <span className="flex items-center gap-1"><div className="w-3 h-3 rounded bg-yellow-500/20 border border-yellow-500/30" />Marcada</span>
-                  <span className="flex items-center gap-1"><div className="w-3 h-3 rounded bg-[#1a1a1a] border border-[#2a2a2a]" />Não respondida</span>
+                  <span className="flex items-center gap-1"><div className="w-3 h-3 rounded bg-[#121212] border border-[#27272A]" />Não respondida</span>
                 </div>
               </div>
 
@@ -2479,7 +2479,7 @@ export default function Studies() {
                     <Button variant="ghost" size="icon" onClick={handleExitSimulado}><ArrowLeft className="w-5 h-5" /></Button>
                     <div>
                       <h3 className="text-lg font-bold">{currentSimulado.title}</h3>
-                      <p className="text-xs text-[#888888]">
+                      <p className="text-xs text-[#A1A1AA]">
                         {currentSimulado.banca && <span className="mr-2">{currentSimulado.banca}</span>}
                         {currentSimulado.disciplina && <span>• {currentSimulado.disciplina}</span>}
                         <span className="ml-2">• {currentSimulado.questions?.length || 0} questões</span>
@@ -2491,12 +2491,12 @@ export default function Studies() {
                       variant={showGabarito ? "default" : "outline"}
                       size="sm"
                       onClick={() => setShowGabarito(!showGabarito)}
-                      className={showGabarito ? "bg-green-600 hover:bg-green-700 text-white" : "border-[#2a2a2a] text-[#888888] hover:text-white"}
+                      className={showGabarito ? "bg-green-600 hover:bg-green-700 text-white" : "border-[#27272A] text-[#A1A1AA] hover:text-white"}
                     >
                       {showGabarito ? <EyeOff className="w-4 h-4 mr-1" /> : <Eye className="w-4 h-4 mr-1" />}
                       {showGabarito ? "Ocultar Gabarito" : "Ver Gabarito"}
                     </Button>
-                    <Button onClick={() => handleStartSimulado(currentSimulado)} className="bg-[#00c896]">
+                    <Button onClick={() => handleStartSimulado(currentSimulado)} className="bg-[#007AFF]">
                       <Play className="w-4 h-4 mr-1" />Iniciar Simulado
                     </Button>
                   </div>
@@ -2504,18 +2504,18 @@ export default function Studies() {
 
                 <div className="space-y-4">
                   {(currentSimulado.questions || []).map((q, idx) => (
-                    <Card key={idx} className="bg-[#0d0d0d] border-[#2a2a2a]">
+                    <Card key={idx} className="bg-[#0A0A0A] border-[#27272A]">
                       <CardContent className="p-5">
                         <div className="flex items-start justify-between mb-3">
-                          <Badge className="bg-[#1A1A2E] text-[#888888]">
+                          <Badge className="bg-[#1A1A2E] text-[#A1A1AA]">
                             Questão {q.question_number || idx + 1}
                             {q.disciplina && ` • ${q.disciplina}`}
                           </Badge>
-                          {q.difficulty && <Badge variant="outline" className="text-xs border-[#2a2a2a]">{q.difficulty}</Badge>}
+                          {q.difficulty && <Badge variant="outline" className="text-xs border-[#27272A]">{q.difficulty}</Badge>}
                         </div>
                         {q.texto_base && (
-                          <div className="mb-3 p-3 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] border-l-4 border-l-[#00c896]">
-                            <p className="text-xs text-[#00c896] font-semibold uppercase tracking-wide mb-1 flex items-center gap-1">
+                          <div className="mb-3 p-3 rounded-lg bg-[#121212] border border-[#27272A] border-l-4 border-l-[#007AFF]">
+                            <p className="text-xs text-[#007AFF] font-semibold uppercase tracking-wide mb-1 flex items-center gap-1">
                               <BookOpen className="w-3 h-3" />Texto Base
                             </p>
                             <p className="text-[#D4D4D8] text-xs leading-relaxed whitespace-pre-wrap">{q.texto_base}</p>
@@ -2527,7 +2527,7 @@ export default function Studies() {
                             const letter = opt.match(/^([A-E]\))/)?.[1]?.replace(")", "") || (q.type === "certo_errado" ? opt : String.fromCharCode(65 + optIdx));
                             const isCorrect = letter === q.correct_answer || opt === q.correct_answer;
                             return (
-                              <div key={optIdx} className={`p-3 rounded-lg border text-sm ${showGabarito && isCorrect ? 'border-green-500/40 bg-green-500/10 text-green-300' : 'border-[#2a2a2a] bg-[#1a1a1a] text-[#888888]'}`}>
+                              <div key={optIdx} className={`p-3 rounded-lg border text-sm ${showGabarito && isCorrect ? 'border-green-500/40 bg-green-500/10 text-green-300' : 'border-[#27272A] bg-[#121212] text-[#A1A1AA]'}`}>
                                 <span className={`font-bold mr-2 ${showGabarito && isCorrect ? 'text-green-400' : ''}`}>{letter})</span>
                                 {opt.replace(/^[A-E]\)\s*/, "")}
                                 {showGabarito && isCorrect && <CheckCircle2 className="w-4 h-4 inline ml-2 text-green-400" />}
@@ -2536,8 +2536,8 @@ export default function Studies() {
                           })}
                         </div>
                         {showGabarito && q.explanation && (
-                          <div className="bg-[#1A1A2E] p-3 rounded-lg border border-[#2a2a2a]">
-                            <p className="text-xs text-[#888888] font-medium mb-1 flex items-center gap-1"><Lightbulb className="w-3 h-3 text-yellow-400" />Explicação</p>
+                          <div className="bg-[#1A1A2E] p-3 rounded-lg border border-[#27272A]">
+                            <p className="text-xs text-[#A1A1AA] font-medium mb-1 flex items-center gap-1"><Lightbulb className="w-3 h-3 text-yellow-400" />Explicação</p>
                             <p className="text-sm text-[#D4D4D8]">{q.explanation}</p>
                           </div>
                         )}
@@ -2547,8 +2547,8 @@ export default function Studies() {
                 </div>
 
                 <div className="flex gap-3 justify-center">
-                  <Button variant="outline" onClick={handleExitSimulado} className="border-[#2a2a2a]"><ArrowLeft className="w-4 h-4 mr-1" />Voltar</Button>
-                  <Button onClick={() => handleStartSimulado(currentSimulado)} className="bg-[#00c896]"><Play className="w-4 h-4 mr-1" />Iniciar Simulado</Button>
+                  <Button variant="outline" onClick={handleExitSimulado} className="border-[#27272A]"><ArrowLeft className="w-4 h-4 mr-1" />Voltar</Button>
+                  <Button onClick={() => handleStartSimulado(currentSimulado)} className="bg-[#007AFF]"><Play className="w-4 h-4 mr-1" />Iniciar Simulado</Button>
                 </div>
               </div>
 
@@ -2559,7 +2559,7 @@ export default function Studies() {
                   <Button variant="ghost" size="icon" onClick={handleExitSimulado}><ArrowLeft className="w-5 h-5" /></Button>
                   <div>
                     <h3 className="text-lg font-bold">{currentSimulado?.title || "Resultado"}</h3>
-                    <p className="text-xs text-[#888888]">
+                    <p className="text-xs text-[#A1A1AA]">
                       {currentSimulado?.banca && <span className="mr-2">{currentSimulado.banca}</span>}
                       Resultado do Simulado
                     </p>
@@ -2568,42 +2568,42 @@ export default function Studies() {
 
                 {/* Score Cards */}
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
                     <CardContent className="p-4 text-center">
-                      <p className="text-xs text-[#888888] mb-1">Nota</p>
+                      <p className="text-xs text-[#A1A1AA] mb-1">Nota</p>
                       <p className={`text-3xl font-bold ${simuladoResult.score >= 70 ? 'text-green-400' : simuladoResult.score >= 50 ? 'text-yellow-400' : 'text-red-400'}`}>{simuladoResult.score}%</p>
                     </CardContent>
                   </Card>
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
                     <CardContent className="p-4 text-center">
-                      <p className="text-xs text-[#888888] mb-1">Acertos</p>
+                      <p className="text-xs text-[#A1A1AA] mb-1">Acertos</p>
                       <p className="text-2xl font-bold text-green-400">{simuladoResult.correct_count}</p>
-                      <p className="text-xs text-[#888888]">de {simuladoResult.total_questions}</p>
+                      <p className="text-xs text-[#A1A1AA]">de {simuladoResult.total_questions}</p>
                     </CardContent>
                   </Card>
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
                     <CardContent className="p-4 text-center">
-                      <p className="text-xs text-[#888888] mb-1">Erros</p>
+                      <p className="text-xs text-[#A1A1AA] mb-1">Erros</p>
                       <p className="text-2xl font-bold text-red-400">{(simuladoResult.total_answered || 0) - (simuladoResult.correct_count || 0)}</p>
                     </CardContent>
                   </Card>
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
                     <CardContent className="p-4 text-center">
-                      <p className="text-xs text-[#888888] mb-1">Em branco</p>
-                      <p className="text-2xl font-bold text-[#888888]">{simuladoResult.unanswered || 0}</p>
+                      <p className="text-xs text-[#A1A1AA] mb-1">Em branco</p>
+                      <p className="text-2xl font-bold text-[#A1A1AA]">{simuladoResult.unanswered || 0}</p>
                     </CardContent>
                   </Card>
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
                     <CardContent className="p-4 text-center">
-                      <p className="text-xs text-[#888888] mb-1">Tempo</p>
-                      <p className="text-2xl font-bold text-[#00c896]">{formatTimer(simuladoResult.time_spent_seconds || 0)}</p>
+                      <p className="text-xs text-[#A1A1AA] mb-1">Tempo</p>
+                      <p className="text-2xl font-bold text-[#00F0FF]">{formatTimer(simuladoResult.time_spent_seconds || 0)}</p>
                     </CardContent>
                   </Card>
                 </div>
 
                 {/* By Disciplina */}
                 {simuladoResult.by_disciplina && Object.keys(simuladoResult.by_disciplina).length > 0 && (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
                     <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><BarChart3 className="w-4 h-4 text-purple-400" />Desempenho por Disciplina</CardTitle></CardHeader>
                     <CardContent>
                       <div className="space-y-3">
@@ -2633,8 +2633,8 @@ export default function Studies() {
                 )}
 
                 {/* Correction - Question by Question */}
-                <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
-                  <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><ListChecks className="w-4 h-4 text-[#00c896]" />Gabarito Comentado</CardTitle></CardHeader>
+                <Card className="bg-[#0A0A0A] border-[#27272A]">
+                  <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><ListChecks className="w-4 h-4 text-[#007AFF]" />Gabarito Comentado</CardTitle></CardHeader>
                   <CardContent>
                     <div className="space-y-4">
                       {(simuladoResult.answers || []).map((ans, idx) => (
@@ -2644,12 +2644,12 @@ export default function Studies() {
                               {ans.is_correct ? <CheckCircle2 className="w-3 h-3 mr-1" /> : <XCircle className="w-3 h-3 mr-1" />}
                               Questão {ans.question_number}
                             </Badge>
-                            {ans.disciplina && <span className="text-xs text-[#888888]">{ans.disciplina}</span>}
+                            {ans.disciplina && <span className="text-xs text-[#A1A1AA]">{ans.disciplina}</span>}
                           </div>
                           {currentSimulado?.questions?.[ans.question_idx]?.texto_base && (
-                            <div className="mb-2 p-2 rounded bg-[#1a1a1a] border border-[#2a2a2a] border-l-2 border-l-[#00c896]">
-                              <p className="text-[10px] text-[#00c896] font-semibold uppercase tracking-wide mb-1">Texto Base</p>
-                              <p className="text-[#888888] text-xs leading-relaxed whitespace-pre-wrap line-clamp-4">{currentSimulado.questions[ans.question_idx].texto_base}</p>
+                            <div className="mb-2 p-2 rounded bg-[#121212] border border-[#27272A] border-l-2 border-l-[#007AFF]">
+                              <p className="text-[10px] text-[#007AFF] font-semibold uppercase tracking-wide mb-1">Texto Base</p>
+                              <p className="text-[#A1A1AA] text-xs leading-relaxed whitespace-pre-wrap line-clamp-4">{currentSimulado.questions[ans.question_idx].texto_base}</p>
                             </div>
                           )}
                           <p className="text-sm text-white mb-2 whitespace-pre-wrap line-clamp-3">
@@ -2661,7 +2661,7 @@ export default function Studies() {
                             </span>
                             {!ans.is_correct && <span className="text-green-400">Correta: <b>{ans.correct_answer}</b></span>}
                           </div>
-                          {ans.explanation && <p className="text-xs text-[#888888] mt-2 italic">{ans.explanation}</p>}
+                          {ans.explanation && <p className="text-xs text-[#A1A1AA] mt-2 italic">{ans.explanation}</p>}
                         </div>
                       ))}
                     </div>
@@ -2669,8 +2669,8 @@ export default function Studies() {
                 </Card>
 
                 <div className="flex gap-3 justify-center">
-                  <Button variant="outline" onClick={handleExitSimulado} className="border-[#2a2a2a]"><ArrowLeft className="w-4 h-4 mr-1" />Voltar</Button>
-                  <Button onClick={() => handleStartSimulado(currentSimulado)} className="bg-[#00c896]"><Repeat className="w-4 h-4 mr-1" />Refazer</Button>
+                  <Button variant="outline" onClick={handleExitSimulado} className="border-[#27272A]"><ArrowLeft className="w-4 h-4 mr-1" />Voltar</Button>
+                  <Button onClick={() => handleStartSimulado(currentSimulado)} className="bg-[#007AFF]"><Repeat className="w-4 h-4 mr-1" />Refazer</Button>
                 </div>
               </div>
 
@@ -2679,16 +2679,16 @@ export default function Studies() {
               <div className="space-y-4">
                 {/* Header */}
                 <div className="flex items-center justify-between flex-wrap gap-2">
-                  <h3 className="text-lg font-bold flex items-center gap-2"><ClipboardList className="w-5 h-5 text-[#00c896]" />Simulados</h3>
+                  <h3 className="text-lg font-bold flex items-center gap-2"><ClipboardList className="w-5 h-5 text-[#007AFF]" />Simulados</h3>
                   <div className="flex gap-2">
-                    <Button variant="outline" size="sm" onClick={() => setShowSimuladoStatsView(!showSimuladoStatsView)} className="border-[#2a2a2a]">
+                    <Button variant="outline" size="sm" onClick={() => setShowSimuladoStatsView(!showSimuladoStatsView)} className="border-[#27272A]">
                       <BarChart3 className="w-4 h-4 mr-1" />Estatísticas
                     </Button>
                     <Dialog open={showImportPdfDialog} onOpenChange={setShowImportPdfDialog}>
                       <DialogTrigger asChild>
-                        <Button size="sm" variant="outline" className="border-[#2a2a2a]"><Upload className="w-4 h-4 mr-1" />Importar PDF</Button>
+                        <Button size="sm" variant="outline" className="border-[#27272A]"><Upload className="w-4 h-4 mr-1" />Importar PDF</Button>
                       </DialogTrigger>
-                      <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] max-w-lg max-h-[90vh] overflow-y-auto">
+                      <DialogContent className="bg-[#0A0A0A] border-[#27272A] max-w-lg max-h-[90vh] overflow-y-auto">
                         <DialogHeader>
                           <DialogTitle>Importar Simulado de PDF</DialogTitle>
                           <DialogDescription>Faça upload de um caderno de questões ou gabarito em PDF</DialogDescription>
@@ -2697,18 +2697,18 @@ export default function Studies() {
                           <div>
                             <Label>Arquivo PDF *</Label>
                             <Input type="file" accept=".pdf" onChange={e => setImportFile(e.target.files[0])}
-                              className="bg-[#1a1a1a] border-[#2a2a2a] file:bg-[#00c896] file:text-white file:border-0 file:rounded file:px-3 file:py-1 file:mr-3 file:cursor-pointer" />
+                              className="bg-[#121212] border-[#27272A] file:bg-[#007AFF] file:text-white file:border-0 file:rounded file:px-3 file:py-1 file:mr-3 file:cursor-pointer" />
                           </div>
-                          <div><Label>Título</Label><Input value={importForm.title} onChange={e => setImportForm({...importForm, title: e.target.value})} className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
+                          <div><Label>Título</Label><Input value={importForm.title} onChange={e => setImportForm({...importForm, title: e.target.value})} className="bg-[#121212] border-[#27272A]" /></div>
                           <div className="grid grid-cols-2 gap-3">
-                            <div><Label>Banca</Label><Input value={importForm.banca} onChange={e => setImportForm({...importForm, banca: e.target.value})} placeholder="Ex: CESPE, FCC" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
-                            <div><Label>Concurso</Label><Input value={importForm.concurso} onChange={e => setImportForm({...importForm, concurso: e.target.value})} placeholder="Ex: TRF5, INSS" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
+                            <div><Label>Banca</Label><Input value={importForm.banca} onChange={e => setImportForm({...importForm, banca: e.target.value})} placeholder="Ex: CESPE, FCC" className="bg-[#121212] border-[#27272A]" /></div>
+                            <div><Label>Concurso</Label><Input value={importForm.concurso} onChange={e => setImportForm({...importForm, concurso: e.target.value})} placeholder="Ex: TRF5, INSS" className="bg-[#121212] border-[#27272A]" /></div>
                           </div>
                           <div className="grid grid-cols-2 gap-3">
-                            <div><Label>Disciplina</Label><Input value={importForm.disciplina} onChange={e => setImportForm({...importForm, disciplina: e.target.value})} placeholder="Ex: Direito Civil" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
+                            <div><Label>Disciplina</Label><Input value={importForm.disciplina} onChange={e => setImportForm({...importForm, disciplina: e.target.value})} placeholder="Ex: Direito Civil" className="bg-[#121212] border-[#27272A]" /></div>
                             <div><Label>Tipo de Questão</Label>
                               <Select value={importForm.question_type} onValueChange={v => setImportForm({...importForm, question_type: v})}>
-                                <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a]"><SelectValue /></SelectTrigger>
+                                <SelectTrigger className="bg-[#121212] border-[#27272A]"><SelectValue /></SelectTrigger>
                                 <SelectContent>
                                   <SelectItem value="multipla_escolha">Múltipla Escolha (A-E)</SelectItem>
                                   <SelectItem value="certo_errado">Certo ou Errado</SelectItem>
@@ -2717,8 +2717,8 @@ export default function Studies() {
                               </Select>
                             </div>
                           </div>
-                          <p className="text-xs text-[#888888]">A IA irá analisar o PDF e extrair automaticamente as questões e gabarito.</p>
-                          <Button onClick={handleImportPdf} className="w-full bg-[#00c896]" disabled={simuladoImporting || !importFile}>
+                          <p className="text-xs text-[#A1A1AA]">A IA irá analisar o PDF e extrair automaticamente as questões e gabarito.</p>
+                          <Button onClick={handleImportPdf} className="w-full bg-[#007AFF]" disabled={simuladoImporting || !importFile}>
                             {simuladoImporting ? <><Loader2 className="w-4 h-4 animate-spin mr-2" />Processando PDF...</> : <><Upload className="w-4 h-4 mr-2" />Importar e Gerar Simulado</>}
                           </Button>
                         </div>
@@ -2726,19 +2726,19 @@ export default function Studies() {
                     </Dialog>
                     <Dialog open={showGenerateDialog} onOpenChange={setShowGenerateDialog}>
                       <DialogTrigger asChild>
-                        <Button size="sm" className="bg-[#00c896]"><Sparkles className="w-4 h-4 mr-1" />Gerar com IA</Button>
+                        <Button size="sm" className="bg-[#007AFF]"><Sparkles className="w-4 h-4 mr-1" />Gerar com IA</Button>
                       </DialogTrigger>
-                      <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] max-w-lg max-h-[90vh] overflow-y-auto">
+                      <DialogContent className="bg-[#0A0A0A] border-[#27272A] max-w-lg max-h-[90vh] overflow-y-auto">
                         <DialogHeader>
                           <DialogTitle>Gerar Simulado com IA</DialogTitle>
                           <DialogDescription>A IA gerará questões originais baseadas nos parâmetros</DialogDescription>
                         </DialogHeader>
                         <div className="space-y-3">
-                          <div><Label>Título *</Label><Input value={generateForm.title} onChange={e => setGenerateForm({...generateForm, title: e.target.value})} placeholder="Ex: Simulado Direito Civil - CESPE" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
+                          <div><Label>Título *</Label><Input value={generateForm.title} onChange={e => setGenerateForm({...generateForm, title: e.target.value})} placeholder="Ex: Simulado Direito Civil - CESPE" className="bg-[#121212] border-[#27272A]" /></div>
                           <div className="grid grid-cols-2 gap-3">
                             <div><Label>Banca</Label>
                               <Select value={generateForm.banca} onValueChange={v => setGenerateForm({...generateForm, banca: v})}>
-                                <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a]"><SelectValue placeholder="Selecione" /></SelectTrigger>
+                                <SelectTrigger className="bg-[#121212] border-[#27272A]"><SelectValue placeholder="Selecione" /></SelectTrigger>
                                 <SelectContent>
                                   <SelectItem value="CESPE/CEBRASPE">CESPE/CEBRASPE</SelectItem>
                                   <SelectItem value="FCC">FCC</SelectItem>
@@ -2752,14 +2752,14 @@ export default function Studies() {
                                 </SelectContent>
                               </Select>
                             </div>
-                            <div><Label>Disciplina</Label><Input value={generateForm.disciplina} onChange={e => setGenerateForm({...generateForm, disciplina: e.target.value})} placeholder="Ex: Direito Constitucional" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
+                            <div><Label>Disciplina</Label><Input value={generateForm.disciplina} onChange={e => setGenerateForm({...generateForm, disciplina: e.target.value})} placeholder="Ex: Direito Constitucional" className="bg-[#121212] border-[#27272A]" /></div>
                           </div>
-                          <div><Label>Concurso</Label><Input value={generateForm.concurso} onChange={e => setGenerateForm({...generateForm, concurso: e.target.value})} placeholder="Ex: TRF 5ª Região, INSS, Receita Federal" className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
+                          <div><Label>Concurso</Label><Input value={generateForm.concurso} onChange={e => setGenerateForm({...generateForm, concurso: e.target.value})} placeholder="Ex: TRF 5ª Região, INSS, Receita Federal" className="bg-[#121212] border-[#27272A]" /></div>
                           <div className="grid grid-cols-3 gap-3">
-                            <div><Label>Nº Questões</Label><Input type="number" min={1} value={generateForm.num_questions} onChange={e => setGenerateForm({...generateForm, num_questions: parseInt(e.target.value) || 1})} className="bg-[#1a1a1a] border-[#2a2a2a]" /></div>
+                            <div><Label>Nº Questões</Label><Input type="number" min={1} value={generateForm.num_questions} onChange={e => setGenerateForm({...generateForm, num_questions: parseInt(e.target.value) || 1})} className="bg-[#121212] border-[#27272A]" /></div>
                             <div><Label>Tipo</Label>
                               <Select value={generateForm.question_type} onValueChange={v => setGenerateForm({...generateForm, question_type: v})}>
-                                <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a]"><SelectValue /></SelectTrigger>
+                                <SelectTrigger className="bg-[#121212] border-[#27272A]"><SelectValue /></SelectTrigger>
                                 <SelectContent>
                                   <SelectItem value="multipla_escolha">Múltipla Escolha</SelectItem>
                                   <SelectItem value="certo_errado">Certo/Errado</SelectItem>
@@ -2769,7 +2769,7 @@ export default function Studies() {
                             </div>
                             <div><Label>Dificuldade</Label>
                               <Select value={generateForm.difficulty} onValueChange={v => setGenerateForm({...generateForm, difficulty: v})}>
-                                <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a]"><SelectValue /></SelectTrigger>
+                                <SelectTrigger className="bg-[#121212] border-[#27272A]"><SelectValue /></SelectTrigger>
                                 <SelectContent>
                                   <SelectItem value="facil">Fácil</SelectItem>
                                   <SelectItem value="medio">Médio</SelectItem>
@@ -2779,7 +2779,7 @@ export default function Studies() {
                               </Select>
                             </div>
                           </div>
-                          <Button onClick={handleGenerateSimulado} className="w-full bg-[#00c896]" disabled={simuladoGenerating || !generateForm.title}>
+                          <Button onClick={handleGenerateSimulado} className="w-full bg-[#007AFF]" disabled={simuladoGenerating || !generateForm.title}>
                             {simuladoGenerating ? <><Loader2 className="w-4 h-4 animate-spin mr-2" />Gerando questões...</> : <><Sparkles className="w-4 h-4 mr-2" />Gerar Simulado</>}
                           </Button>
                         </div>
@@ -2790,32 +2790,32 @@ export default function Studies() {
 
                 {/* Stats Overview */}
                 {showSimuladoStatsView && simuladoStats && (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
-                    <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><TrendingUp className="w-4 h-4 text-[#00c896]" />Estatísticas Gerais</CardTitle></CardHeader>
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
+                    <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><TrendingUp className="w-4 h-4 text-[#00F0FF]" />Estatísticas Gerais</CardTitle></CardHeader>
                     <CardContent>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-                        <div className="text-center p-3 bg-[#1a1a1a] rounded-lg">
-                          <p className="text-2xl font-bold text-[#00c896]">{simuladoStats.total_simulados}</p>
-                          <p className="text-xs text-[#888888]">Simulados</p>
+                        <div className="text-center p-3 bg-[#121212] rounded-lg">
+                          <p className="text-2xl font-bold text-[#007AFF]">{simuladoStats.total_simulados}</p>
+                          <p className="text-xs text-[#A1A1AA]">Simulados</p>
                         </div>
-                        <div className="text-center p-3 bg-[#1a1a1a] rounded-lg">
-                          <p className="text-2xl font-bold text-[#00c896]">{simuladoStats.total_attempts}</p>
-                          <p className="text-xs text-[#888888]">Tentativas</p>
+                        <div className="text-center p-3 bg-[#121212] rounded-lg">
+                          <p className="text-2xl font-bold text-[#00F0FF]">{simuladoStats.total_attempts}</p>
+                          <p className="text-xs text-[#A1A1AA]">Tentativas</p>
                         </div>
-                        <div className="text-center p-3 bg-[#1a1a1a] rounded-lg">
+                        <div className="text-center p-3 bg-[#121212] rounded-lg">
                           <p className={`text-2xl font-bold ${simuladoStats.accuracy_rate >= 70 ? 'text-green-400' : simuladoStats.accuracy_rate >= 50 ? 'text-yellow-400' : 'text-red-400'}`}>
                             {simuladoStats.accuracy_rate}%
                           </p>
-                          <p className="text-xs text-[#888888]">Taxa de Acerto</p>
+                          <p className="text-xs text-[#A1A1AA]">Taxa de Acerto</p>
                         </div>
-                        <div className="text-center p-3 bg-[#1a1a1a] rounded-lg">
+                        <div className="text-center p-3 bg-[#121212] rounded-lg">
                           <p className="text-2xl font-bold text-purple-400">{simuladoStats.total_questions_answered}</p>
-                          <p className="text-xs text-[#888888]">Questões</p>
+                          <p className="text-xs text-[#A1A1AA]">Questões</p>
                         </div>
                       </div>
                       {simuladoStats.by_banca && Object.keys(simuladoStats.by_banca).length > 0 && (
                         <div>
-                          <p className="text-xs text-[#888888] mb-2 font-medium">Por Banca:</p>
+                          <p className="text-xs text-[#A1A1AA] mb-2 font-medium">Por Banca:</p>
                           <div className="space-y-2">
                             {Object.entries(simuladoStats.by_banca).map(([b, d]) => (
                               <div key={b} className="flex justify-between items-center text-sm">
@@ -2828,7 +2828,7 @@ export default function Studies() {
                       )}
                       {simuladoStats.by_disciplina && Object.keys(simuladoStats.by_disciplina).length > 0 && (
                         <div className="mt-3">
-                          <p className="text-xs text-[#888888] mb-2 font-medium">Por Disciplina:</p>
+                          <p className="text-xs text-[#A1A1AA] mb-2 font-medium">Por Disciplina:</p>
                           <div className="space-y-2">
                             {Object.entries(simuladoStats.by_disciplina).map(([d, data]) => (
                               <div key={d}>
@@ -2845,35 +2845,35 @@ export default function Studies() {
 
                 {/* Simulados Grid */}
                 {simulados.length === 0 ? (
-                  <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <Card className="bg-[#0A0A0A] border-[#27272A]">
                     <CardContent className="p-12 text-center">
-                      <ClipboardList className="w-12 h-12 text-[#333333] mx-auto mb-4" />
+                      <ClipboardList className="w-12 h-12 text-[#3F3F46] mx-auto mb-4" />
                       <h4 className="text-lg font-medium mb-2">Nenhum simulado ainda</h4>
-                      <p className="text-sm text-[#888888] mb-4">Importe um PDF com questões ou gere um simulado com IA</p>
+                      <p className="text-sm text-[#A1A1AA] mb-4">Importe um PDF com questões ou gere um simulado com IA</p>
                       <div className="flex gap-3 justify-center">
-                        <Button variant="outline" onClick={() => setShowImportPdfDialog(true)} className="border-[#2a2a2a]"><Upload className="w-4 h-4 mr-1" />Importar PDF</Button>
-                        <Button onClick={() => setShowGenerateDialog(true)} className="bg-[#00c896]"><Sparkles className="w-4 h-4 mr-1" />Gerar com IA</Button>
+                        <Button variant="outline" onClick={() => setShowImportPdfDialog(true)} className="border-[#27272A]"><Upload className="w-4 h-4 mr-1" />Importar PDF</Button>
+                        <Button onClick={() => setShowGenerateDialog(true)} className="bg-[#007AFF]"><Sparkles className="w-4 h-4 mr-1" />Gerar com IA</Button>
                       </div>
                     </CardContent>
                   </Card>
                 ) : (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                     {simulados.map(sim => (
-                      <Card key={sim.simulado_id} className="bg-[#0d0d0d] border-[#2a2a2a] hover:border-[#333333] transition-all">
+                      <Card key={sim.simulado_id} className="bg-[#0A0A0A] border-[#27272A] hover:border-[#3F3F46] transition-all">
                         <CardContent className="p-4">
                           <div className="flex items-start justify-between mb-3">
                             <div className="flex-1 min-w-0">
                               <h4 className="font-medium text-sm truncate">{sim.title}</h4>
                               <div className="flex flex-wrap gap-1 mt-1">
-                                {sim.banca && <Badge variant="outline" className="text-xs border-[#00c896]/30 text-[#00c896]">{sim.banca}</Badge>}
+                                {sim.banca && <Badge variant="outline" className="text-xs border-[#007AFF]/30 text-[#007AFF]">{sim.banca}</Badge>}
                                 {sim.disciplina && <Badge variant="outline" className="text-xs border-purple-500/30 text-purple-400">{sim.disciplina}</Badge>}
-                                {sim.concurso && <Badge variant="outline" className="text-xs border-[#00c896]/30 text-[#00c896]">{sim.concurso}</Badge>}
+                                {sim.concurso && <Badge variant="outline" className="text-xs border-[#00F0FF]/30 text-[#00F0FF]">{sim.concurso}</Badge>}
                               </div>
                             </div>
                             <Button variant="ghost" size="icon" className="h-6 w-6 shrink-0" onClick={() => handleDeleteSimulado(sim.simulado_id)}><Trash2 className="w-3 h-3 text-red-500" /></Button>
                           </div>
 
-                          <div className="flex items-center gap-3 text-xs text-[#888888] mb-3">
+                          <div className="flex items-center gap-3 text-xs text-[#A1A1AA] mb-3">
                             <span className="flex items-center gap-1"><ListChecks className="w-3 h-3" />{sim.questions_count} questões</span>
                             <span className="flex items-center gap-1"><CircleDot className="w-3 h-3" />{sim.source_type === "pdf_import" ? "PDF" : "IA"}</span>
                             {sim.attempts_count > 0 && <span className="flex items-center gap-1"><RotateCcw className="w-3 h-3" />{sim.attempts_count}x</span>}
@@ -2882,7 +2882,7 @@ export default function Studies() {
                           {sim.best_score > 0 && (
                             <div className="mb-3">
                               <div className="flex justify-between text-xs mb-1">
-                                <span className="text-[#888888]">Melhor nota</span>
+                                <span className="text-[#A1A1AA]">Melhor nota</span>
                                 <span className={sim.best_score >= 70 ? 'text-green-400' : sim.best_score >= 50 ? 'text-yellow-400' : 'text-red-400'}>{sim.best_score}%</span>
                               </div>
                               <Progress value={sim.best_score} className="h-1.5" />
@@ -2890,14 +2890,14 @@ export default function Studies() {
                           )}
 
                           <div className="flex gap-2">
-                            <Button size="sm" className="flex-1 bg-[#00c896] text-xs" onClick={() => handleStartSimulado(sim)}>
+                            <Button size="sm" className="flex-1 bg-[#007AFF] text-xs" onClick={() => handleStartSimulado(sim)}>
                               <Play className="w-3 h-3 mr-1" />{sim.attempts_count > 0 ? "Refazer" : "Iniciar"}
                             </Button>
-                            <Button size="sm" variant="outline" className="border-[#2a2a2a] text-xs" onClick={() => handleViewSimulado(sim)}>
+                            <Button size="sm" variant="outline" className="border-[#27272A] text-xs" onClick={() => handleViewSimulado(sim)}>
                               <Eye className="w-3 h-3 mr-1" />Ver
                             </Button>
                             {sim.attempts_count > 0 && (
-                              <Button size="sm" variant="outline" className="border-[#2a2a2a] text-xs" onClick={() => handleViewResults(sim)}>
+                              <Button size="sm" variant="outline" className="border-[#27272A] text-xs" onClick={() => handleViewResults(sim)}>
                                 <BarChart3 className="w-3 h-3 mr-1" />Resultado
                               </Button>
                             )}
@@ -2925,39 +2925,39 @@ export default function Studies() {
 
             {/* Focus Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+              <Card className="bg-[#0A0A0A] border-[#27272A]">
                 <CardContent className="p-4 text-center">
-                  <p className="text-xs text-[#888888] mb-1">Hoje</p>
+                  <p className="text-xs text-[#A1A1AA] mb-1">Hoje</p>
                   <p className="text-2xl font-bold text-red-400">{focusStats?.today?.total_minutes || 0}min</p>
-                  <p className="text-xs text-[#888888]">{focusStats?.today?.sessions || 0} sessões</p>
+                  <p className="text-xs text-[#A1A1AA]">{focusStats?.today?.sessions || 0} sessões</p>
                 </CardContent>
               </Card>
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+              <Card className="bg-[#0A0A0A] border-[#27272A]">
                 <CardContent className="p-4 text-center">
-                  <p className="text-xs text-[#888888] mb-1">Esta Semana</p>
-                  <p className="text-2xl font-bold text-[#00c896]">{focusStats?.week?.total_minutes || 0}min</p>
-                  <p className="text-xs text-[#888888]">{focusStats?.week?.sessions || 0} sessões</p>
+                  <p className="text-xs text-[#A1A1AA] mb-1">Esta Semana</p>
+                  <p className="text-2xl font-bold text-[#00F0FF]">{focusStats?.week?.total_minutes || 0}min</p>
+                  <p className="text-xs text-[#A1A1AA]">{focusStats?.week?.sessions || 0} sessões</p>
                 </CardContent>
               </Card>
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+              <Card className="bg-[#0A0A0A] border-[#27272A]">
                 <CardContent className="p-4 text-center">
-                  <p className="text-xs text-[#888888] mb-1">Total</p>
+                  <p className="text-xs text-[#A1A1AA] mb-1">Total</p>
                   <p className="text-2xl font-bold text-green-400">{focusStats?.all_time?.total_hours || 0}h</p>
-                  <p className="text-xs text-[#888888]">{focusStats?.all_time?.sessions || 0} sessões</p>
+                  <p className="text-xs text-[#A1A1AA]">{focusStats?.all_time?.sessions || 0} sessões</p>
                 </CardContent>
               </Card>
             </div>
 
             {/* Question Stats */}
             {questionStats && totalQuestions > 0 && (
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+              <Card className="bg-[#0A0A0A] border-[#27272A]">
                 <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><BarChart3 className="w-4 h-4 text-purple-400" />Estatísticas de Questões</CardTitle></CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-4 gap-3 text-center">
-                    <div><p className="text-2xl font-bold text-white">{totalQuestions}</p><p className="text-xs text-[#888888]">Total</p></div>
-                    <div><p className="text-2xl font-bold text-green-400">{questionStats.correct || 0}</p><p className="text-xs text-[#888888]">Acertos</p></div>
-                    <div><p className="text-2xl font-bold text-red-400">{questionStats.incorrect || 0}</p><p className="text-xs text-[#888888]">Erros</p></div>
-                    <div><p className={`text-2xl font-bold ${accuracy >= 70 ? 'text-green-400' : accuracy >= 50 ? 'text-yellow-400' : 'text-red-400'}`}>{accuracy}%</p><p className="text-xs text-[#888888]">Acerto</p></div>
+                    <div><p className="text-2xl font-bold text-white">{totalQuestions}</p><p className="text-xs text-[#A1A1AA]">Total</p></div>
+                    <div><p className="text-2xl font-bold text-green-400">{questionStats.correct || 0}</p><p className="text-xs text-[#A1A1AA]">Acertos</p></div>
+                    <div><p className="text-2xl font-bold text-red-400">{questionStats.incorrect || 0}</p><p className="text-xs text-[#A1A1AA]">Erros</p></div>
+                    <div><p className={`text-2xl font-bold ${accuracy >= 70 ? 'text-green-400' : accuracy >= 50 ? 'text-yellow-400' : 'text-red-400'}`}>{accuracy}%</p><p className="text-xs text-[#A1A1AA]">Acerto</p></div>
                   </div>
                   <Progress value={accuracy} className="mt-3 h-2" />
                 </CardContent>
@@ -2969,13 +2969,13 @@ export default function Studies() {
           <TabsContent value="redacao" className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Enviar Redação */}
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+              <Card className="bg-[#0A0A0A] border-[#27272A]">
                 <CardHeader>
                   <CardTitle className="text-sm flex items-center gap-2"><PenTool className="w-4 h-4 text-purple-400" />Corrigir Redação com IA</CardTitle>
                   <CardDescription className="text-xs">Envie sua redação (PDF, imagem ou texto) para correção detalhada</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <div className={`border-2 border-dashed rounded-lg p-6 text-center ${redacaoFile ? 'border-purple-500 bg-purple-500/10' : 'border-[#2a2a2a]'}`}>
+                  <div className={`border-2 border-dashed rounded-lg p-6 text-center ${redacaoFile ? 'border-purple-500 bg-purple-500/10' : 'border-[#27272A]'}`}>
                     {redacaoFile ? (
                       <div className="flex items-center justify-center gap-2">
                         <FileText className="w-5 h-5 text-purple-400" />
@@ -2984,9 +2984,9 @@ export default function Studies() {
                       </div>
                     ) : (
                       <label className="cursor-pointer">
-                        <Upload className="w-8 h-8 mx-auto text-[#888888] mb-2" />
-                        <p className="text-sm text-[#888888]">Clique para selecionar arquivo</p>
-                        <p className="text-xs text-[#555555]">PDF, imagem ou texto</p>
+                        <Upload className="w-8 h-8 mx-auto text-[#A1A1AA] mb-2" />
+                        <p className="text-sm text-[#A1A1AA]">Clique para selecionar arquivo</p>
+                        <p className="text-xs text-[#52525B]">PDF, imagem ou texto</p>
                         <input type="file" accept=".pdf,.txt,.doc,.docx,image/*" className="hidden" onChange={e => setRedacaoFile(e.target.files?.[0] || null)} />
                       </label>
                     )}
@@ -2998,7 +2998,7 @@ export default function Studies() {
               </Card>
 
               {/* Sortear Tema */}
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+              <Card className="bg-[#0A0A0A] border-[#27272A]">
                 <CardHeader>
                   <CardTitle className="text-sm flex items-center gap-2"><Lightbulb className="w-4 h-4 text-yellow-400" />Sortear Tema de Redação</CardTitle>
                   <CardDescription className="text-xs">Temas com probabilidade de cair em concursos</CardDescription>
@@ -3008,23 +3008,23 @@ export default function Studies() {
                     {themeLoading ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Sorteando...</> : <><Zap className="w-4 h-4 mr-2" />Sortear Tema</>}
                   </Button>
                   {randomTheme && (
-                    <div className="bg-[#1a1a1a] p-4 rounded-lg space-y-3">
+                    <div className="bg-[#121212] p-4 rounded-lg space-y-3">
                       <h3 className="font-bold text-sm text-yellow-400">{randomTheme.tema}</h3>
                       <div className="flex gap-2 flex-wrap">
                         <Badge variant="outline" className="text-[10px] border-purple-500 text-purple-400">{randomTheme.tipo_texto}</Badge>
                         <Badge variant="outline" className="text-[10px] border-blue-500 text-blue-400">{randomTheme.banca_relacionada}</Badge>
                         <Badge variant="outline" className="text-[10px] border-orange-500 text-orange-400">{randomTheme.nivel_dificuldade}</Badge>
                       </div>
-                      <p className="text-xs text-[#888888]">{randomTheme.contexto}</p>
+                      <p className="text-xs text-[#A1A1AA]">{randomTheme.contexto}</p>
                       {randomTheme.textos_motivadores?.length > 0 && (
-                        <div className="bg-[#0d0d0d] p-3 rounded border border-[#2a2a2a]">
-                          <p className="text-[10px] text-[#555555] mb-1">Textos Motivadores:</p>
-                          {randomTheme.textos_motivadores.map((t, i) => <p key={i} className="text-xs text-[#888888] italic mb-1">"{t}"</p>)}
+                        <div className="bg-[#0A0A0A] p-3 rounded border border-[#27272A]">
+                          <p className="text-[10px] text-[#52525B] mb-1">Textos Motivadores:</p>
+                          {randomTheme.textos_motivadores.map((t, i) => <p key={i} className="text-xs text-[#A1A1AA] italic mb-1">"{t}"</p>)}
                         </div>
                       )}
                       {randomTheme.dicas?.length > 0 && (
                         <div>
-                          <p className="text-[10px] text-[#555555] mb-1">Dicas:</p>
+                          <p className="text-[10px] text-[#52525B] mb-1">Dicas:</p>
                           {randomTheme.dicas.map((d, i) => <p key={i} className="text-xs text-green-300">✓ {d}</p>)}
                         </div>
                       )}
@@ -3036,44 +3036,44 @@ export default function Studies() {
 
             {/* Resultado da Correção */}
             {showRedacaoResult && redacaoCorrection && (
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+              <Card className="bg-[#0A0A0A] border-[#27272A]">
                 <CardHeader>
                   <CardTitle className="text-sm flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-400" />Resultado da Correção</CardTitle>
                   <div className="flex items-center gap-3 mt-2">
-                    <div className="text-3xl font-bold text-[#00c896]">{redacaoCorrection.nota_geral}/{redacaoCorrection.nota_maxima}</div>
+                    <div className="text-3xl font-bold text-[#00F0FF]">{redacaoCorrection.nota_geral}/{redacaoCorrection.nota_maxima}</div>
                     <Badge className="bg-purple-500/20 text-purple-300">{redacaoCorrection.nivel}</Badge>
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2">
                     {(redacaoCorrection.competencias || []).map((c, i) => (
-                      <Card key={i} className="bg-[#1a1a1a] border-[#2a2a2a] p-3">
-                        <p className="text-[10px] text-[#888888] mb-1">{c.nome}</p>
-                        <p className="text-lg font-bold text-[#00c896]">{c.nota}/{c.nota_maxima}</p>
-                        <p className="text-[10px] text-[#555555] mt-1">{c.comentario}</p>
+                      <Card key={i} className="bg-[#121212] border-[#27272A] p-3">
+                        <p className="text-[10px] text-[#A1A1AA] mb-1">{c.nome}</p>
+                        <p className="text-lg font-bold text-[#00F0FF]">{c.nota}/{c.nota_maxima}</p>
+                        <p className="text-[10px] text-[#52525B] mt-1">{c.comentario}</p>
                       </Card>
                     ))}
                   </div>
                   {redacaoCorrection.pontos_fortes?.length > 0 && (
                     <div>
                       <p className="text-xs font-medium text-green-400 mb-1">✅ Pontos Fortes</p>
-                      {redacaoCorrection.pontos_fortes.map((p, i) => <p key={i} className="text-xs text-[#888888]">• {p}</p>)}
+                      {redacaoCorrection.pontos_fortes.map((p, i) => <p key={i} className="text-xs text-[#A1A1AA]">• {p}</p>)}
                     </div>
                   )}
                   {redacaoCorrection.pontos_melhorar?.length > 0 && (
                     <div>
                       <p className="text-xs font-medium text-orange-400 mb-1">🔧 Pontos a Melhorar</p>
-                      {redacaoCorrection.pontos_melhorar.map((p, i) => <p key={i} className="text-xs text-[#888888]">• {p}</p>)}
+                      {redacaoCorrection.pontos_melhorar.map((p, i) => <p key={i} className="text-xs text-[#A1A1AA]">• {p}</p>)}
                     </div>
                   )}
                   {redacaoCorrection.erros_gramaticais?.length > 0 && (
                     <div>
                       <p className="text-xs font-medium text-red-400 mb-1">📝 Erros Gramaticais</p>
                       {redacaoCorrection.erros_gramaticais.map((e, i) => (
-                        <div key={i} className="bg-[#1a1a1a] p-2 rounded mb-1">
+                        <div key={i} className="bg-[#121212] p-2 rounded mb-1">
                           <p className="text-xs text-red-300 line-through">{e.trecho}</p>
                           <p className="text-xs text-green-300">{e.correcao}</p>
-                          <p className="text-[10px] text-[#555555]">{e.explicacao}</p>
+                          <p className="text-[10px] text-[#52525B]">{e.explicacao}</p>
                         </div>
                       ))}
                     </div>
@@ -3081,7 +3081,7 @@ export default function Studies() {
                   {redacaoCorrection.dicas_estrategicas?.length > 0 && (
                     <div>
                       <p className="text-xs font-medium text-blue-400 mb-1">💡 Dicas Estratégicas</p>
-                      {redacaoCorrection.dicas_estrategicas.map((d, i) => <p key={i} className="text-xs text-[#888888]">• {d}</p>)}
+                      {redacaoCorrection.dicas_estrategicas.map((d, i) => <p key={i} className="text-xs text-[#A1A1AA]">• {d}</p>)}
                     </div>
                   )}
                   <Button variant="outline" size="sm" onClick={() => setShowRedacaoResult(false)}>Fechar</Button>
@@ -3090,27 +3090,27 @@ export default function Studies() {
             )}
 
             {/* Histórico */}
-            <Card className="bg-[#0d0d0d] border-[#2a2a2a]">
+            <Card className="bg-[#0A0A0A] border-[#27272A]">
               <CardHeader>
-                <CardTitle className="text-sm flex items-center gap-2"><BookMarked className="w-4 h-4 text-[#00c896]" />Histórico de Correções</CardTitle>
+                <CardTitle className="text-sm flex items-center gap-2"><BookMarked className="w-4 h-4 text-[#00F0FF]" />Histórico de Correções</CardTitle>
               </CardHeader>
               <CardContent>
                 {redacaoHistory.length === 0 ? (
                   <div className="text-center py-6">
-                    <PenTool className="w-8 h-8 text-[#555555] mx-auto mb-2" />
-                    <p className="text-sm text-[#888888]">Nenhuma correção ainda</p>
-                    <Button variant="link" size="sm" onClick={fetchRedacaoHistory} className="text-[#00c896] mt-1">Carregar histórico</Button>
+                    <PenTool className="w-8 h-8 text-[#52525B] mx-auto mb-2" />
+                    <p className="text-sm text-[#A1A1AA]">Nenhuma correção ainda</p>
+                    <Button variant="link" size="sm" onClick={fetchRedacaoHistory} className="text-[#00F0FF] mt-1">Carregar histórico</Button>
                   </div>
                 ) : (
                   <div className="space-y-2">
                     {redacaoHistory.map(r => (
-                      <div key={r.correction_id} className="flex items-center gap-3 p-2 bg-[#1a1a1a] rounded-lg cursor-pointer hover:bg-[#1A1A2E]" onClick={() => { setRedacaoCorrection(r.correction); setShowRedacaoResult(true); }}>
+                      <div key={r.correction_id} className="flex items-center gap-3 p-2 bg-[#121212] rounded-lg cursor-pointer hover:bg-[#1A1A2E]" onClick={() => { setRedacaoCorrection(r.correction); setShowRedacaoResult(true); }}>
                         <FileText className="w-4 h-4 text-purple-400" />
                         <div className="flex-1">
                           <p className="text-sm">{r.filename}</p>
-                          <p className="text-[10px] text-[#555555]">{new Date(r.created_at).toLocaleDateString('pt-BR')}</p>
+                          <p className="text-[10px] text-[#52525B]">{new Date(r.created_at).toLocaleDateString('pt-BR')}</p>
                         </div>
-                        <span className="text-sm font-bold text-[#00c896]">{r.correction?.nota_geral}/{r.correction?.nota_maxima}</span>
+                        <span className="text-sm font-bold text-[#00F0FF]">{r.correction?.nota_geral}/{r.correction?.nota_maxima}</span>
                       </div>
                     ))}
                   </div>
@@ -3123,7 +3123,7 @@ export default function Studies() {
 
         {/* ========== EDITAL RESULT DIALOG (Editable) ========== */}
         <Dialog open={showEditalResultDialog} onOpenChange={setShowEditalResultDialog}>
-          <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] max-w-2xl max-h-[85vh] overflow-y-auto">
+          <DialogContent className="bg-[#0A0A0A] border-[#27272A] max-w-2xl max-h-[85vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-green-400" />Programa Criado com Sucesso!</DialogTitle>
               <DialogDescription>Revise e personalize as disciplinas antes de finalizar.</DialogDescription>
@@ -3133,57 +3133,57 @@ export default function Studies() {
                 {/* Editable Program Name */}
                 <div>
                   <Label className="text-sm font-medium">Nome do Programa</Label>
-                  <Input value={editedProgramName} onChange={e => setEditedProgramName(e.target.value)} className="bg-[#1a1a1a] border-[#2a2a2a] mt-1" placeholder="Nome do programa de estudos" />
+                  <Input value={editedProgramName} onChange={e => setEditedProgramName(e.target.value)} className="bg-[#121212] border-[#27272A] mt-1" placeholder="Nome do programa de estudos" />
                 </div>
 
                 {/* Concurso Info */}
                 {editalResult.concurso && (
-                  <Card className="bg-[#1a1a1a] border-[#2a2a2a]">
+                  <Card className="bg-[#121212] border-[#27272A]">
                     <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><GraduationCap className="w-4 h-4 text-purple-400" />Informações do Concurso</CardTitle></CardHeader>
                     <CardContent className="text-xs space-y-1">
-                      {editalResult.concurso.nome && <p><span className="text-[#888888]">Concurso:</span> <span className="text-white font-medium">{editalResult.concurso.nome}</span></p>}
-                      {editalResult.concurso.orgao && <p><span className="text-[#888888]">Órgão:</span> <span className="text-white">{editalResult.concurso.orgao}</span></p>}
-                      {editalResult.concurso.banca && <p><span className="text-[#888888]">Banca:</span> <span className="text-white">{editalResult.concurso.banca}</span></p>}
-                      {editalResult.concurso.cargo && <p><span className="text-[#888888]">Cargo:</span> <span className="text-white">{editalResult.concurso.cargo}</span></p>}
-                      {editalResult.concurso.vagas && <p><span className="text-[#888888]">Vagas:</span> <span className="text-white">{editalResult.concurso.vagas}</span></p>}
-                      {editalResult.concurso.remuneracao && <p><span className="text-[#888888]">Remuneração:</span> <span className="text-green-400 font-medium">{editalResult.concurso.remuneracao}</span></p>}
+                      {editalResult.concurso.nome && <p><span className="text-[#A1A1AA]">Concurso:</span> <span className="text-white font-medium">{editalResult.concurso.nome}</span></p>}
+                      {editalResult.concurso.orgao && <p><span className="text-[#A1A1AA]">Órgão:</span> <span className="text-white">{editalResult.concurso.orgao}</span></p>}
+                      {editalResult.concurso.banca && <p><span className="text-[#A1A1AA]">Banca:</span> <span className="text-white">{editalResult.concurso.banca}</span></p>}
+                      {editalResult.concurso.cargo && <p><span className="text-[#A1A1AA]">Cargo:</span> <span className="text-white">{editalResult.concurso.cargo}</span></p>}
+                      {editalResult.concurso.vagas && <p><span className="text-[#A1A1AA]">Vagas:</span> <span className="text-white">{editalResult.concurso.vagas}</span></p>}
+                      {editalResult.concurso.remuneracao && <p><span className="text-[#A1A1AA]">Remuneração:</span> <span className="text-green-400 font-medium">{editalResult.concurso.remuneracao}</span></p>}
                     </CardContent>
                   </Card>
                 )}
 
                 {/* Editable Disciplines */}
-                <Card className="bg-[#1a1a1a] border-[#2a2a2a]">
+                <Card className="bg-[#121212] border-[#27272A]">
                   <CardHeader className="pb-2">
                     <div className="flex items-center justify-between">
                       <CardTitle className="text-sm flex items-center gap-2"><BookOpen className="w-4 h-4 text-blue-400" />{editedDisciplinas.length} Disciplinas</CardTitle>
                       <Badge variant="outline" className="text-[10px] border-purple-500 text-purple-400"><Edit3 className="w-3 h-3 mr-1" />Editável</Badge>
                     </div>
-                    <p className="text-[10px] text-[#888888]">Ajuste pesos, dificuldade e sua dificuldade pessoal para personalizar o cronograma.</p>
+                    <p className="text-[10px] text-[#A1A1AA]">Ajuste pesos, dificuldade e sua dificuldade pessoal para personalizar o cronograma.</p>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
                       {editedDisciplinas.map((disc, i) => (
-                        <div key={i} className="p-3 bg-[#0d0d0d] rounded-lg border border-[#2a2a2a] space-y-2">
+                        <div key={i} className="p-3 bg-[#0A0A0A] rounded-lg border border-[#27272A] space-y-2">
                           <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: disc.color || '#00c896' }} />
+                            <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: disc.color || '#007AFF' }} />
                             <Input value={disc.name} onChange={e => { const u = [...editedDisciplinas]; u[i] = {...u[i], name: e.target.value}; setEditedDisciplinas(u); }}
-                              className="bg-[#1a1a1a] border-[#2a2a2a] h-7 text-xs font-medium flex-1" />
+                              className="bg-[#121212] border-[#27272A] h-7 text-xs font-medium flex-1" />
                           </div>
                           <div className="grid grid-cols-2 gap-2">
                             <div>
-                              <Label className="text-[10px] text-[#888888]">Peso (edital)</Label>
+                              <Label className="text-[10px] text-[#A1A1AA]">Peso (edital)</Label>
                               <Select value={String(disc.weight || 1)} onValueChange={v => { const u = [...editedDisciplinas]; u[i] = {...u[i], weight: parseInt(v)}; setEditedDisciplinas(u); }}>
-                                <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a] h-7 text-xs"><SelectValue /></SelectTrigger>
-                                <SelectContent className="bg-[#0d0d0d] border-[#2a2a2a]">
+                                <SelectTrigger className="bg-[#121212] border-[#27272A] h-7 text-xs"><SelectValue /></SelectTrigger>
+                                <SelectContent className="bg-[#0A0A0A] border-[#27272A]">
                                   {[1,2,3,4,5].map(w => <SelectItem key={w} value={String(w)}>Peso {w}</SelectItem>)}
                                 </SelectContent>
                               </Select>
                             </div>
                             <div>
-                              <Label className="text-[10px] text-[#888888]">Minha dificuldade</Label>
+                              <Label className="text-[10px] text-[#A1A1AA]">Minha dificuldade</Label>
                               <Select value={disc.user_difficulty || disc.dificuldade || "media"} onValueChange={v => { const u = [...editedDisciplinas]; u[i] = {...u[i], user_difficulty: v, dificuldade: v}; setEditedDisciplinas(u); }}>
-                                <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a] h-7 text-xs"><SelectValue /></SelectTrigger>
-                                <SelectContent className="bg-[#0d0d0d] border-[#2a2a2a]">
+                                <SelectTrigger className="bg-[#121212] border-[#27272A] h-7 text-xs"><SelectValue /></SelectTrigger>
+                                <SelectContent className="bg-[#0A0A0A] border-[#27272A]">
                                   <SelectItem value="baixa">Fácil</SelectItem>
                                   <SelectItem value="media">Normal</SelectItem>
                                   <SelectItem value="alta">Difícil</SelectItem>
@@ -3191,17 +3191,17 @@ export default function Studies() {
                               </Select>
                             </div>
                           </div>
-                          {disc.num_questoes_edital > 0 && <p className="text-[10px] text-[#555555]">{disc.num_questoes_edital} questões no edital</p>}
+                          {disc.num_questoes_edital > 0 && <p className="text-[10px] text-[#52525B]">{disc.num_questoes_edital} questões no edital</p>}
                           {disc.conteudo_programatico?.length > 0 ? (
                             <details className="mt-1">
                               <summary className="text-[10px] text-purple-400 cursor-pointer hover:underline">{disc.conteudo_programatico.length} assuntos no conteúdo programático</summary>
                               <div className="mt-1 space-y-1 ml-1">
                                 {disc.conteudo_programatico.map((item, ci) => (
                                   <div key={ci} className="pl-2 border-l border-purple-500/30">
-                                    <p className="text-[10px] font-medium text-[#888888]">{ci + 1}. {item.assunto}</p>
+                                    <p className="text-[10px] font-medium text-[#A1A1AA]">{ci + 1}. {item.assunto}</p>
                                     {item.subtopicos?.length > 0 && (
                                       <div className="flex flex-wrap gap-0.5 ml-2 mt-0.5">
-                                        {item.subtopicos.map((sub, si) => <Badge key={si} variant="outline" className="text-[8px] border-[#2a2a2a] text-[#555555]">{sub}</Badge>)}
+                                        {item.subtopicos.map((sub, si) => <Badge key={si} variant="outline" className="text-[8px] border-[#27272A] text-[#52525B]">{sub}</Badge>)}
                                       </div>
                                     )}
                                   </div>
@@ -3210,7 +3210,7 @@ export default function Studies() {
                             </details>
                           ) : disc.topicos?.length > 0 && (
                             <div className="flex flex-wrap gap-1">
-                              {disc.topicos.map((t, ti) => <Badge key={ti} variant="outline" className="text-[9px] border-[#2a2a2a] text-[#888888]">{t}</Badge>)}
+                              {disc.topicos.map((t, ti) => <Badge key={ti} variant="outline" className="text-[9px] border-[#27272A] text-[#71717A]">{t}</Badge>)}
                             </div>
                           )}
                         </div>
@@ -3221,12 +3221,12 @@ export default function Studies() {
 
                 {/* Strategy */}
                 {editalResult.estrategia && (
-                  <Card className="bg-[#1a1a1a] border-[#2a2a2a]">
+                  <Card className="bg-[#121212] border-[#27272A]">
                     <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><Target className="w-4 h-4 text-green-400" />Estratégia de Estudo</CardTitle></CardHeader>
                     <CardContent className="text-xs space-y-2">
-                      {editalResult.estrategia.resumo && <p className="text-[#888888]">{editalResult.estrategia.resumo}</p>}
+                      {editalResult.estrategia.resumo && <p className="text-[#A1A1AA]">{editalResult.estrategia.resumo}</p>}
                       {editalResult.estrategia.dicas_gerais?.length > 0 && (
-                        <ul className="list-disc ml-4 text-[#888888] space-y-1">
+                        <ul className="list-disc ml-4 text-[#A1A1AA] space-y-1">
                           {editalResult.estrategia.dicas_gerais.map((d, i) => <li key={i}>{d}</li>)}
                         </ul>
                       )}
@@ -3239,7 +3239,7 @@ export default function Studies() {
                   <Button onClick={handleSaveDisciplinas} disabled={savingDisciplinas} className="w-full bg-purple-600 hover:bg-purple-700">
                     {savingDisciplinas ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Salvando e regenerando cronograma...</> : <><CheckCircle2 className="w-4 h-4 mr-2" />Salvar Personalizações e Regenerar Cronograma</>}
                   </Button>
-                  <Button variant="outline" onClick={() => { setShowEditalResultDialog(false); if (editalResult.program) handleViewCronograma(editalResult.program.program_id); }} className="w-full border-[#2a2a2a]">
+                  <Button variant="outline" onClick={() => { setShowEditalResultDialog(false); if (editalResult.program) handleViewCronograma(editalResult.program.program_id); }} className="w-full border-[#27272A]">
                     <LayoutGrid className="w-4 h-4 mr-2" />Ver Cronograma Atual
                   </Button>
                 </div>
@@ -3250,7 +3250,7 @@ export default function Studies() {
 
         {/* ========== CRONOGRAMA DIALOG (Enhanced with Indicators + Simulado) ========== */}
         <Dialog open={showCronogramaDialog} onOpenChange={setShowCronogramaDialog}>
-          <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogContent className="bg-[#0A0A0A] border-[#27272A] max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2"><LayoutGrid className="w-5 h-5 text-purple-400" />Cronograma de Estudos</DialogTitle>
               <DialogDescription>{cronogramaData?.program?.name || 'Programa de Estudos'}</DialogDescription>
@@ -3258,23 +3258,23 @@ export default function Studies() {
             {cronogramaLoading ? (
               <div className="flex flex-col items-center justify-center py-10">
                 <Loader2 className="w-8 h-8 animate-spin text-purple-400 mb-3" />
-                <p className="text-sm text-[#888888]">Carregando cronograma...</p>
+                <p className="text-sm text-[#A1A1AA]">Carregando cronograma...</p>
               </div>
             ) : cronogramaData && (
               <div className="space-y-4 py-2">
                 {/* Action Buttons */}
                 <div className="flex flex-wrap gap-2">
-                  <Button variant="outline" size="sm" className="border-[#2a2a2a] text-xs" onClick={() => handleExportCronograma('pdf')}>
+                  <Button variant="outline" size="sm" className="border-[#27272A] text-xs" onClick={() => handleExportCronograma('pdf')}>
                     <Download className="w-3 h-3 mr-1" />Exportar PDF
                   </Button>
-                  <Button variant="outline" size="sm" className="border-[#2a2a2a] text-xs" onClick={() => handleExportCronograma('image')}>
+                  <Button variant="outline" size="sm" className="border-[#27272A] text-xs" onClick={() => handleExportCronograma('image')}>
                     <Image className="w-3 h-3 mr-1" />Exportar Imagem
                   </Button>
-                  <Button variant="outline" size="sm" className="border-[#2a2a2a] text-xs" onClick={() => handleCreateReminders(cronogramaData.program?.program_id)}>
+                  <Button variant="outline" size="sm" className="border-[#27272A] text-xs" onClick={() => handleCreateReminders(cronogramaData.program?.program_id)}>
                     <BellRing className="w-3 h-3 mr-1" />Ativar Lembretes
                   </Button>
                   {cronogramaData.program?.program_id && (
-                    <Button variant="outline" size="sm" className="border-[#2a2a2a] text-xs" onClick={() => handleViewProgress(cronogramaData.program.program_id)}>
+                    <Button variant="outline" size="sm" className="border-[#27272A] text-xs" onClick={() => handleViewProgress(cronogramaData.program.program_id)}>
                       <TrendingUp className="w-3 h-3 mr-1" />Comparar Progresso
                     </Button>
                   )}
@@ -3288,12 +3288,12 @@ export default function Studies() {
                 <div ref={cronogramaRef}>
                 {/* Study Indicators per Discipline */}
                 {studyIndicators?.indicators?.length > 0 && (
-                  <Card className="bg-[#1a1a1a] border-[#2a2a2a]">
+                  <Card className="bg-[#121212] border-[#27272A]">
                     <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><BarChart3 className="w-4 h-4 text-green-400" />Indicadores de Estudo por Matéria</CardTitle></CardHeader>
                     <CardContent>
                       <div className="space-y-3">
                         {studyIndicators.indicators.map((ind, i) => (
-                          <div key={i} className="p-3 bg-[#0d0d0d] rounded-lg border border-[#2a2a2a]">
+                          <div key={i} className="p-3 bg-[#0A0A0A] rounded-lg border border-[#27272A]">
                             <div className="flex items-center justify-between mb-2">
                               <div className="flex items-center gap-2">
                                 <div className="w-2 h-2 rounded-full" style={{ backgroundColor: ind.color }} />
@@ -3307,29 +3307,29 @@ export default function Studies() {
                             <div className="grid grid-cols-5 gap-2 text-center">
                               <div>
                                 <p className="text-lg font-bold text-white">{ind.study_hours}h</p>
-                                <p className="text-[9px] text-[#888888]">Estudado</p>
+                                <p className="text-[9px] text-[#71717A]">Estudado</p>
                               </div>
                               <div>
                                 <p className="text-lg font-bold text-purple-400">{ind.total_questions_answered}</p>
-                                <p className="text-[9px] text-[#888888]">Questões</p>
+                                <p className="text-[9px] text-[#71717A]">Questões</p>
                               </div>
                               <div>
                                 <p className={`text-lg font-bold ${ind.accuracy >= 70 ? 'text-green-400' : ind.accuracy >= 50 ? 'text-yellow-400' : 'text-red-400'}`}>{ind.accuracy}%</p>
-                                <p className="text-[9px] text-[#888888]">Acerto</p>
+                                <p className="text-[9px] text-[#71717A]">Acerto</p>
                               </div>
                               <div>
                                 <p className="text-lg font-bold text-blue-400">{ind.flashcards_total}</p>
-                                <p className="text-[9px] text-[#888888]">Flashcards</p>
+                                <p className="text-[9px] text-[#71717A]">Flashcards</p>
                               </div>
                               <div>
-                                <p className="text-lg font-bold text-[#888888]">{ind.notes_count}</p>
-                                <p className="text-[9px] text-[#888888]">Notas</p>
+                                <p className="text-lg font-bold text-[#A1A1AA]">{ind.notes_count}</p>
+                                <p className="text-[9px] text-[#71717A]">Notas</p>
                               </div>
                             </div>
                             <div className="mt-2">
                               <div className="flex justify-between text-[10px] mb-1">
-                                <span className="text-[#888888]">Progresso questões</span>
-                                <span className="text-[#888888]">{ind.question_progress}%</span>
+                                <span className="text-[#71717A]">Progresso questões</span>
+                                <span className="text-[#A1A1AA]">{ind.question_progress}%</span>
                               </div>
                               <Progress value={ind.question_progress} className="h-1.5" />
                             </div>
@@ -3341,7 +3341,7 @@ export default function Studies() {
                 )}
 
                 {/* Weight Distribution */}
-                <Card className="bg-[#1a1a1a] border-[#2a2a2a]">
+                <Card className="bg-[#121212] border-[#27272A]">
                   <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><Scale className="w-4 h-4 text-yellow-400" />Distribuição por Peso</CardTitle></CardHeader>
                   <CardContent>
                     <div className="space-y-2">
@@ -3350,11 +3350,11 @@ export default function Studies() {
                           <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: disc.color }} />
                           <span className="text-xs font-medium w-40 truncate">{disc.disciplina}</span>
                           <div className="flex-1">
-                            <div className="h-3 bg-[#2a2a2a] rounded-full overflow-hidden">
+                            <div className="h-3 bg-[#27272A] rounded-full overflow-hidden">
                               <div className="h-full rounded-full transition-all" style={{ width: `${disc.percentual}%`, backgroundColor: disc.color }} />
                             </div>
                           </div>
-                          <span className="text-xs text-[#888888] w-12 text-right">{disc.percentual}%</span>
+                          <span className="text-xs text-[#A1A1AA] w-12 text-right">{disc.percentual}%</span>
                           <Badge variant="outline" className={`text-[10px] w-14 justify-center ${disc.dificuldade === 'alta' ? 'border-red-500 text-red-400' : disc.dificuldade === 'media' ? 'border-yellow-500 text-yellow-400' : 'border-green-500 text-green-400'}`}>{disc.dificuldade}</Badge>
                         </div>
                       ))}
@@ -3364,7 +3364,7 @@ export default function Studies() {
 
                 {/* Conteúdo Programático por Disciplina */}
                 {(cronogramaData.disciplinas || []).some(d => d.conteudo_programatico?.length > 0 || d.topicos?.length > 0) && (
-                  <Card className="bg-[#1a1a1a] border-[#2a2a2a]">
+                  <Card className="bg-[#121212] border-[#27272A]">
                     <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><BookOpen className="w-4 h-4 text-purple-400" />Conteúdo Programático por Disciplina</CardTitle></CardHeader>
                     <CardContent>
                       <div className="space-y-2">
@@ -3374,7 +3374,7 @@ export default function Studies() {
                           if (!hasConteudo && !hasTopicos) return null;
                           const isExpanded = expandedDisciplinas.has(`cron_${i}`);
                           return (
-                            <div key={i} className="border border-[#2a2a2a] rounded-lg overflow-hidden">
+                            <div key={i} className="border border-[#27272A] rounded-lg overflow-hidden">
                               <button
                                 className="w-full flex items-center justify-between px-3 py-2 bg-[#1A1A1A] hover:bg-[#222] transition-colors"
                                 onClick={() => toggleDisciplinaExpanded(`cron_${i}`)}
@@ -3382,22 +3382,22 @@ export default function Studies() {
                                 <div className="flex items-center gap-2">
                                   <div className="w-2 h-2 rounded-full" style={{ backgroundColor: disc.color }} />
                                   <span className="text-xs font-medium text-white">{disc.disciplina}</span>
-                                  <Badge variant="outline" className="text-[9px] border-[#333333] text-[#888888]">
+                                  <Badge variant="outline" className="text-[9px] border-[#3F3F46] text-[#A1A1AA]">
                                     {hasConteudo ? `${disc.conteudo_programatico.length} assuntos` : `${disc.topicos.length} tópicos`}
                                   </Badge>
                                 </div>
-                                {isExpanded ? <ChevronUp className="w-3 h-3 text-[#888888]" /> : <ChevronDown className="w-3 h-3 text-[#888888]" />}
+                                {isExpanded ? <ChevronUp className="w-3 h-3 text-[#A1A1AA]" /> : <ChevronDown className="w-3 h-3 text-[#A1A1AA]" />}
                               </button>
                               {isExpanded && (
                                 <div className="p-3 space-y-2">
                                   {hasConteudo ? (
                                     disc.conteudo_programatico.map((item, j) => (
-                                      <div key={j} className="pl-2 border-l-2 border-[#2a2a2a]">
+                                      <div key={j} className="pl-2 border-l-2 border-[#27272A]">
                                         <p className="text-xs font-medium text-white mb-1">{j + 1}. {item.assunto}</p>
                                         {item.subtopicos?.length > 0 && (
                                           <div className="flex flex-wrap gap-1 ml-3">
                                             {item.subtopicos.map((sub, k) => (
-                                              <Badge key={k} variant="outline" className="text-[9px] border-[#2a2a2a] text-[#888888]">{sub}</Badge>
+                                              <Badge key={k} variant="outline" className="text-[9px] border-[#27272A] text-[#71717A]">{sub}</Badge>
                                             ))}
                                           </div>
                                         )}
@@ -3406,7 +3406,7 @@ export default function Studies() {
                                   ) : (
                                     <div className="flex flex-wrap gap-1">
                                       {disc.topicos.map((t, j) => (
-                                        <Badge key={j} variant="outline" className="text-[9px] border-[#2a2a2a] text-[#888888]">{t}</Badge>
+                                        <Badge key={j} variant="outline" className="text-[9px] border-[#27272A] text-[#71717A]">{t}</Badge>
                                       ))}
                                     </div>
                                   )}
@@ -3421,7 +3421,7 @@ export default function Studies() {
                 )}
 
                 {/* Weekly Schedule */}
-                <Card className="bg-[#1a1a1a] border-[#2a2a2a]">
+                <Card className="bg-[#121212] border-[#27272A]">
                   <CardHeader className="pb-2">
                     <div className="flex items-center justify-between">
                       <CardTitle className="text-sm flex items-center gap-2"><Calendar className="w-4 h-4 text-blue-400" />Cronograma Semanal</CardTitle>
@@ -3435,10 +3435,10 @@ export default function Studies() {
                   <CardContent>
                     <div className="space-y-3">
                       {(cronogramaData.cronograma || []).map((day, di) => (
-                        <div key={di} className="border border-[#2a2a2a] rounded-lg overflow-hidden">
+                        <div key={di} className="border border-[#27272A] rounded-lg overflow-hidden">
                           <div className="flex items-center justify-between bg-[#1A1A1A] px-3 py-2">
                             <span className="text-sm font-bold text-white">{day.day_label}</span>
-                            <Badge variant="outline" className="text-[10px] border-[#333333] text-[#888888]">
+                            <Badge variant="outline" className="text-[10px] border-[#3F3F46] text-[#A1A1AA]">
                               <Clock className="w-3 h-3 mr-1" />{Math.floor(day.total_minutes / 60)}h{day.total_minutes % 60 > 0 ? `${day.total_minutes % 60}min` : ''}
                             </Badge>
                           </div>
@@ -3448,27 +3448,27 @@ export default function Studies() {
                                 (bloco.tipo_estudo || '').includes('Teoria') ? 'bg-blue-950/30 border border-blue-500/10' :
                                 (bloco.tipo_estudo || '').includes('Questões') ? 'bg-purple-950/30 border border-purple-500/10' :
                                 (bloco.tipo_estudo || '').includes('Revisão') ? 'bg-green-950/30 border border-green-500/10' :
-                                'bg-[#0d0d0d]'
+                                'bg-[#0A0A0A]'
                               }`}>
-                                <div className="w-1.5 min-h-[2rem] rounded-full flex-shrink-0 mt-0.5" style={{ backgroundColor: bloco.disciplina_color || '#00c896' }} />
+                                <div className="w-1.5 min-h-[2rem] rounded-full flex-shrink-0 mt-0.5" style={{ backgroundColor: bloco.disciplina_color || '#007AFF' }} />
                                 <div className="flex-1 min-w-0">
                                   <p className="text-xs font-medium text-white truncate">{bloco.disciplina_nome || bloco.notebook_id}</p>
                                   <p className={`text-[10px] font-medium ${
                                     (bloco.tipo_estudo || '').includes('Teoria') ? 'text-blue-400' :
                                     (bloco.tipo_estudo || '').includes('Questões') ? 'text-purple-400' :
                                     (bloco.tipo_estudo || '').includes('Revisão') ? 'text-green-400' :
-                                    'text-[#888888]'
+                                    'text-[#A1A1AA]'
                                   }`}>{bloco.tipo_estudo || 'Teoria + Questões'}</p>
                                   {bloco.assuntos_foco && bloco.assuntos_foco.length > 0 && (
                                     <div className="flex flex-wrap gap-1 mt-1">
                                       {bloco.assuntos_foco.map((assunto, ai) => (
-                                        <Badge key={ai} variant="outline" className="text-[9px] border-[#333333] text-[#888888]">{assunto}</Badge>
+                                        <Badge key={ai} variant="outline" className="text-[9px] border-[#3F3F46] text-[#71717A]">{assunto}</Badge>
                                       ))}
                                     </div>
                                   )}
                                 </div>
                                 <div className="text-right flex-shrink-0">
-                                  <p className="text-xs text-[#888888]">{bloco.start_time} - {bloco.end_time}</p>
+                                  <p className="text-xs text-[#A1A1AA]">{bloco.start_time} - {bloco.end_time}</p>
                                   <Badge variant="outline" className={`text-[10px] ${bloco.prioridade === 'alta' ? 'border-red-500 text-red-400' : bloco.prioridade === 'media' ? 'border-yellow-500 text-yellow-400' : 'border-green-500 text-green-400'}`}>{bloco.prioridade}</Badge>
                                 </div>
                               </div>
@@ -3482,13 +3482,13 @@ export default function Studies() {
 
                 {/* Strategy */}
                 {cronogramaData.estrategia && cronogramaData.estrategia.resumo && (
-                  <Card className="bg-[#1a1a1a] border-[#2a2a2a]">
+                  <Card className="bg-[#121212] border-[#27272A]">
                     <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><Lightbulb className="w-4 h-4 text-yellow-400" />Estratégia Recomendada</CardTitle></CardHeader>
                     <CardContent className="text-xs space-y-2">
-                      <p className="text-[#888888]">{cronogramaData.estrategia.resumo}</p>
-                      {cronogramaData.estrategia.fase_1 && <p><span className="text-blue-400 font-medium">Fase 1:</span> <span className="text-[#888888]">{cronogramaData.estrategia.fase_1}</span></p>}
-                      {cronogramaData.estrategia.fase_2 && <p><span className="text-yellow-400 font-medium">Fase 2:</span> <span className="text-[#888888]">{cronogramaData.estrategia.fase_2}</span></p>}
-                      {cronogramaData.estrategia.fase_3 && <p><span className="text-green-400 font-medium">Fase 3:</span> <span className="text-[#888888]">{cronogramaData.estrategia.fase_3}</span></p>}
+                      <p className="text-[#A1A1AA]">{cronogramaData.estrategia.resumo}</p>
+                      {cronogramaData.estrategia.fase_1 && <p><span className="text-blue-400 font-medium">Fase 1:</span> <span className="text-[#A1A1AA]">{cronogramaData.estrategia.fase_1}</span></p>}
+                      {cronogramaData.estrategia.fase_2 && <p><span className="text-yellow-400 font-medium">Fase 2:</span> <span className="text-[#A1A1AA]">{cronogramaData.estrategia.fase_2}</span></p>}
+                      {cronogramaData.estrategia.fase_3 && <p><span className="text-green-400 font-medium">Fase 3:</span> <span className="text-[#A1A1AA]">{cronogramaData.estrategia.fase_3}</span></p>}
                       {cronogramaData.estrategia.materias_prioritarias?.length > 0 && (
                         <div className="mt-2">
                           <p className="text-red-400 font-medium mb-1">Matérias Prioritárias:</p>
@@ -3524,7 +3524,7 @@ export default function Studies() {
 
         {/* ========== SIMULADO FROM EDITAL DIALOG ========== */}
         <Dialog open={showSimuladoFromEdital} onOpenChange={setShowSimuladoFromEdital}>
-          <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] max-w-md">
+          <DialogContent className="bg-[#0A0A0A] border-[#27272A] max-w-md">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2"><ClipboardList className="w-5 h-5 text-blue-400" />Gerar Simulado do Concurso</DialogTitle>
               <DialogDescription>
@@ -3535,13 +3535,13 @@ export default function Studies() {
               <div>
                 <Label className="text-sm">Título do Simulado</Label>
                 <Input value={editalSimuladoForm.title} onChange={e => setEditalSimuladoForm({...editalSimuladoForm, title: e.target.value})}
-                  className="bg-[#1a1a1a] border-[#2a2a2a] mt-1" />
+                  className="bg-[#121212] border-[#27272A] mt-1" />
               </div>
               <div>
                 <Label className="text-sm">Disciplina (opcional)</Label>
                 <Select value={editalSimuladoForm.disciplina} onValueChange={v => setEditalSimuladoForm({...editalSimuladoForm, disciplina: v})}>
-                  <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a] mt-1"><SelectValue placeholder="Todas as disciplinas" /></SelectTrigger>
-                  <SelectContent className="bg-[#0d0d0d] border-[#2a2a2a]">
+                  <SelectTrigger className="bg-[#121212] border-[#27272A] mt-1"><SelectValue placeholder="Todas as disciplinas" /></SelectTrigger>
+                  <SelectContent className="bg-[#0A0A0A] border-[#27272A]">
                     <SelectItem value=" ">Todas as disciplinas</SelectItem>
                     {(cronogramaData?.notebooks || []).map(nb => (
                       <SelectItem key={nb.notebook_id} value={nb.name}>{nb.name}</SelectItem>
@@ -3553,8 +3553,8 @@ export default function Studies() {
                 <div>
                   <Label className="text-[10px]">Tipo</Label>
                   <Select value={editalSimuladoForm.question_type} onValueChange={v => setEditalSimuladoForm({...editalSimuladoForm, question_type: v})}>
-                    <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a] h-8 text-xs"><SelectValue /></SelectTrigger>
-                    <SelectContent className="bg-[#0d0d0d] border-[#2a2a2a]">
+                    <SelectTrigger className="bg-[#121212] border-[#27272A] h-8 text-xs"><SelectValue /></SelectTrigger>
+                    <SelectContent className="bg-[#0A0A0A] border-[#27272A]">
                       <SelectItem value="multipla_escolha">Múlt. Escolha</SelectItem>
                       <SelectItem value="certo_errado">Certo/Errado</SelectItem>
                       <SelectItem value="misto">Misto</SelectItem>
@@ -3564,8 +3564,8 @@ export default function Studies() {
                 <div>
                   <Label className="text-[10px]">Questões</Label>
                   <Select value={String(editalSimuladoForm.num_questions)} onValueChange={v => setEditalSimuladoForm({...editalSimuladoForm, num_questions: parseInt(v)})}>
-                    <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a] h-8 text-xs"><SelectValue /></SelectTrigger>
-                    <SelectContent className="bg-[#0d0d0d] border-[#2a2a2a]">
+                    <SelectTrigger className="bg-[#121212] border-[#27272A] h-8 text-xs"><SelectValue /></SelectTrigger>
+                    <SelectContent className="bg-[#0A0A0A] border-[#27272A]">
                       {[5,10,15,20,30].map(n => <SelectItem key={n} value={String(n)}>{n}</SelectItem>)}
                     </SelectContent>
                   </Select>
@@ -3573,8 +3573,8 @@ export default function Studies() {
                 <div>
                   <Label className="text-[10px]">Dificuldade</Label>
                   <Select value={editalSimuladoForm.difficulty} onValueChange={v => setEditalSimuladoForm({...editalSimuladoForm, difficulty: v})}>
-                    <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a] h-8 text-xs"><SelectValue /></SelectTrigger>
-                    <SelectContent className="bg-[#0d0d0d] border-[#2a2a2a]">
+                    <SelectTrigger className="bg-[#121212] border-[#27272A] h-8 text-xs"><SelectValue /></SelectTrigger>
+                    <SelectContent className="bg-[#0A0A0A] border-[#27272A]">
                       <SelectItem value="facil">Fácil</SelectItem>
                       <SelectItem value="medio">Médio</SelectItem>
                       <SelectItem value="dificil">Difícil</SelectItem>
@@ -3592,18 +3592,18 @@ export default function Studies() {
 
         {/* ========== CARGO SELECTION DIALOG ========== */}
         <Dialog open={showCargoSelection} onOpenChange={setShowCargoSelection}>
-          <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] max-w-lg max-h-[90vh] overflow-y-auto">
+          <DialogContent className="bg-[#0A0A0A] border-[#27272A] max-w-lg max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2"><FileUp className="w-5 h-5 text-purple-400" />Selecione o Cargo</DialogTitle>
               <DialogDescription>
                 {editalAnalysis?.concurso?.nome && <span className="text-purple-300">{editalAnalysis.concurso.nome}</span>}
-                {editalAnalysis?.concurso?.banca && <span className="text-[#888888]"> | Banca: {editalAnalysis.concurso.banca}</span>}
+                {editalAnalysis?.concurso?.banca && <span className="text-[#A1A1AA]"> | Banca: {editalAnalysis.concurso.banca}</span>}
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-3 py-2">
-              <p className="text-xs text-[#888888]">Este edital possui {editalAnalysis?.cargos?.length || 0} cargos. Selecione o cargo desejado:</p>
+              <p className="text-xs text-[#A1A1AA]">Este edital possui {editalAnalysis?.cargos?.length || 0} cargos. Selecione o cargo desejado:</p>
               {(editalAnalysis?.cargos || []).map((cargo, idx) => (
-                <Card key={idx} className={`bg-[#1a1a1a] border-[#2a2a2a] p-4 cursor-pointer hover:border-purple-500 transition-colors ${selectedCargoIndex === idx ? 'border-purple-500 bg-purple-500/10' : ''}`}
+                <Card key={idx} className={`bg-[#121212] border-[#27272A] p-4 cursor-pointer hover:border-purple-500 transition-colors ${selectedCargoIndex === idx ? 'border-purple-500 bg-purple-500/10' : ''}`}
                   onClick={() => setSelectedCargoIndex(idx)}>
                   <div className="flex items-start justify-between">
                     <div>
@@ -3613,17 +3613,17 @@ export default function Studies() {
                         {cargo.remuneracao && <Badge variant="outline" className="text-[10px] border-yellow-500 text-yellow-400">{cargo.remuneracao}</Badge>}
                         {cargo.escolaridade && <Badge variant="outline" className="text-[10px] border-blue-500 text-blue-400">{cargo.escolaridade}</Badge>}
                       </div>
-                      <p className="text-xs text-[#888888] mt-2">{(cargo.disciplinas || []).length} disciplinas</p>
+                      <p className="text-xs text-[#A1A1AA] mt-2">{(cargo.disciplinas || []).length} disciplinas</p>
                       <div className="flex flex-wrap gap-1 mt-1">
                         {(cargo.disciplinas || []).slice(0, 5).map((d, di) => (
-                          <Badge key={di} variant="outline" className="text-[9px] border-[#333333] text-[#888888]">
+                          <Badge key={di} variant="outline" className="text-[9px] border-[#3F3F46] text-[#A1A1AA]">
                             {d.nome} {d.peso ? `(P${d.peso})` : ''}
                           </Badge>
                         ))}
-                        {(cargo.disciplinas || []).length > 5 && <Badge variant="outline" className="text-[9px] border-[#333333] text-[#555555]">+{(cargo.disciplinas || []).length - 5}</Badge>}
+                        {(cargo.disciplinas || []).length > 5 && <Badge variant="outline" className="text-[9px] border-[#3F3F46] text-[#52525B]">+{(cargo.disciplinas || []).length - 5}</Badge>}
                       </div>
                     </div>
-                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedCargoIndex === idx ? 'border-purple-500 bg-purple-500' : 'border-[#333333]'}`}>
+                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedCargoIndex === idx ? 'border-purple-500 bg-purple-500' : 'border-[#3F3F46]'}`}>
                       {selectedCargoIndex === idx && <CheckCircle2 className="w-3 h-3 text-white" />}
                     </div>
                   </div>
@@ -3634,8 +3634,8 @@ export default function Studies() {
                 <div>
                   <Label className="text-sm font-medium">Horas por dia</Label>
                   <Select value={String(editalForm.hours_per_day)} onValueChange={v => setEditalForm({...editalForm, hours_per_day: parseFloat(v)})}>
-                    <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a] mt-1"><SelectValue /></SelectTrigger>
-                    <SelectContent className="bg-[#0d0d0d] border-[#2a2a2a]">
+                    <SelectTrigger className="bg-[#121212] border-[#27272A] mt-1"><SelectValue /></SelectTrigger>
+                    <SelectContent className="bg-[#0A0A0A] border-[#27272A]">
                       {[1,2,3,4,5,6,7,8,10,12].map(h => <SelectItem key={h} value={String(h)}>{h}h</SelectItem>)}
                     </SelectContent>
                   </Select>
@@ -3643,8 +3643,8 @@ export default function Studies() {
                 <div>
                   <Label className="text-sm font-medium">Dias por semana</Label>
                   <Select value={String(editalForm.days_per_week)} onValueChange={v => setEditalForm({...editalForm, days_per_week: parseInt(v)})}>
-                    <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a] mt-1"><SelectValue /></SelectTrigger>
-                    <SelectContent className="bg-[#0d0d0d] border-[#2a2a2a]">
+                    <SelectTrigger className="bg-[#121212] border-[#27272A] mt-1"><SelectValue /></SelectTrigger>
+                    <SelectContent className="bg-[#0A0A0A] border-[#27272A]">
                       {[3,4,5,6,7].map(d => <SelectItem key={d} value={String(d)}>{d} dias</SelectItem>)}
                     </SelectContent>
                   </Select>
@@ -3660,7 +3660,7 @@ export default function Studies() {
 
         {/* ========== MIND MAP GENERATOR DIALOG ========== */}
         <Dialog open={showMindmapDialog} onOpenChange={setShowMindmapDialog}>
-          <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] max-w-md">
+          <DialogContent className="bg-[#0A0A0A] border-[#27272A] max-w-md">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2"><Network className="w-5 h-5 text-green-400" />Gerar Mapa Mental</DialogTitle>
               <DialogDescription>A IA irá criar um mapa mental estruturado</DialogDescription>
@@ -3668,11 +3668,11 @@ export default function Studies() {
             <div className="space-y-4 py-2">
               <div>
                 <Label className="text-sm">Tópico ou Assunto</Label>
-                <Input value={mindmapTopic} onChange={e => setMindmapTopic(e.target.value)} placeholder="Ex: Direito Constitucional - Direitos Fundamentais" className="bg-[#1a1a1a] border-[#2a2a2a] mt-1" />
+                <Input value={mindmapTopic} onChange={e => setMindmapTopic(e.target.value)} placeholder="Ex: Direito Constitucional - Direitos Fundamentais" className="bg-[#121212] border-[#27272A] mt-1" />
               </div>
               <div>
                 <Label className="text-sm">Ou envie um arquivo (PDF/Imagem)</Label>
-                <div className={`mt-1 border-2 border-dashed rounded-lg p-4 text-center ${mindmapFile ? 'border-green-500 bg-green-500/10' : 'border-[#2a2a2a]'}`}>
+                <div className={`mt-1 border-2 border-dashed rounded-lg p-4 text-center ${mindmapFile ? 'border-green-500 bg-green-500/10' : 'border-[#27272A]'}`}>
                   {mindmapFile ? (
                     <div className="flex items-center justify-center gap-2">
                       <FileText className="w-4 h-4 text-green-400" />
@@ -3681,8 +3681,8 @@ export default function Studies() {
                     </div>
                   ) : (
                     <label className="cursor-pointer">
-                      <Upload className="w-6 h-6 mx-auto text-[#888888] mb-1" />
-                      <p className="text-xs text-[#888888]">Clique para selecionar</p>
+                      <Upload className="w-6 h-6 mx-auto text-[#A1A1AA] mb-1" />
+                      <p className="text-xs text-[#A1A1AA]">Clique para selecionar</p>
                       <input type="file" accept=".pdf,image/*" className="hidden" onChange={e => setMindmapFile(e.target.files?.[0] || null)} />
                     </label>
                   )}
@@ -3697,7 +3697,7 @@ export default function Studies() {
 
         {/* ========== MIND MAP VIEW DIALOG ========== */}
         <Dialog open={showMindmapView} onOpenChange={setShowMindmapView}>
-          <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogContent className="bg-[#0A0A0A] border-[#27272A] max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2"><Network className="w-5 h-5 text-green-400" />Mapa Mental: {viewingMindmap?.title || ''}</DialogTitle>
             </DialogHeader>
@@ -3712,18 +3712,18 @@ export default function Studies() {
                 {/* Branches */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {(viewingMindmap.nodes || []).map((node, i) => (
-                    <Card key={i} className="bg-[#1a1a1a] border-[#2a2a2a] overflow-hidden">
-                      <div className="h-1" style={{ backgroundColor: node.color || '#00c896' }} />
+                    <Card key={i} className="bg-[#121212] border-[#27272A] overflow-hidden">
+                      <div className="h-1" style={{ backgroundColor: node.color || '#007AFF' }} />
                       <CardContent className="p-4">
-                        <h3 className="font-bold text-sm mb-2" style={{ color: node.color || '#00c896' }}>{node.label}</h3>
+                        <h3 className="font-bold text-sm mb-2" style={{ color: node.color || '#007AFF' }}>{node.label}</h3>
                         {(node.children || []).map((child, ci) => (
                           <div key={ci} className="ml-3 mb-2">
                             <div className="flex items-start gap-2">
-                              <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: node.color || '#00c896' }} />
+                              <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: node.color || '#007AFF' }} />
                               <div>
                                 <p className="text-xs font-medium text-white">{child.label}</p>
                                 {(child.children || []).map((sub, si) => (
-                                  <p key={si} className="text-[10px] text-[#888888] ml-3 mt-0.5">• {sub.label}</p>
+                                  <p key={si} className="text-[10px] text-[#A1A1AA] ml-3 mt-0.5">• {sub.label}</p>
                                 ))}
                               </div>
                             </div>
@@ -3734,11 +3734,11 @@ export default function Studies() {
                   ))}
                 </div>
                 <div className="flex gap-2 mt-4">
-                  <Button variant="outline" size="sm" className="border-[#2a2a2a]" onClick={async () => {
+                  <Button variant="outline" size="sm" className="border-[#27272A]" onClick={async () => {
                     try {
                       const el = document.querySelector('[data-mindmap-content]');
                       if (!el) return;
-                      const canvas = await html2canvas(el, { backgroundColor: '#0d0d0d', scale: 2 });
+                      const canvas = await html2canvas(el, { backgroundColor: '#0A0A0A', scale: 2 });
                       const link = document.createElement('a');
                       link.download = `mapa_mental_${viewingMindmap?.title || 'estudo'}.png`;
                       link.href = canvas.toDataURL('image/png');
@@ -3754,7 +3754,7 @@ export default function Studies() {
 
         {/* ========== PROGRESS COMPARISON DIALOG ========== */}
         <Dialog open={showProgressDialog} onOpenChange={setShowProgressDialog}>
-          <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogContent className="bg-[#0A0A0A] border-[#27272A] max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2"><TrendingUp className="w-5 h-5 text-blue-400" />Comparador de Progresso</DialogTitle>
               <DialogDescription>Evolução das disciplinas nos últimos 30 dias</DialogDescription>
@@ -3767,14 +3767,14 @@ export default function Studies() {
               <div className="space-y-6 py-2">
                 {progressHistory.history?.length > 0 ? (
                   <>
-                    <Card className="bg-[#1a1a1a] border-[#2a2a2a] p-4">
+                    <Card className="bg-[#121212] border-[#27272A] p-4">
                       <h3 className="text-sm font-medium mb-3 flex items-center gap-2"><Hash className="w-4 h-4 text-purple-400" />Questões Acumuladas</h3>
                       <ResponsiveContainer width="100%" height={250}>
                         <LineChart data={progressHistory.history}>
-                          <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
-                          <XAxis dataKey="date" tick={{ fill: '#888888', fontSize: 10 }} />
-                          <YAxis tick={{ fill: '#888888', fontSize: 10 }} />
-                          <Tooltip contentStyle={{ backgroundColor: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 8 }} />
+                          <CartesianGrid strokeDasharray="3 3" stroke="#27272A" />
+                          <XAxis dataKey="date" tick={{ fill: '#A1A1AA', fontSize: 10 }} />
+                          <YAxis tick={{ fill: '#A1A1AA', fontSize: 10 }} />
+                          <Tooltip contentStyle={{ backgroundColor: '#121212', border: '1px solid #27272A', borderRadius: 8 }} />
                           <Legend wrapperStyle={{ fontSize: 11 }} />
                           {(progressHistory.notebooks || []).map((nb, i) => (
                             <Line key={i} type="monotone" dataKey={`${nb.name}_questoes`} name={nb.name} stroke={nb.color} strokeWidth={2} dot={false} />
@@ -3782,14 +3782,14 @@ export default function Studies() {
                         </LineChart>
                       </ResponsiveContainer>
                     </Card>
-                    <Card className="bg-[#1a1a1a] border-[#2a2a2a] p-4">
+                    <Card className="bg-[#121212] border-[#27272A] p-4">
                       <h3 className="text-sm font-medium mb-3 flex items-center gap-2"><Target className="w-4 h-4 text-green-400" />Taxa de Acerto (%)</h3>
                       <ResponsiveContainer width="100%" height={250}>
                         <LineChart data={progressHistory.history}>
-                          <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
-                          <XAxis dataKey="date" tick={{ fill: '#888888', fontSize: 10 }} />
-                          <YAxis tick={{ fill: '#888888', fontSize: 10 }} domain={[0, 100]} />
-                          <Tooltip contentStyle={{ backgroundColor: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 8 }} />
+                          <CartesianGrid strokeDasharray="3 3" stroke="#27272A" />
+                          <XAxis dataKey="date" tick={{ fill: '#A1A1AA', fontSize: 10 }} />
+                          <YAxis tick={{ fill: '#A1A1AA', fontSize: 10 }} domain={[0, 100]} />
+                          <Tooltip contentStyle={{ backgroundColor: '#121212', border: '1px solid #27272A', borderRadius: 8 }} />
                           <Legend wrapperStyle={{ fontSize: 11 }} />
                           {(progressHistory.notebooks || []).map((nb, i) => (
                             <Line key={i} type="monotone" dataKey={`${nb.name}_acerto`} name={`${nb.name} %`} stroke={nb.color} strokeWidth={2} dot={false} />
@@ -3797,14 +3797,14 @@ export default function Studies() {
                         </LineChart>
                       </ResponsiveContainer>
                     </Card>
-                    <Card className="bg-[#1a1a1a] border-[#2a2a2a] p-4">
+                    <Card className="bg-[#121212] border-[#27272A] p-4">
                       <h3 className="text-sm font-medium mb-3 flex items-center gap-2"><Clock className="w-4 h-4 text-yellow-400" />Horas de Estudo Acumuladas</h3>
                       <ResponsiveContainer width="100%" height={250}>
                         <LineChart data={progressHistory.history}>
-                          <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
-                          <XAxis dataKey="date" tick={{ fill: '#888888', fontSize: 10 }} />
-                          <YAxis tick={{ fill: '#888888', fontSize: 10 }} />
-                          <Tooltip contentStyle={{ backgroundColor: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 8 }} />
+                          <CartesianGrid strokeDasharray="3 3" stroke="#27272A" />
+                          <XAxis dataKey="date" tick={{ fill: '#A1A1AA', fontSize: 10 }} />
+                          <YAxis tick={{ fill: '#A1A1AA', fontSize: 10 }} />
+                          <Tooltip contentStyle={{ backgroundColor: '#121212', border: '1px solid #27272A', borderRadius: 8 }} />
                           <Legend wrapperStyle={{ fontSize: 11 }} />
                           {(progressHistory.notebooks || []).map((nb, i) => (
                             <Line key={i} type="monotone" dataKey={`${nb.name}_horas`} name={`${nb.name} h`} stroke={nb.color} strokeWidth={2} dot={false} />
@@ -3815,9 +3815,9 @@ export default function Studies() {
                   </>
                 ) : (
                   <div className="text-center py-10">
-                    <BarChart3 className="w-12 h-12 text-[#555555] mx-auto mb-3" />
-                    <p className="text-[#888888]">Sem dados de progresso ainda</p>
-                    <p className="text-xs text-[#555555]">Registre questões e sessões de foco para ver a evolução</p>
+                    <BarChart3 className="w-12 h-12 text-[#52525B] mx-auto mb-3" />
+                    <p className="text-[#A1A1AA]">Sem dados de progresso ainda</p>
+                    <p className="text-xs text-[#52525B]">Registre questões e sessões de foco para ver a evolução</p>
                   </div>
                 )}
               </div>
@@ -3827,7 +3827,7 @@ export default function Studies() {
 
         {/* ========== EDITAL VERTICALIZADO DIALOG ========== */}
         <Dialog open={showVerticalizadoDialog} onOpenChange={setShowVerticalizadoDialog}>
-          <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogContent className="bg-[#0A0A0A] border-[#27272A] max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2"><Layers className="w-5 h-5 text-purple-400" />Edital Verticalizado</DialogTitle>
               <DialogDescription>{verticalizadoData?.program_name || 'Programa de Estudos'}</DialogDescription>
@@ -3835,25 +3835,25 @@ export default function Studies() {
             {verticalizadoLoading ? (
               <div className="flex flex-col items-center justify-center py-10">
                 <Loader2 className="w-8 h-8 animate-spin text-purple-400 mb-3" />
-                <p className="text-sm text-[#888888]">Carregando edital verticalizado...</p>
+                <p className="text-sm text-[#A1A1AA]">Carregando edital verticalizado...</p>
               </div>
             ) : verticalizadoData && (
               <div className="space-y-4 py-2">
                 {/* Concurso Info Header */}
-                <Card className="bg-[#1a1a1a] border-[#2a2a2a]">
+                <Card className="bg-[#121212] border-[#27272A]">
                   <CardContent className="pt-4">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
                       {verticalizadoData.banca && (
-                        <div><span className="text-[#888888]">Banca:</span> <span className="text-white font-medium">{verticalizadoData.banca}</span></div>
+                        <div><span className="text-[#71717A]">Banca:</span> <span className="text-white font-medium">{verticalizadoData.banca}</span></div>
                       )}
                       {verticalizadoData.orgao && (
-                        <div><span className="text-[#888888]">Órgão:</span> <span className="text-white font-medium">{verticalizadoData.orgao}</span></div>
+                        <div><span className="text-[#71717A]">Órgão:</span> <span className="text-white font-medium">{verticalizadoData.orgao}</span></div>
                       )}
                       {verticalizadoData.cargo && (
-                        <div><span className="text-[#888888]">Cargo:</span> <span className="text-white font-medium">{verticalizadoData.cargo}</span></div>
+                        <div><span className="text-[#71717A]">Cargo:</span> <span className="text-white font-medium">{verticalizadoData.cargo}</span></div>
                       )}
                       {verticalizadoData.target_date && (
-                        <div><span className="text-[#888888]">Prova:</span> <span className="text-purple-400 font-medium">{verticalizadoData.target_date}</span></div>
+                        <div><span className="text-[#71717A]">Prova:</span> <span className="text-purple-400 font-medium">{verticalizadoData.target_date}</span></div>
                       )}
                     </div>
                     <div className="flex gap-4 mt-3">
@@ -3869,7 +3869,7 @@ export default function Studies() {
                   const hasConteudo = disc.conteudo_programatico?.length > 0;
                   const hasTopicos = disc.topicos?.length > 0;
                   return (
-                    <Card key={i} className="bg-[#1a1a1a] border-[#2a2a2a] overflow-hidden">
+                    <Card key={i} className="bg-[#121212] border-[#27272A] overflow-hidden">
                       <button
                         className="w-full px-4 py-3 flex items-center justify-between hover:bg-[#1A1A1A] transition-colors"
                         onClick={() => toggleDisciplinaExpanded(`vert_${i}`)}
@@ -3880,31 +3880,31 @@ export default function Studies() {
                             <p className="text-sm font-medium text-white">{disc.nome}</p>
                             <div className="flex items-center gap-2 mt-0.5">
                               <Badge variant="outline" className="text-[9px] border-yellow-500 text-yellow-400">Peso {disc.peso}</Badge>
-                              {disc.num_questoes > 0 && <span className="text-[10px] text-[#888888]">{disc.num_questoes} questões</span>}
+                              {disc.num_questoes > 0 && <span className="text-[10px] text-[#71717A]">{disc.num_questoes} questões</span>}
                               <Badge variant="outline" className={`text-[9px] ${disc.dificuldade === 'alta' ? 'border-red-500 text-red-400' : disc.dificuldade === 'media' ? 'border-yellow-500 text-yellow-400' : 'border-green-500 text-green-400'}`}>{disc.dificuldade}</Badge>
-                              {disc.grupo && <span className="text-[10px] text-[#555555]">{disc.grupo}</span>}
+                              {disc.grupo && <span className="text-[10px] text-[#52525B]">{disc.grupo}</span>}
                             </div>
                           </div>
                         </div>
                         <div className="flex items-center gap-3">
                           <div className="text-right text-[10px] hidden md:block">
-                            <p className="text-[#888888]">{disc.study_hours}h estudado</p>
-                            <p className="text-[#888888]">{disc.total_questions_answered} questões | {disc.accuracy}% acerto</p>
+                            <p className="text-[#A1A1AA]">{disc.study_hours}h estudado</p>
+                            <p className="text-[#A1A1AA]">{disc.total_questions_answered} questões | {disc.accuracy}% acerto</p>
                           </div>
-                          <Badge variant="outline" className="text-[9px] border-[#333333] text-[#888888]">
+                          <Badge variant="outline" className="text-[9px] border-[#3F3F46] text-[#A1A1AA]">
                             {hasConteudo ? `${disc.total_assuntos} assuntos` : hasTopicos ? `${disc.topicos.length} tópicos` : 'Sem conteúdo'}
                           </Badge>
-                          {isExpanded ? <ChevronUp className="w-4 h-4 text-[#888888]" /> : <ChevronDown className="w-4 h-4 text-[#888888]" />}
+                          {isExpanded ? <ChevronUp className="w-4 h-4 text-[#A1A1AA]" /> : <ChevronDown className="w-4 h-4 text-[#A1A1AA]" />}
                         </div>
                       </button>
                       {isExpanded && (
-                        <CardContent className="border-t border-[#2a2a2a] pt-3">
+                        <CardContent className="border-t border-[#27272A] pt-3">
                           {/* Study Progress Mini */}
-                          <div className="grid grid-cols-4 gap-2 text-center mb-4 bg-[#0d0d0d] rounded-lg p-2">
-                            <div><p className="text-lg font-bold text-white">{disc.study_hours}h</p><p className="text-[9px] text-[#888888]">Estudado</p></div>
-                            <div><p className="text-lg font-bold text-purple-400">{disc.total_questions_answered}</p><p className="text-[9px] text-[#888888]">Questões</p></div>
-                            <div><p className={`text-lg font-bold ${disc.accuracy >= 70 ? 'text-green-400' : disc.accuracy >= 50 ? 'text-yellow-400' : 'text-red-400'}`}>{disc.accuracy}%</p><p className="text-[9px] text-[#888888]">Acerto</p></div>
-                            <div><p className="text-lg font-bold text-blue-400">{disc.num_questoes || '-'}</p><p className="text-[9px] text-[#888888]">Questões Edital</p></div>
+                          <div className="grid grid-cols-4 gap-2 text-center mb-4 bg-[#0A0A0A] rounded-lg p-2">
+                            <div><p className="text-lg font-bold text-white">{disc.study_hours}h</p><p className="text-[9px] text-[#71717A]">Estudado</p></div>
+                            <div><p className="text-lg font-bold text-purple-400">{disc.total_questions_answered}</p><p className="text-[9px] text-[#71717A]">Questões</p></div>
+                            <div><p className={`text-lg font-bold ${disc.accuracy >= 70 ? 'text-green-400' : disc.accuracy >= 50 ? 'text-yellow-400' : 'text-red-400'}`}>{disc.accuracy}%</p><p className="text-[9px] text-[#71717A]">Acerto</p></div>
+                            <div><p className="text-lg font-bold text-blue-400">{disc.num_questoes || '-'}</p><p className="text-[9px] text-[#71717A]">Questões Edital</p></div>
                           </div>
 
                           {/* Conteúdo Programático Detalhado */}
@@ -3917,8 +3917,8 @@ export default function Studies() {
                                   {item.subtopicos?.length > 0 && (
                                     <div className="ml-4 mt-1 space-y-0.5">
                                       {item.subtopicos.map((sub, k) => (
-                                        <p key={k} className="text-[10px] text-[#888888] flex items-start gap-1">
-                                          <span className="text-[#555555] mt-0.5">•</span> {sub}
+                                        <p key={k} className="text-[10px] text-[#A1A1AA] flex items-start gap-1">
+                                          <span className="text-[#52525B] mt-0.5">•</span> {sub}
                                         </p>
                                       ))}
                                     </div>
@@ -3931,12 +3931,12 @@ export default function Studies() {
                               <p className="text-xs font-medium text-purple-400 mb-2">Tópicos:</p>
                               <div className="flex flex-wrap gap-1">
                                 {disc.topicos.map((t, j) => (
-                                  <Badge key={j} variant="outline" className="text-[10px] border-[#2a2a2a] text-[#888888]">{t}</Badge>
+                                  <Badge key={j} variant="outline" className="text-[10px] border-[#27272A] text-[#A1A1AA]">{t}</Badge>
                                 ))}
                               </div>
                             </div>
                           ) : (
-                            <p className="text-xs text-[#555555] italic">Conteúdo programático não disponível para esta disciplina.</p>
+                            <p className="text-xs text-[#52525B] italic">Conteúdo programático não disponível para esta disciplina.</p>
                           )}
                         </CardContent>
                       )}

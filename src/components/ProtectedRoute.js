@@ -47,7 +47,7 @@ export default function ProtectedRoute({ children }) {
   if (isAuthenticated === null) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#050505]">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#00c896]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#007AFF]"></div>
       </div>
     );
   }

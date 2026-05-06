@@ -45,7 +45,7 @@ const MiniConsistencyChart = ({ completions = [], color }) => {
             key={idx}
             className="w-2 h-2 rounded-sm"
             style={{
-              backgroundColor: day.completed ? color : '#2a2a2a',
+              backgroundColor: day.completed ? color : '#27272A',
               opacity: day.completed ? 1 : 0.4
             }}
             title={`${day.date}`}
@@ -61,13 +61,13 @@ const MiniConsistencyChart = ({ completions = [], color }) => {
 const CompactStreakDisplay = ({ streak, bestStreak, color }) => (
   <div className="flex items-center gap-3">
     <div className="flex items-center gap-1">
-      <Flame className="w-4 h-4" style={{ color: streak > 0 ? color : '#555555' }} />
-      <span className="font-data text-sm" style={{ color: streak > 0 ? color : '#888888' }}>{streak}</span>
+      <Flame className="w-4 h-4" style={{ color: streak > 0 ? color : '#52525B' }} />
+      <span className="font-data text-sm" style={{ color: streak > 0 ? color : '#A1A1AA' }}>{streak}</span>
     </div>
-    <div className="text-xs text-[#555555]">|</div>
+    <div className="text-xs text-[#52525B]">|</div>
     <div className="flex items-center gap-1">
-      <TrendingUp className="w-3 h-3 text-[#555555]" />
-      <span className="font-data text-xs text-[#888888]">{bestStreak}</span>
+      <TrendingUp className="w-3 h-3 text-[#52525B]" />
+      <span className="font-data text-xs text-[#A1A1AA]">{bestStreak}</span>
     </div>
   </div>
 );
@@ -80,7 +80,7 @@ export default function Habits() {
   const [selectedHabit, setSelectedHabit] = useState(null);
   const [reminderTime, setReminderTime] = useState("08:00");
   const [reminderDays, setReminderDays] = useState(["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]);
-  const [newHabit, setNewHabit] = useState({ name: "", description: "", color: "#00c896" });
+  const [newHabit, setNewHabit] = useState({ name: "", description: "", color: "#007AFF" });
   const [showStats, setShowStats] = useState(true);
   const today = getLocalDateStr();
 
@@ -125,7 +125,7 @@ export default function Habits() {
     try {
       await axios.post(`${API}/habits`, newHabit, { withCredentials: true });
       toast.success("Hábito criado!");
-      setNewHabit({ name: "", description: "", color: "#00c896" });
+      setNewHabit({ name: "", description: "", color: "#007AFF" });
       setOpen(false);
       fetchHabits();
     } catch (error) {
@@ -199,7 +199,7 @@ export default function Habits() {
     }
   };
 
-  const colors = ["#00c896", "#00c896", "#FF9500", "#FF3B30", "#00c896", "#FFD700", "#FF00FF"];
+  const colors = ["#007AFF", "#39FF14", "#FF9500", "#FF3B30", "#00F0FF", "#FFD700", "#FF00FF"];
 
   return (
     <div className="flex min-h-screen bg-[#050505]">
@@ -209,49 +209,49 @@ export default function Habits() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 md:mb-8 md:pt-0 gap-3">
             <div>
               <h1 className="font-heading text-3xl md:text-4xl mb-1 md:mb-2" data-testid="habits-title">HÁBITOS</h1>
-              <p className="text-[#888888] text-sm">Construa sequências inquebráveis</p>
+              <p className="text-[#A1A1AA] text-sm">Construa sequências inquebráveis</p>
             </div>
             <div className="flex items-center space-x-2 sm:space-x-3">
               <Button
                 variant="outline"
                 onClick={() => setShowStats(!showStats)}
-                className="border-[#2a2a2a] text-[#888888] hover:text-white uppercase text-[10px] sm:text-xs tracking-widest"
+                className="border-[#27272A] text-[#A1A1AA] hover:text-white uppercase text-[10px] sm:text-xs tracking-widest"
               >
                 <BarChart3 className="w-4 h-4 mr-1 sm:mr-2" />
                 {showStats ? 'Ocultar Stats' : 'Mostrar Stats'}
               </Button>
               <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
-                  <Button data-testid="habits-create-btn" className="bg-[#00c896] hover:bg-[#0062CC] uppercase text-[10px] sm:text-xs tracking-widest shadow-[0_0_10px_rgba(0,122,255,0.3)]">
+                  <Button data-testid="habits-create-btn" className="bg-[#007AFF] hover:bg-[#0062CC] uppercase text-[10px] sm:text-xs tracking-widest shadow-[0_0_10px_rgba(0,122,255,0.3)]">
                     <Plus className="w-4 h-4 mr-1 sm:mr-2" />
                     Novo Hábito
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] text-white">
+                <DialogContent className="bg-[#0A0A0A] border-[#27272A] text-white">
                   <DialogHeader>
                     <DialogTitle className="font-heading text-2xl">CRIAR HÁBITO</DialogTitle>
                   </DialogHeader>
                   <div className="space-y-4 mt-4">
                     <div>
-                      <Label className="text-[#888888] uppercase text-xs tracking-wider mb-2 block">Nome</Label>
+                      <Label className="text-[#A1A1AA] uppercase text-xs tracking-wider mb-2 block">Nome</Label>
                       <Input
                         data-testid="habit-name-input"
                         value={newHabit.name}
                         onChange={(e) => setNewHabit({...newHabit, name: e.target.value})}
-                        className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                        className="bg-[#121212] border-[#27272A] text-white"
                       />
                     </div>
                     <div>
-                      <Label className="text-[#888888] uppercase text-xs tracking-wider mb-2 block">Descrição</Label>
+                      <Label className="text-[#A1A1AA] uppercase text-xs tracking-wider mb-2 block">Descrição</Label>
                       <Textarea
                         data-testid="habit-description-input"
                         value={newHabit.description}
                         onChange={(e) => setNewHabit({...newHabit, description: e.target.value})}
-                        className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                        className="bg-[#121212] border-[#27272A] text-white"
                       />
                     </div>
                     <div>
-                      <Label className="text-[#888888] uppercase text-xs tracking-wider mb-2 block">Cor</Label>
+                      <Label className="text-[#A1A1AA] uppercase text-xs tracking-wider mb-2 block">Cor</Label>
                       <div className="flex space-x-2">
                         {colors.map((color) => (
                           <button
@@ -263,7 +263,7 @@ export default function Habits() {
                         ))}
                       </div>
                     </div>
-                    <Button data-testid="habit-submit-btn" onClick={handleCreateHabit} className="w-full bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs tracking-widest">
+                    <Button data-testid="habit-submit-btn" onClick={handleCreateHabit} className="w-full bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs tracking-widest">
                       Criar
                     </Button>
                   </div>
@@ -274,24 +274,24 @@ export default function Habits() {
 
           {/* Stats Overview - Compact horizontal */}
           {showStats && habits.length > 0 && (
-            <div className="flex items-center gap-6 mb-6 p-4 bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg">
+            <div className="flex items-center gap-6 mb-6 p-4 bg-[#0A0A0A] border border-[#27272A] rounded-lg">
               <div className="flex items-center gap-2">
-                <span className="text-xs text-[#888888] uppercase">Total</span>
-                <span className="font-data text-xl text-[#00c896]">{habits.length}</span>
+                <span className="text-xs text-[#A1A1AA] uppercase">Total</span>
+                <span className="font-data text-xl text-[#007AFF]">{habits.length}</span>
               </div>
-              <div className="h-6 w-px bg-[#2a2a2a]" />
+              <div className="h-6 w-px bg-[#27272A]" />
               <div className="flex items-center gap-2">
-                <span className="text-xs text-[#888888] uppercase">Completações</span>
-                <span className="font-data text-xl text-[#00c896]">{totalCompletions}</span>
+                <span className="text-xs text-[#A1A1AA] uppercase">Completações</span>
+                <span className="font-data text-xl text-[#39FF14]">{totalCompletions}</span>
               </div>
-              <div className="h-6 w-px bg-[#2a2a2a]" />
+              <div className="h-6 w-px bg-[#27272A]" />
               <div className="flex items-center gap-2">
-                <span className="text-xs text-[#888888] uppercase">Média Streak</span>
+                <span className="text-xs text-[#A1A1AA] uppercase">Média Streak</span>
                 <span className="font-data text-xl text-[#FF9500]">{avgStreak}</span>
               </div>
-              <div className="h-6 w-px bg-[#2a2a2a]" />
+              <div className="h-6 w-px bg-[#27272A]" />
               <div className="flex items-center gap-2">
-                <span className="text-xs text-[#888888] uppercase">Melhor</span>
+                <span className="text-xs text-[#A1A1AA] uppercase">Melhor</span>
                 <span className="font-data text-xl text-[#FF3B30]">{bestOverallStreak}</span>
               </div>
             </div>
@@ -300,9 +300,9 @@ export default function Habits() {
           {/* Habits List - Compact horizontal cards */}
           <div className="space-y-3">
             {habits.length === 0 ? (
-              <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-8 text-center">
-                <TrendingUp className="w-12 h-12 text-[#555555] mx-auto mb-4" />
-                <p className="text-[#888888]">Nenhum hábito criado</p>
+              <Card className="bg-[#0A0A0A] border-[#27272A] p-8 text-center">
+                <TrendingUp className="w-12 h-12 text-[#52525B] mx-auto mb-4" />
+                <p className="text-[#A1A1AA]">Nenhum hábito criado</p>
               </Card>
             ) : (
               habits.map((habit) => {
@@ -310,8 +310,8 @@ export default function Habits() {
                 return (
                   <Card
                     key={habit.habit_id}
-                    className="habit-card bg-[#0d0d0d] border-[#2a2a2a] p-4 relative overflow-hidden"
-                    style={{ borderLeftColor: habit.color || '#00c896', borderLeftWidth: '4px' }}
+                    className="habit-card bg-[#0A0A0A] border-[#27272A] p-4 relative overflow-hidden"
+                    style={{ borderLeftColor: habit.color || '#007AFF', borderLeftWidth: '4px' }}
                   >
                     <div className="flex items-center justify-between gap-4">
                       {/* Left: Name and description */}
@@ -321,11 +321,11 @@ export default function Habits() {
                           <CompactStreakDisplay 
                             streak={habit.streak ?? 0} 
                             bestStreak={habit.best_streak ?? 0} 
-                            color={habit.color || '#00c896'} 
+                            color={habit.color || '#007AFF'} 
                           />
                         </div>
                         {habit.description && (
-                          <p className="text-xs text-[#555555] truncate mt-1">{habit.description}</p>
+                          <p className="text-xs text-[#52525B] truncate mt-1">{habit.description}</p>
                         )}
                       </div>
                       
@@ -333,7 +333,7 @@ export default function Habits() {
                       {showStats && (
                         <MiniConsistencyChart 
                           completions={habit.completions || []} 
-                          color={habit.color || '#00c896'} 
+                          color={habit.color || '#007AFF'} 
                         />
                       )}
                       
@@ -345,8 +345,8 @@ export default function Habits() {
                           size="sm"
                           className={`uppercase text-xs tracking-widest transition-all ${
                             completedToday
-                              ? 'bg-[#00c896]/20 text-[#00c896] hover:bg-[#FF3B30]/20 hover:text-[#FF3B30]'
-                              : 'bg-[#00c896] hover:bg-[#0062CC]'
+                              ? 'bg-[#39FF14]/20 text-[#39FF14] hover:bg-[#FF3B30]/20 hover:text-[#FF3B30]'
+                              : 'bg-[#007AFF] hover:bg-[#0062CC]'
                           }`}
                         >
                           {completedToday ? (
@@ -359,7 +359,7 @@ export default function Habits() {
                           variant="ghost"
                           size="icon"
                           onClick={() => openReminderDialog(habit)}
-                          className="text-[#555555] hover:text-[#00c896] hover:bg-[#00c896]/10 h-8 w-8"
+                          className="text-[#52525B] hover:text-[#007AFF] hover:bg-[#007AFF]/10 h-8 w-8"
                         >
                           <Bell className="w-4 h-4" />
                         </Button>
@@ -367,7 +367,7 @@ export default function Habits() {
                           variant="ghost"
                           size="icon"
                           onClick={() => handleDeleteHabit(habit.habit_id)}
-                          className="text-[#555555] hover:text-[#FF3B30] hover:bg-[#FF3B30]/10 h-8 w-8"
+                          className="text-[#52525B] hover:text-[#FF3B30] hover:bg-[#FF3B30]/10 h-8 w-8"
                         >
                           <Trash2 className="w-4 h-4" />
                         </Button>
@@ -383,31 +383,31 @@ export default function Habits() {
 
       {/* Reminder Dialog */}
       <Dialog open={reminderOpen} onOpenChange={setReminderOpen}>
-        <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] text-white">
+        <DialogContent className="bg-[#0A0A0A] border-[#27272A] text-white">
           <DialogHeader>
             <DialogTitle className="font-heading text-2xl flex items-center">
-              <Bell className="w-6 h-6 mr-2 text-[#00c896]" />
+              <Bell className="w-6 h-6 mr-2 text-[#007AFF]" />
               CONFIGURAR LEMBRETE
             </DialogTitle>
           </DialogHeader>
           {selectedHabit && (
             <div className="space-y-6 mt-4">
               <div>
-                <p className="text-[#888888] mb-2">Hábito: <span className="text-white">{selectedHabit.name}</span></p>
+                <p className="text-[#A1A1AA] mb-2">Hábito: <span className="text-white">{selectedHabit.name}</span></p>
               </div>
               
               <div>
-                <Label className="text-[#888888] uppercase text-xs tracking-wider mb-2 block">Horário</Label>
+                <Label className="text-[#A1A1AA] uppercase text-xs tracking-wider mb-2 block">Horário</Label>
                 <Input
                   type="time"
                   value={reminderTime}
                   onChange={(e) => setReminderTime(e.target.value)}
-                  className="bg-[#1a1a1a] border-[#2a2a2a] text-white"
+                  className="bg-[#121212] border-[#27272A] text-white"
                 />
               </div>
               
               <div>
-                <Label className="text-[#888888] uppercase text-xs tracking-wider mb-2 block">Dias da Semana</Label>
+                <Label className="text-[#A1A1AA] uppercase text-xs tracking-wider mb-2 block">Dias da Semana</Label>
                 <div className="flex flex-wrap gap-2">
                   {weekDays.map((day) => (
                     <button
@@ -415,8 +415,8 @@ export default function Habits() {
                       onClick={() => toggleReminderDay(day.key)}
                       className={`px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                         reminderDays.includes(day.key)
-                          ? 'bg-[#00c896] text-white'
-                          : 'bg-[#2a2a2a] text-[#888888] hover:bg-[#333333]'
+                          ? 'bg-[#007AFF] text-white'
+                          : 'bg-[#27272A] text-[#A1A1AA] hover:bg-[#3F3F46]'
                       }`}
                     >
                       {day.label}
@@ -427,7 +427,7 @@ export default function Habits() {
               
               <Button 
                 onClick={handleSetReminder} 
-                className="w-full bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs tracking-widest"
+                className="w-full bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs tracking-widest"
               >
                 Salvar Lembrete
               </Button>

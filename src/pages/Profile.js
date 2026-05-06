@@ -257,8 +257,8 @@ export default function Profile() {
   };
 
   const ranks = [
-    { name: "Recruta", xp: 0, icon: Shield, color: "#888888" },
-    { name: "Soldado", xp: 200, icon: Shield, color: "#888888" },
+    { name: "Recruta", xp: 0, icon: Shield, color: "#A1A1AA" },
+    { name: "Soldado", xp: 200, icon: Shield, color: "#A1A1AA" },
     { name: "Cabo", xp: 500, icon: Star, color: "#CD7F32" },
     { name: "Sargento", xp: 1000, icon: Star, color: "#C0C0C0" },
     { name: "Subtenente", xp: 1800, icon: Star, color: "#FFD700" },
@@ -288,7 +288,7 @@ export default function Profile() {
   if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#050505]">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#00c896]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#007AFF]"></div>
       </div>
     );
   }
@@ -310,17 +310,17 @@ export default function Profile() {
             <div className="mb-6 p-4 bg-gradient-to-r from-yellow-500/10 via-pink-500/10 to-purple-500/10 border border-yellow-500/30 rounded-lg text-center animate-pulse">
               <Cake className="w-8 h-8 text-yellow-400 mx-auto mb-2" />
               <h2 className="font-heading text-xl text-yellow-400">Feliz Aniversário! 🎉</h2>
-              <p className="text-sm text-[#888888]">Parabéns pelos seus {birthdayInfo.age} anos! Continue firme na missão!</p>
+              <p className="text-sm text-[#A1A1AA]">Parabéns pelos seus {birthdayInfo.age} anos! Continue firme na missão!</p>
             </div>
           )}
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-            <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4 md:p-6 lg:col-span-2">
+            <Card className="bg-[#0A0A0A] border-[#27272A] p-4 md:p-6 lg:col-span-2">
               <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6">
                 <div className="relative group flex-shrink-0">
-                  <Avatar className="w-20 h-20 sm:w-24 sm:h-24 border-2 border-[#00c896]">
+                  <Avatar className="w-20 h-20 sm:w-24 sm:h-24 border-2 border-[#007AFF]">
                     <AvatarImage src={user.picture} />
-                    <AvatarFallback className="bg-[#00c896] text-white font-heading text-2xl">
+                    <AvatarFallback className="bg-[#007AFF] text-white font-heading text-2xl">
                       {(user.name || 'U').charAt(0).toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
@@ -335,7 +335,7 @@ export default function Profile() {
                     <button
                       onClick={() => fileInputRef.current?.click()}
                       disabled={uploadingPhoto}
-                      className="p-2 bg-[#00c896] rounded-full hover:bg-[#0056b3] transition-colors"
+                      className="p-2 bg-[#007AFF] rounded-full hover:bg-[#0056b3] transition-colors"
                     >
                       {uploadingPhoto ? (
                         <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -357,32 +357,32 @@ export default function Profile() {
                   {editingProfile ? (
                     <div className="space-y-3">
                       <div>
-                        <label className="text-[10px] text-[#888888] uppercase">Nome</label>
+                        <label className="text-[10px] text-[#71717A] uppercase">Nome</label>
                         <input
                           type="text"
                           value={editForm.name}
                           onChange={e => setEditForm(p => ({ ...p, name: e.target.value }))}
-                          className="w-full bg-[#1a1a1a] border border-[#2a2a2a] rounded px-3 py-1.5 text-sm text-white focus:outline-none focus:border-[#00c896]"
+                          className="w-full bg-[#121212] border border-[#27272A] rounded px-3 py-1.5 text-sm text-white focus:outline-none focus:border-[#007AFF]"
                         />
                       </div>
                       <div>
-                        <label className="text-[10px] text-[#888888] uppercase">Data de Nascimento</label>
+                        <label className="text-[10px] text-[#71717A] uppercase">Data de Nascimento</label>
                         <input
                           type="date"
                           value={editForm.birth_date}
                           onChange={e => setEditForm(p => ({ ...p, birth_date: e.target.value }))}
-                          className="w-full bg-[#1a1a1a] border border-[#2a2a2a] rounded px-3 py-1.5 text-sm text-white focus:outline-none focus:border-[#00c896]"
+                          className="w-full bg-[#121212] border border-[#27272A] rounded px-3 py-1.5 text-sm text-white focus:outline-none focus:border-[#007AFF]"
                         />
                       </div>
                       <div>
-                        <label className="text-[10px] text-[#888888] uppercase">Bio</label>
+                        <label className="text-[10px] text-[#71717A] uppercase">Bio</label>
                         <textarea
                           value={editForm.bio}
                           onChange={e => setEditForm(p => ({ ...p, bio: e.target.value }))}
                           rows={2}
                           maxLength={200}
                           placeholder="Conte um pouco sobre você..."
-                          className="w-full bg-[#1a1a1a] border border-[#2a2a2a] rounded px-3 py-1.5 text-sm text-white focus:outline-none focus:border-[#00c896] resize-none"
+                          className="w-full bg-[#121212] border border-[#27272A] rounded px-3 py-1.5 text-sm text-white focus:outline-none focus:border-[#007AFF] resize-none"
                         />
                       </div>
                       <div className="flex gap-2">
@@ -398,20 +398,20 @@ export default function Profile() {
                     <>
                       <div className="flex items-center gap-2 justify-center sm:justify-start">
                         <h2 className="font-heading text-2xl sm:text-3xl truncate">{user.name || 'Usuário'}</h2>
-                        <button onClick={() => setEditingProfile(true)} className="p-1 hover:bg-[#2a2a2a] rounded transition-colors">
-                          <Edit3 className="w-4 h-4 text-[#888888]" />
+                        <button onClick={() => setEditingProfile(true)} className="p-1 hover:bg-[#27272A] rounded transition-colors">
+                          <Edit3 className="w-4 h-4 text-[#71717A]" />
                         </button>
                       </div>
-                      <p className="text-[#888888] text-sm truncate">{user.email || ''}</p>
-                      {user.bio && <p className="text-[#888888] text-xs mt-1 italic">{user.bio}</p>}
+                      <p className="text-[#A1A1AA] text-sm truncate">{user.email || ''}</p>
+                      {user.bio && <p className="text-[#71717A] text-xs mt-1 italic">{user.bio}</p>}
                       {birthdayInfo?.age && (
-                        <p className="text-[#888888] text-xs mt-1 flex items-center gap-1 justify-center sm:justify-start">
+                        <p className="text-[#71717A] text-xs mt-1 flex items-center gap-1 justify-center sm:justify-start">
                           <Cake className="w-3 h-3" /> {birthdayInfo.age} anos
-                          {user.birth_date && <span className="text-[#555555]">• {new Date(user.birth_date + 'T12:00:00').toLocaleDateString('pt-BR')}</span>}
+                          {user.birth_date && <span className="text-[#52525B]">• {new Date(user.birth_date + 'T12:00:00').toLocaleDateString('pt-BR')}</span>}
                         </p>
                       )}
                       <div className="flex items-center justify-center sm:justify-start space-x-4 mt-3">
-                        <div className="rank-badge bg-[#00c896] text-white px-3 py-1 rounded-sm text-sm">
+                        <div className="rank-badge bg-[#007AFF] text-white px-3 py-1 rounded-sm text-sm">
                           {user.rank || 'Recruta'}
                         </div>
                         <div className="font-data text-xl sm:text-2xl">{user.xp ?? 0} XP</div>
@@ -422,40 +422,40 @@ export default function Profile() {
               </div>
 
               {nextRank && (
-                <div className="mt-6 pt-6 border-t border-[#2a2a2a]">
+                <div className="mt-6 pt-6 border-t border-[#27272A]">
                   <div className="flex justify-between items-center mb-3">
-                    <span className="text-sm text-[#888888]">Progresso para {nextRank.name}</span>
-                    <span className="font-data text-sm text-[#888888]">{nextRank.xp} XP</span>
+                    <span className="text-sm text-[#A1A1AA]">Progresso para {nextRank.name}</span>
+                    <span className="font-data text-sm text-[#A1A1AA]">{nextRank.xp} XP</span>
                   </div>
                   <Progress value={progress} className="h-2" />
-                  <p className="text-xs text-[#888888] mt-2">
+                  <p className="text-xs text-[#A1A1AA] mt-2">
                     Faltam {nextRank.xp - (user.xp ?? 0)} XP para o próximo rank
                   </p>
                 </div>
               )}
             </Card>
 
-            <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-6">
+            <Card className="bg-[#0A0A0A] border-[#27272A] p-6">
               <h3 className="font-heading text-xl mb-4 uppercase">Stats</h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <CheckSquare className="w-5 h-5 text-[#00c896]" />
-                    <span className="text-sm text-[#888888]">Tarefas</span>
+                    <CheckSquare className="w-5 h-5 text-[#007AFF]" />
+                    <span className="text-sm text-[#A1A1AA]">Tarefas</span>
                   </div>
                   <span className="font-data">{stats ? `${stats.tasks_completed_today ?? 0}/${stats.tasks_today ?? 0}` : '-'}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <TrendingUp className="w-5 h-5 text-[#00c896]" />
-                    <span className="text-sm text-[#888888]">Hábitos</span>
+                    <TrendingUp className="w-5 h-5 text-[#39FF14]" />
+                    <span className="text-sm text-[#A1A1AA]">Hábitos</span>
                   </div>
                   <span className="font-data">{stats ? `${stats.habits_completed_today ?? 0}/${stats.habits_total ?? 0}` : '-'}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <Target className="w-5 h-5 text-[#00c896]" />
-                    <span className="text-sm text-[#888888]">Metas</span>
+                    <Target className="w-5 h-5 text-[#00F0FF]" />
+                    <span className="text-sm text-[#A1A1AA]">Metas</span>
                   </div>
                   <span className="font-data">{stats ? `${(stats.goals_avg_progress ?? 0).toFixed(0)}%` : '-'}</span>
                 </div>
@@ -463,7 +463,7 @@ export default function Profile() {
             </Card>
           </div>
 
-          <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-6 mb-8">
+          <Card className="bg-[#0A0A0A] border-[#27272A] p-6 mb-8">
             <h3 className="font-heading text-2xl mb-6 uppercase">Hierarquia Militar</h3>
             <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-3">
               {ranks.map((rank, index) => {
@@ -479,19 +479,19 @@ export default function Profile() {
                     <div
                       className={`w-16 h-16 mx-auto rounded-sm flex items-center justify-center mb-2 ${
                         rank.name === (user.rank || 'Recruta')
-                          ? 'bg-[#00c896] shadow-[0_0_15px_rgba(0,122,255,0.5)]'
+                          ? 'bg-[#007AFF] shadow-[0_0_15px_rgba(0,122,255,0.5)]'
                           : isUnlocked
-                          ? 'bg-[#222222]'
-                          : 'bg-[#1a1a1a]'
+                          ? 'bg-[#2C2C2E]'
+                          : 'bg-[#121212]'
                       }`}
                     >
                       <Icon
                         className="w-8 h-8"
-                        style={{ color: isUnlocked ? rank.color : '#555555' }}
+                        style={{ color: isUnlocked ? rank.color : '#52525B' }}
                       />
                     </div>
                     <p className="text-xs font-heading">{rank.name}</p>
-                    <p className="font-data text-xs text-[#888888]">{rank.xp} XP</p>
+                    <p className="font-data text-xs text-[#A1A1AA]">{rank.xp} XP</p>
                   </div>
                 );
               })}
@@ -499,13 +499,13 @@ export default function Profile() {
           </Card>
 
           {achievements.length > 0 && (
-            <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-6 mb-8">
+            <Card className="bg-[#0A0A0A] border-[#27272A] p-6 mb-8">
               <h3 className="font-heading text-2xl mb-6 uppercase">Conquistas</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {achievements.map((achievement) => (
                   <div
                     key={achievement.achievement_id}
-                    className="bg-[#1a1a1a] border border-[#2a2a2a] p-4 rounded-sm"
+                    className="bg-[#121212] border border-[#27272A] p-4 rounded-sm"
                   >
                     <div className="flex items-start space-x-3">
                       <div className="w-10 h-10 bg-[#FFD700]/20 rounded-sm flex items-center justify-center">
@@ -513,8 +513,8 @@ export default function Profile() {
                       </div>
                       <div className="flex-1">
                         <h4 className="font-heading text-sm mb-1">{achievement.title}</h4>
-                        <p className="text-xs text-[#888888]">{achievement.description}</p>
-                        <p className="text-xs text-[#888888] mt-2">
+                        <p className="text-xs text-[#A1A1AA]">{achievement.description}</p>
+                        <p className="text-xs text-[#A1A1AA] mt-2">
                           {new Date(achievement.unlocked_at).toLocaleDateString('pt-BR')}
                         </p>
                       </div>
@@ -526,24 +526,24 @@ export default function Profile() {
           )}
 
           {/* Telegram Integration */}
-          <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-6 mb-8">
+          <Card className="bg-[#0A0A0A] border-[#27272A] p-6 mb-8">
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-10 h-10 bg-[#0088cc]/20 rounded-sm flex items-center justify-center">
                 <MessageCircle className="w-6 h-6 text-[#0088cc]" />
               </div>
               <div>
                 <h3 className="font-heading text-lg uppercase">Telegram</h3>
-                <p className="text-xs text-[#888888]">Registre transações e receba resumos direto no Telegram</p>
+                <p className="text-xs text-[#A1A1AA]">Registre transações e receba resumos direto no Telegram</p>
               </div>
             </div>
 
             {telegramStatus?.linked ? (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-3">
-                <div className="flex items-center space-x-2 bg-[#1a1a1a] border border-[#2a2a2a] p-3 rounded-sm">
+                <div className="flex items-center space-x-2 bg-[#121212] border border-[#27272A] p-3 rounded-sm">
                   <CheckCircle2 className="w-5 h-5 text-green-400" />
                   <div className="flex-1">
                     <p className="text-sm text-green-400 font-medium">Conta vinculada</p>
-                    <p className="text-xs text-[#888888]">
+                    <p className="text-xs text-[#A1A1AA]">
                       {telegramStatus.telegram_name && `@${telegramStatus.telegram_name} · `}
                       Vinculado em {new Date(telegramStatus.linked_at).toLocaleDateString('pt-BR')}
                     </p>
@@ -557,31 +557,31 @@ export default function Profile() {
                     <Unlink className="w-3 h-3 mr-1" /> Desvincular
                   </Button>
                 </div>
-                <div className="bg-[#1a1a1a] border border-[#2a2a2a] p-3 rounded-sm">
-                  <p className="text-xs text-[#888888] mb-2">💡 Comandos disponíveis no bot:</p>
+                <div className="bg-[#121212] border border-[#27272A] p-3 rounded-sm">
+                  <p className="text-xs text-[#A1A1AA] mb-2">💡 Comandos disponíveis no bot:</p>
                   <div className="grid grid-cols-2 gap-1.5 text-xs">
-                    <div className="text-[#555555]"><span className="text-[#00c896] font-mono">/saldo</span> - Ver saldo</div>
-                    <div className="text-[#555555]"><span className="text-[#00c896] font-mono">/resumo</span> - Resumo do dia</div>
-                    <div className="text-[#555555]"><span className="text-[#00c896] font-mono">/mes</span> - Resumo mensal</div>
-                    <div className="text-[#555555]"><span className="text-[#00c896] font-mono">/metas</span> - Suas metas</div>
-                    <div className="text-[#555555]"><span className="text-[#00c896] font-mono">/frase</span> - Motivação</div>
-                    <div className="text-[#555555]"><span className="text-[#00c896] font-mono">/ajuda</span> - Todos os comandos</div>
+                    <div className="text-[#52525B]"><span className="text-[#00F0FF] font-mono">/saldo</span> - Ver saldo</div>
+                    <div className="text-[#52525B]"><span className="text-[#00F0FF] font-mono">/resumo</span> - Resumo do dia</div>
+                    <div className="text-[#52525B]"><span className="text-[#00F0FF] font-mono">/mes</span> - Resumo mensal</div>
+                    <div className="text-[#52525B]"><span className="text-[#00F0FF] font-mono">/metas</span> - Suas metas</div>
+                    <div className="text-[#52525B]"><span className="text-[#00F0FF] font-mono">/frase</span> - Motivação</div>
+                    <div className="text-[#52525B]"><span className="text-[#00F0FF] font-mono">/ajuda</span> - Todos os comandos</div>
                   </div>
                 </div>
               </motion.div>
             ) : telegramCode ? (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-3">
-                <div className="bg-[#1a1a1a] border border-[#0088cc]/30 p-4 rounded-sm text-center">
-                  <p className="text-xs text-[#888888] mb-2">Envie este comando para o bot:</p>
+                <div className="bg-[#121212] border border-[#0088cc]/30 p-4 rounded-sm text-center">
+                  <p className="text-xs text-[#A1A1AA] mb-2">Envie este comando para o bot:</p>
                   <div className="flex items-center justify-center space-x-2 mb-3">
-                    <code className="bg-[#0d0d0d] border border-[#2a2a2a] px-4 py-2 rounded text-lg font-mono text-[#00c896] tracking-wider">
+                    <code className="bg-[#0A0A0A] border border-[#27272A] px-4 py-2 rounded text-lg font-mono text-[#00F0FF] tracking-wider">
                       /vincular {telegramCode.code}
                     </code>
-                    <Button variant="ghost" size="icon" onClick={() => copyCode(telegramCode.code)} className="hover:bg-[#2a2a2a]">
+                    <Button variant="ghost" size="icon" onClick={() => copyCode(telegramCode.code)} className="hover:bg-[#27272A]">
                       <Copy className="w-4 h-4" />
                     </Button>
                   </div>
-                  <p className="text-[10px] text-[#555555]">Código expira em {telegramCode.expires_in_minutes} minutos</p>
+                  <p className="text-[10px] text-[#52525B]">Código expira em {telegramCode.expires_in_minutes} minutos</p>
                   {telegramCode.bot_link && (
                     <a
                       href={telegramCode.bot_link}
@@ -595,11 +595,11 @@ export default function Profile() {
                     </a>
                   )}
                 </div>
-                <div className="text-xs text-[#888888] space-y-1">
+                <div className="text-xs text-[#A1A1AA] space-y-1">
                   <p>📋 <strong>Passo a passo:</strong></p>
                   <p>1. Clique no botão acima para abrir o bot</p>
-                  <p>2. Envie <code className="text-[#00c896]">/start</code> para iniciar</p>
-                  <p>3. Cole o comando <code className="text-[#00c896]">/vincular {telegramCode.code}</code></p>
+                  <p>2. Envie <code className="text-[#00F0FF]">/start</code> para iniciar</p>
+                  <p>3. Cole o comando <code className="text-[#00F0FF]">/vincular {telegramCode.code}</code></p>
                   <p>4. Pronto! Comece a registrar transações ✨</p>
                 </div>
                 <Button variant="outline" size="sm" onClick={async () => {
@@ -612,15 +612,15 @@ export default function Profile() {
                   } else {
                     toast.info("Ainda não vinculado. Envie o comando no bot e tente novamente.");
                   }
-                }} disabled={telegramLoading} className="text-xs border-[#2a2a2a]">
+                }} disabled={telegramLoading} className="text-xs border-[#27272A]">
                   {telegramLoading ? <><Loader2 className="w-3 h-3 mr-1 animate-spin" /> Verificando...</> : "Verificar vinculação"}
                 </Button>
               </motion.div>
             ) : (
               <div className="space-y-3">
-                <div className="bg-[#1a1a1a] border border-[#2a2a2a] p-3 rounded-sm">
-                  <p className="text-xs text-[#888888] mb-2">Com o Telegram vinculado, você pode:</p>
-                  <ul className="text-xs text-[#555555] space-y-1">
+                <div className="bg-[#121212] border border-[#27272A] p-3 rounded-sm">
+                  <p className="text-xs text-[#A1A1AA] mb-2">Com o Telegram vinculado, você pode:</p>
+                  <ul className="text-xs text-[#52525B] space-y-1">
                     <li>💬 Registrar gastos e receitas por mensagem</li>
                     <li>📊 Consultar saldo e resumos financeiros</li>
                     <li>🎯 Ver progresso das suas metas</li>
@@ -646,20 +646,20 @@ export default function Profile() {
           </Card>
 
           {/* Gemini API Key Settings */}
-          <Card id="gemini-section" className="bg-[#0d0d0d] border-[#2a2a2a] p-6 mb-8">
+          <Card id="gemini-section" className="bg-[#0A0A0A] border-[#27272A] p-6 mb-8">
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-10 h-10 bg-[#FFD700]/20 rounded-sm flex items-center justify-center">
                 <MessageCircle className="w-6 h-6 text-[#FFD700]" />
               </div>
               <div className="flex-1">
                 <h3 className="font-heading text-lg uppercase">Google Gemini API</h3>
-                <p className="text-xs text-[#888888]">Configure sua própria chave API para recursos de IA</p>
+                <p className="text-xs text-[#A1A1AA]">Configure sua própria chave API para recursos de IA</p>
               </div>
               <a
                 href="https://makersuite.google.com/app/apikey"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#555555] hover:text-[#00c896] transition-colors p-2"
+                className="text-[#52525B] hover:text-[#007AFF] transition-colors p-2"
                 title="Como obter sua chave API"
               >
                 <Info className="w-4 h-4" />
@@ -673,15 +673,15 @@ export default function Profile() {
                   value={geminiKeyForm}
                   onChange={(e) => setGeminiKeyForm(e.target.value)}
                   placeholder="Cole sua chave API aqui..."
-                  className="bg-[#1a1a1a] border-[#2a2a2a] text-white font-mono text-xs"
+                  className="bg-[#121212] border-[#27272A] text-white font-mono text-xs"
                 />
-                <p className="text-[10px] text-[#555555]">
+                <p className="text-[10px] text-[#52525B]">
                   Gere sua chave em{' '}
                   <a
                     href="https://makersuite.google.com/app/apikey"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#00c896] hover:underline"
+                    className="text-[#007AFF] hover:underline"
                   >
                     Google AI Studio
                   </a>
@@ -697,23 +697,23 @@ export default function Profile() {
               </motion.div>
             ) : (
               <div className="space-y-3">
-                <div className="flex items-center space-x-2 bg-[#1a1a1a] border border-[#2a2a2a] p-3 rounded-sm">
+                <div className="flex items-center space-x-2 bg-[#121212] border border-[#27272A] p-3 rounded-sm">
                   {user?.gemini_api_key ? (
                     <>
                       <CheckCircle2 className="w-5 h-5 text-green-400" />
                       <div className="flex-1">
                         <p className="text-sm text-green-400 font-medium">API Key configurada</p>
-                        <p className="text-xs text-[#888888]">
+                        <p className="text-xs text-[#A1A1AA]">
                          ••••••••{user.gemini_api_key.slice(-8)}
                         </p>
                       </div>
                     </>
                   ) : (
                     <>
-                      <MessageCircle className="w-5 h-5 text-[#555555]" />
+                      <MessageCircle className="w-5 h-5 text-[#52525B]" />
                       <div className="flex-1">
-                        <p className="text-sm text-[#888888]">API Key não configurada</p>
-                        <p className="text-xs text-[#555555]">Usando chave padrão do servidor</p>
+                        <p className="text-sm text-[#A1A1AA]">API Key não configurada</p>
+                        <p className="text-xs text-[#52525B]">Usando chave padrão do servidor</p>
                       </div>
                     </>
                   )}
@@ -733,7 +733,7 @@ export default function Profile() {
               data-testid="profile-logout-btn"
               variant="outline"
               onClick={handleLogout}
-              className="border-[#2a2a2a] hover:bg-[#1a1a1a] uppercase text-xs tracking-wider"
+              className="border-[#27272A] hover:bg-[#121212] uppercase text-xs tracking-wider"
             >
               Sair do Sistema
             </Button>
