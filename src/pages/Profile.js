@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Sidebar from "@/components/Sidebar";
 import MobileNav from "@/components/MobileNav";
 import { Card } from "@/components/ui/card";
@@ -17,6 +17,7 @@ const API = `${BACKEND_URL}/api`;
 
 export default function Profile() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [user, setUser] = useState(null);
   const [achievements, setAchievements] = useState([]);
   const [stats, setStats] = useState(null);
@@ -45,6 +46,14 @@ export default function Profile() {
     checkBirthday();
     fetchTelegramStatus();
     fetchGeminiKeyStatus();
+    
+    // Scroll to gemini section if query param exists
+    const params = new URLSearchParams(location.search);
+    if (params.get('section') === 'gemini') {
+      setTimeout(() => {
+        document.getElementById('gemini-section')?.scrollIntoView({ behavior: 'smooth' });
+      }, 500);
+    }
   }, []);
 
   const fetchUser = async () => {
@@ -630,7 +639,7 @@ export default function Profile() {
           </Card>
 
           {/* Gemini API Key Settings */}
-          <Card className="bg-[#0A0A0A] border-[#27272A] p-6 mb-8">
+          <Card id="gemini-section" className="bg-[#0A0A0A] border-[#27272A] p-6 mb-8">
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-10 h-10 bg-[#FFD700]/20 rounded-sm flex items-center justify-center">
                 <MessageCircle className="w-6 h-6 text-[#FFD700]" />

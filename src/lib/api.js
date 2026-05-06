@@ -25,8 +25,12 @@ export const promptGeminiApiKey = () => {
   toast.error("Você precisa configurar uma API key do Gemini para usar recursos de IA", {
     action: {
       label: "Configurar",
-      onClick: () => window.location.href = "/profile?section=gemini"
-    }
+      onClick: () => {
+        // Use window.location instead of navigate since this is outside a component
+        window.location.href = "/profile?section=gemini";
+      }
+    },
+    duration: 10000
   });
   return false;
 };
