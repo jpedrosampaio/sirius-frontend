@@ -20,13 +20,13 @@ class ErrorBoundary extends React.Component {
         <div className="min-h-screen flex items-center justify-center bg-[#050505] text-white">
           <div className="text-center p-8">
             <h1 className="text-3xl font-bold mb-4 text-[#FF3B30]">Erro na página</h1>
-            <p className="text-[#A1A1AA] mb-6">{this.state.error?.message || "Algo deu errado"}</p>
+            <p className="text-[#888888] mb-6">{this.state.error?.message || "Algo deu errado"}</p>
             <button
               onClick={() => {
                 this.setState({ hasError: false, error: null });
                 window.location.reload();
               }}
-              className="bg-[#007AFF] px-6 py-2 rounded hover:bg-[#0056b3]"
+              className="bg-[#00c896] px-6 py-2 rounded hover:bg-[#0056b3]"
             >
               Recarregar
             </button>

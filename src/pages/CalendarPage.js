@@ -14,8 +14,8 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const TYPE_CONFIG = {
-  task: { icon: CheckSquare, label: "Tarefa", color: "#007AFF" },
-  habit: { icon: TrendingUp, label: "Hábito", color: "#39FF14" },
+  task: { icon: CheckSquare, label: "Tarefa", color: "#00c896" },
+  habit: { icon: TrendingUp, label: "Hábito", color: "#00c896" },
   study: { icon: BookOpen, label: "Estudo", color: "#A855F7" },
   workout: { icon: Dumbbell, label: "Treino", color: "#EF4444" },
   meal: { icon: Apple, label: "Refeição", color: "#22C55E" },
@@ -133,10 +133,10 @@ export default function CalendarPage() {
           {/* Header */}
           <div className="mb-6">
             <h1 className="font-heading text-2xl md:text-4xl mb-2 flex items-center gap-3">
-              <CalendarIcon className="w-8 h-8 text-[#007AFF]" />
+              <CalendarIcon className="w-8 h-8 text-[#00c896]" />
               CALENDÁRIO
             </h1>
-            <p className="text-[#A1A1AA]">Visualização unificada de todas as suas atividades</p>
+            <p className="text-[#888888]">Visualização unificada de todas as suas atividades</p>
           </div>
 
           {/* Filters */}
@@ -151,14 +151,14 @@ export default function CalendarPage() {
                   className={"flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs transition-all whitespace-nowrap " +
                     (active
                       ? "border-transparent text-white"
-                      : "border-[#27272A] text-[#52525B] opacity-50"
+                      : "border-[#2a2a2a] text-[#555555] opacity-50"
                     )
                   }
                   style={active ? { backgroundColor: cfg.color + "20", borderColor: cfg.color + "50" } : {}}
                 >
-                  <Icon className="w-3.5 h-3.5" style={{ color: active ? cfg.color : "#52525B" }} />
+                  <Icon className="w-3.5 h-3.5" style={{ color: active ? cfg.color : "#555555" }} />
                   {cfg.label}
-                  <span className="font-data text-[10px]" style={{ color: active ? cfg.color : "#52525B" }}>
+                  <span className="font-data text-[10px]" style={{ color: active ? cfg.color : "#555555" }}>
                     {monthStats[key] || 0}
                   </span>
                 </button>
@@ -169,21 +169,21 @@ export default function CalendarPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Calendar Grid */}
             <div className="lg:col-span-2">
-              <Card className="bg-[#0A0A0A] border-[#27272A] p-4 md:p-6">
+              <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4 md:p-6">
                 {/* Month navigation */}
                 <div className="flex items-center justify-between mb-6">
-                  <Button variant="ghost" size="icon" onClick={() => navigate(-1)} className="text-[#A1A1AA] hover:text-white">
+                  <Button variant="ghost" size="icon" onClick={() => navigate(-1)} className="text-[#888888] hover:text-white">
                     <ChevronLeft className="w-5 h-5" />
                   </Button>
                   <div className="text-center">
                     <h2 className="font-heading text-xl">{MONTHS[month]}</h2>
-                    <p className="text-xs text-[#52525B]">{year}</p>
+                    <p className="text-xs text-[#555555]">{year}</p>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Button variant="outline" size="sm" onClick={goToday} className="text-xs border-[#27272A] text-[#A1A1AA] hover:text-white">
+                    <Button variant="outline" size="sm" onClick={goToday} className="text-xs border-[#2a2a2a] text-[#888888] hover:text-white">
                       Hoje
                     </Button>
-                    <Button variant="ghost" size="icon" onClick={() => navigate(1)} className="text-[#A1A1AA] hover:text-white">
+                    <Button variant="ghost" size="icon" onClick={() => navigate(1)} className="text-[#888888] hover:text-white">
                       <ChevronRight className="w-5 h-5" />
                     </Button>
                   </div>
@@ -192,7 +192,7 @@ export default function CalendarPage() {
                 {/* Weekday headers */}
                 <div className="grid grid-cols-7 gap-1 mb-2">
                   {WEEKDAYS.map(d => (
-                    <div key={d} className="text-center text-[10px] text-[#52525B] uppercase tracking-wider font-medium py-1">{d}</div>
+                    <div key={d} className="text-center text-[10px] text-[#555555] uppercase tracking-wider font-medium py-1">{d}</div>
                   ))}
                 </div>
 
@@ -211,14 +211,14 @@ export default function CalendarPage() {
                         key={dateStr}
                         onClick={() => setSelectedDay(dateStr)}
                         className={"relative p-1.5 md:p-2 rounded-lg text-center transition-all min-h-[52px] md:min-h-[64px] flex flex-col items-center " +
-                          (isSelected ? "bg-[#007AFF]/20 border border-[#007AFF]" :
-                           isToday ? "bg-[#121212] border border-[#27272A]" :
-                           "hover:bg-[#121212] border border-transparent"
+                          (isSelected ? "bg-[#00c896]/20 border border-[#00c896]" :
+                           isToday ? "bg-[#1a1a1a] border border-[#2a2a2a]" :
+                           "hover:bg-[#1a1a1a] border border-transparent"
                           )
                         }
                       >
                         <span className={"text-sm font-data " +
-                          (isSelected ? "text-[#007AFF]" : isToday ? "text-white" : "text-[#A1A1AA]")
+                          (isSelected ? "text-[#00c896]" : isToday ? "text-white" : "text-[#888888]")
                         }>{day}</span>
                         {/* Event dots */}
                         {dayEvents.length > 0 && (
@@ -227,11 +227,11 @@ export default function CalendarPage() {
                               <div
                                 key={type}
                                 className="w-1.5 h-1.5 rounded-full"
-                                style={{ backgroundColor: TYPE_CONFIG[type]?.color || "#52525B" }}
+                                style={{ backgroundColor: TYPE_CONFIG[type]?.color || "#555555" }}
                               />
                             ))}
                             {dayEvents.length > 4 && (
-                              <span className="text-[8px] text-[#52525B]">+{dayEvents.length - 4}</span>
+                              <span className="text-[8px] text-[#555555]">+{dayEvents.length - 4}</span>
                             )}
                           </div>
                         )}
@@ -244,16 +244,16 @@ export default function CalendarPage() {
 
             {/* Day detail panel */}
             <div className="lg:col-span-1">
-              <Card className="bg-[#0A0A0A] border-[#27272A] p-4 md:p-5 sticky top-20">
+              <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4 md:p-5 sticky top-20">
                 <h3 className="font-heading text-lg mb-1">
                   {selectedDateStr === today ? "HOJE" : new Date(selectedDateStr + "T12:00:00").toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "short" })}
                 </h3>
-                <p className="text-xs text-[#52525B] mb-4">{selectedEvents.length} atividade{selectedEvents.length !== 1 ? "s" : ""}</p>
+                <p className="text-xs text-[#555555] mb-4">{selectedEvents.length} atividade{selectedEvents.length !== 1 ? "s" : ""}</p>
 
                 {selectedEvents.length === 0 ? (
                   <div className="text-center py-8">
                     <CalendarIcon className="w-10 h-10 text-[#1A1A1A] mx-auto mb-3" />
-                    <p className="text-sm text-[#3F3F46]">Nenhuma atividade neste dia</p>
+                    <p className="text-sm text-[#333333]">Nenhuma atividade neste dia</p>
                   </div>
                 ) : (
                   <div className="space-y-2 max-h-[calc(100vh-300px)] overflow-y-auto pr-1">
@@ -263,28 +263,28 @@ export default function CalendarPage() {
                       return (
                         <div
                           key={event.id}
-                          className="flex items-start gap-3 p-3 rounded-lg bg-[#121212] border border-[#1A1A1A] hover:border-[#27272A] transition-colors"
+                          className="flex items-start gap-3 p-3 rounded-lg bg-[#1a1a1a] border border-[#1A1A1A] hover:border-[#2a2a2a] transition-colors"
                         >
-                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: (cfg.color || "#52525B") + "20" }}>
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: (cfg.color || "#555555") + "20" }}>
                             <Icon className="w-4 h-4" style={{ color: cfg.color }} />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className={"text-sm font-medium truncate " + (event.completed ? "text-[#52525B] line-through" : "text-white")}>
+                            <p className={"text-sm font-medium truncate " + (event.completed ? "text-[#555555] line-through" : "text-white")}>
                               {event.title}
                             </p>
                             <div className="flex items-center gap-2 mt-0.5">
                               <span className="text-[10px] uppercase tracking-wider" style={{ color: cfg.color }}>{cfg.label}</span>
                               {event.duration_minutes > 0 && (
-                                <span className="text-[10px] text-[#52525B]">{event.duration_minutes} min</span>
+                                <span className="text-[10px] text-[#555555]">{event.duration_minutes} min</span>
                               )}
                               {event.calories > 0 && (
-                                <span className="text-[10px] text-[#52525B]">{Math.round(event.calories)} kcal</span>
+                                <span className="text-[10px] text-[#555555]">{Math.round(event.calories)} kcal</span>
                               )}
                             </div>
                           </div>
                           {event.completed && (
-                            <div className="w-5 h-5 rounded-full bg-[#39FF14]/10 flex items-center justify-center flex-shrink-0">
-                              <div className="w-2 h-2 rounded-full bg-[#39FF14]" />
+                            <div className="w-5 h-5 rounded-full bg-[#00c896]/10 flex items-center justify-center flex-shrink-0">
+                              <div className="w-2 h-2 rounded-full bg-[#00c896]" />
                             </div>
                           )}
                         </div>

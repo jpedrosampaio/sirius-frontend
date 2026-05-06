@@ -75,10 +75,10 @@ export default function Achievements() {
         <Sidebar user={user} />
         <div className="flex-1 ml-0 md:ml-64 p-4 md:p-8 pt-[72px] md:pt-8">
           <div className="animate-pulse space-y-4">
-            <div className="h-8 bg-[#27272A] rounded w-48" />
+            <div className="h-8 bg-[#2a2a2a] rounded w-48" />
             <div className="h-4 bg-[#1A1A1A] rounded w-32" />
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-              {[...Array(8)].map((_, i) => <div key={i} className="h-40 bg-[#0A0A0A] rounded-lg border border-[#1A1A1A]" />)}
+              {[...Array(8)].map((_, i) => <div key={i} className="h-40 bg-[#0d0d0d] rounded-lg border border-[#1A1A1A]" />)}
             </div>
           </div>
         </div>
@@ -97,39 +97,39 @@ export default function Achievements() {
               <Trophy className="w-8 h-8 text-[#FFD700]" />
               CONQUISTAS
             </h1>
-            <p className="text-[#A1A1AA]">Desbloqueie badges completando desafios em todos os módulos</p>
+            <p className="text-[#888888]">Desbloqueie badges completando desafios em todos os módulos</p>
           </div>
 
           {/* Overview Cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-8">
-            <Card className="bg-[#0A0A0A] border-[#27272A] p-4 md:p-6">
+            <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4 md:p-6">
               <div className="flex items-center justify-between mb-2">
                 <Trophy className="w-6 h-6 text-[#FFD700]" />
                 <span className="font-data text-2xl">{data?.unlocked || 0}</span>
               </div>
-              <p className="text-[#A1A1AA] text-xs uppercase tracking-wider">Desbloqueadas</p>
+              <p className="text-[#888888] text-xs uppercase tracking-wider">Desbloqueadas</p>
             </Card>
-            <Card className="bg-[#0A0A0A] border-[#27272A] p-4 md:p-6">
+            <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4 md:p-6">
               <div className="flex items-center justify-between mb-2">
-                <Lock className="w-6 h-6 text-[#52525B]" />
+                <Lock className="w-6 h-6 text-[#555555]" />
                 <span className="font-data text-2xl">{data?.locked || 0}</span>
               </div>
-              <p className="text-[#A1A1AA] text-xs uppercase tracking-wider">Bloqueadas</p>
+              <p className="text-[#888888] text-xs uppercase tracking-wider">Bloqueadas</p>
             </Card>
-            <Card className="bg-[#0A0A0A] border-[#27272A] p-4 md:p-6">
+            <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4 md:p-6">
               <div className="flex items-center justify-between mb-2">
-                <Star className="w-6 h-6 text-[#007AFF]" />
+                <Star className="w-6 h-6 text-[#00c896]" />
                 <span className="font-data text-2xl">{data?.total || 0}</span>
               </div>
-              <p className="text-[#A1A1AA] text-xs uppercase tracking-wider">Total</p>
+              <p className="text-[#888888] text-xs uppercase tracking-wider">Total</p>
             </Card>
-            <Card className="bg-[#0A0A0A] border-[#27272A] p-4 md:p-6">
+            <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-4 md:p-6">
               <div className="flex items-center gap-2 mb-2">
-                <Zap className="w-6 h-6 text-[#39FF14]" />
+                <Zap className="w-6 h-6 text-[#00c896]" />
                 <span className="font-data text-2xl">{data?.completion_pct || 0}%</span>
               </div>
               <Progress value={data?.completion_pct || 0} className="h-2 mt-1" />
-              <p className="text-[#A1A1AA] text-xs uppercase tracking-wider mt-2">Progresso Geral</p>
+              <p className="text-[#888888] text-xs uppercase tracking-wider mt-2">Progresso Geral</p>
             </Card>
           </div>
 
@@ -146,8 +146,8 @@ export default function Achievements() {
                 onClick={() => setFilter(f.key)}
                 className={"px-4 py-1.5 text-xs rounded-full border transition-colors whitespace-nowrap " +
                   (filter === f.key
-                    ? "bg-[#007AFF] border-[#007AFF] text-white"
-                    : "border-[#27272A] text-[#52525B] hover:text-white hover:border-[#3F3F46]"
+                    ? "bg-[#00c896] border-[#00c896] text-white"
+                    : "border-[#2a2a2a] text-[#555555] hover:text-white hover:border-[#333333]"
                   )
                 }
               >
@@ -169,8 +169,8 @@ export default function Achievements() {
                   className={
                     "relative overflow-hidden p-5 transition-all duration-300 " +
                     (isUnlocked
-                      ? "bg-gradient-to-br from-[#0A0A0A] to-[#1a1a2e] border-[#27272A] hover:border-[" + ach.color + "]/50"
-                      : "bg-[#0A0A0A] border-[#1A1A1A] opacity-70 hover:opacity-90"
+                      ? "bg-gradient-to-br from-[#0d0d0d] to-[#1a1a2e] border-[#2a2a2a] hover:border-[" + ach.color + "]/50"
+                      : "bg-[#0d0d0d] border-[#1A1A1A] opacity-70 hover:opacity-90"
                     )
                   }
                 >
@@ -190,25 +190,25 @@ export default function Achievements() {
                         {isUnlocked ? (
                           <Icon className="w-6 h-6" style={{ color: ach.color }} />
                         ) : (
-                          <Lock className="w-5 h-5 text-[#3F3F46]" />
+                          <Lock className="w-5 h-5 text-[#333333]" />
                         )}
                       </div>
                       {isUnlocked && (
-                        <CheckCircle2 className="w-5 h-5 text-[#39FF14]" />
+                        <CheckCircle2 className="w-5 h-5 text-[#00c896]" />
                       )}
                     </div>
 
-                    <h3 className={"font-heading text-base mb-1 " + (isUnlocked ? "text-white" : "text-[#52525B]")}>
+                    <h3 className={"font-heading text-base mb-1 " + (isUnlocked ? "text-white" : "text-[#555555]")}>
                       {ach.title}
                     </h3>
-                    <p className="text-xs text-[#52525B] mb-3 leading-relaxed">{ach.description}</p>
+                    <p className="text-xs text-[#555555] mb-3 leading-relaxed">{ach.description}</p>
 
                     <div className="space-y-1.5">
                       <div className="flex justify-between items-center">
-                        <span className="text-[10px] text-[#52525B] uppercase tracking-wider">
+                        <span className="text-[10px] text-[#555555] uppercase tracking-wider">
                           {CATEGORY_LABELS[ach.category] || ach.category}
                         </span>
-                        <span className={"text-xs font-data " + (isUnlocked ? "text-[#39FF14]" : "text-[#52525B]")}>
+                        <span className={"text-xs font-data " + (isUnlocked ? "text-[#00c896]" : "text-[#555555]")}>
                           {progress >= 100 ? "100%" : `${Math.floor(progress)}%`}
                         </span>
                       </div>
@@ -217,11 +217,11 @@ export default function Achievements() {
                           className="h-full rounded-full transition-all duration-500"
                           style={{
                             width: `${Math.min(progress, 100)}%`,
-                            backgroundColor: isUnlocked ? "#39FF14" : ach.color
+                            backgroundColor: isUnlocked ? "#00c896" : ach.color
                           }}
                         />
                       </div>
-                      <p className="text-[10px] text-[#3F3F46]">
+                      <p className="text-[10px] text-[#333333]">
                         {ach.current} / {ach.target}
                       </p>
                     </div>
@@ -233,8 +233,8 @@ export default function Achievements() {
 
           {filtered.length === 0 && (
             <div className="text-center py-16">
-              <Trophy className="w-12 h-12 text-[#27272A] mx-auto mb-4" />
-              <p className="text-[#52525B]">Nenhuma conquista encontrada para este filtro</p>
+              <Trophy className="w-12 h-12 text-[#2a2a2a] mx-auto mb-4" />
+              <p className="text-[#555555]">Nenhuma conquista encontrada para este filtro</p>
             </div>
           )}
         </div>

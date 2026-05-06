@@ -19,13 +19,13 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const COLUMNS = {
-  todo: { id: "todo", title: "A FAZER", icon: Circle, color: "#52525B", bgAccent: "from-[#52525B]/10" },
+  todo: { id: "todo", title: "A FAZER", icon: Circle, color: "#555555", bgAccent: "from-[#555555]/10" },
   in_progress: { id: "in_progress", title: "EM PROGRESSO", icon: Clock, color: "#FF9500", bgAccent: "from-[#FF9500]/10" },
-  done: { id: "done", title: "CONCLUÍDO", icon: CheckCircle2, color: "#39FF14", bgAccent: "from-[#39FF14]/10" },
+  done: { id: "done", title: "CONCLUÍDO", icon: CheckCircle2, color: "#00c896", bgAccent: "from-[#00c896]/10" },
 };
 
 const priorityColors = {
-  low: "border-l-[#39FF14]",
+  low: "border-l-[#00c896]",
   medium: "border-l-[#FF9500]",
   high: "border-l-[#FF3B30]",
 };
@@ -41,23 +41,23 @@ function TaskCard({ task, index, onToggle, onDelete, viewMode }) {
           <div
             ref={provided.innerRef}
             {...provided.draggableProps}
-            className={"bg-[#0A0A0A] border border-[#27272A] border-l-4 rounded-lg p-3 mb-2 transition-shadow " +
+            className={"bg-[#0d0d0d] border border-[#2a2a2a] border-l-4 rounded-lg p-3 mb-2 transition-shadow " +
               priorityColors[task.priority] + " " +
-              (snapshot.isDragging ? "shadow-lg shadow-[#007AFF]/20 border-[#007AFF]/50" : "hover:border-[#3F3F46]")
+              (snapshot.isDragging ? "shadow-lg shadow-[#00c896]/20 border-[#00c896]/50" : "hover:border-[#333333]")
             }
           >
             <div className="flex items-start gap-2">
               <div {...provided.dragHandleProps} className="mt-1 cursor-grab active:cursor-grabbing">
-                <GripVertical className="w-4 h-4 text-[#3F3F46]" />
+                <GripVertical className="w-4 h-4 text-[#333333]" />
               </div>
               <div className="flex-1 min-w-0">
-                <h4 className={"text-sm font-medium truncate " + (task.completed ? "line-through text-[#52525B]" : "text-white")}>
+                <h4 className={"text-sm font-medium truncate " + (task.completed ? "line-through text-[#555555]" : "text-white")}>
                   {task.title}
                 </h4>
-                {task.description && <p className="text-xs text-[#52525B] truncate mt-0.5">{task.description}</p>}
+                {task.description && <p className="text-xs text-[#555555] truncate mt-0.5">{task.description}</p>}
                 <div className="flex items-center gap-2 mt-1.5">
-                  <span className="text-[10px] uppercase text-[#A1A1AA] tracking-wider">{priorityLabels[task.priority]}</span>
-                  <span className="font-data text-[10px] text-[#007AFF]">+{task.xp_reward} XP</span>
+                  <span className="text-[10px] uppercase text-[#888888] tracking-wider">{priorityLabels[task.priority]}</span>
+                  <span className="font-data text-[10px] text-[#00c896]">+{task.xp_reward} XP</span>
                 </div>
               </div>
               <button onClick={() => onDelete(task.task_id)} className="text-[#FF3B30]/50 hover:text-[#FF3B30] transition-colors p-0.5">
@@ -72,24 +72,24 @@ function TaskCard({ task, index, onToggle, onDelete, viewMode }) {
 
   // List view
   return (
-    <Card className={"task-item bg-[#0A0A0A] border-[#27272A] border-l-4 " + priorityColors[task.priority] + " p-4"}>
+    <Card className={"task-item bg-[#0d0d0d] border-[#2a2a2a] border-l-4 " + priorityColors[task.priority] + " p-4"}>
       <div className="flex items-start justify-between">
         <div className="flex items-start space-x-3 flex-1">
           <button data-testid={"task-toggle-" + task.task_id} onClick={() => onToggle(task)} className="mt-1">
-            {task.completed ? <CheckCircle2 className="w-6 h-6 text-[#39FF14]" /> : <Circle className="w-6 h-6 text-[#52525B]" />}
+            {task.completed ? <CheckCircle2 className="w-6 h-6 text-[#00c896]" /> : <Circle className="w-6 h-6 text-[#555555]" />}
           </button>
           <div className="flex-1">
-            <h3 className={"font-medium mb-1 " + (task.completed ? "line-through text-[#52525B]" : "")}>{task.title}</h3>
-            {task.description && <p className="text-sm text-[#A1A1AA]">{task.description}</p>}
+            <h3 className={"font-medium mb-1 " + (task.completed ? "line-through text-[#555555]" : "")}>{task.title}</h3>
+            {task.description && <p className="text-sm text-[#888888]">{task.description}</p>}
             <div className="flex items-center space-x-3 mt-2">
-              <span className="text-xs uppercase text-[#A1A1AA] tracking-wider">{priorityLabels[task.priority]}</span>
+              <span className="text-xs uppercase text-[#888888] tracking-wider">{priorityLabels[task.priority]}</span>
               {task.recurrence && (
-                <span className="text-xs flex items-center gap-1 text-[#A1A1AA]">
+                <span className="text-xs flex items-center gap-1 text-[#888888]">
                   <Repeat className="w-3 h-3" />
                   {task.recurrence === "once" ? "Única" : task.recurrence === "daily" ? "Diária" : task.recurrence === "weekly" ? "Semanal" : "Mensal"}
                 </span>
               )}
-              <span className="font-data text-xs text-[#007AFF]">+{task.xp_reward} XP</span>
+              <span className="font-data text-xs text-[#00c896]">+{task.xp_reward} XP</span>
             </div>
           </div>
         </div>
@@ -234,49 +234,49 @@ export default function Tasks() {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 md:mb-8 gap-4">
             <div>
               <h1 className="font-heading text-2xl md:text-4xl mb-1 md:mb-2" data-testid="tasks-title">TAREFAS</h1>
-              <p className="text-[#A1A1AA] text-sm md:text-base">
+              <p className="text-[#888888] text-sm md:text-base">
                 Execute com precisão · <span className="font-data text-white">{totalDone}/{totalTasks}</span> concluídas
               </p>
             </div>
             <div className="flex items-center gap-2 w-full md:w-auto">
               {/* View toggle */}
-              <div className="flex bg-[#0A0A0A] border border-[#27272A] rounded-lg p-0.5">
+              <div className="flex bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg p-0.5">
                 <button
                   onClick={() => setViewMode("list")}
-                  className={"p-1.5 rounded-md transition-colors " + (viewMode === "list" ? "bg-[#007AFF] text-white" : "text-[#52525B] hover:text-white")}
+                  className={"p-1.5 rounded-md transition-colors " + (viewMode === "list" ? "bg-[#00c896] text-white" : "text-[#555555] hover:text-white")}
                 >
                   <List className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setViewMode("kanban")}
-                  className={"p-1.5 rounded-md transition-colors " + (viewMode === "kanban" ? "bg-[#007AFF] text-white" : "text-[#52525B] hover:text-white")}
+                  className={"p-1.5 rounded-md transition-colors " + (viewMode === "kanban" ? "bg-[#00c896] text-white" : "text-[#555555] hover:text-white")}
                 >
                   <LayoutGrid className="w-4 h-4" />
                 </button>
               </div>
               <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
-                  <Button data-testid="tasks-create-btn" className="bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs tracking-widest shadow-[0_0_10px_rgba(0,122,255,0.3)] flex-1 md:flex-none">
+                  <Button data-testid="tasks-create-btn" className="bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs tracking-widest shadow-[0_0_10px_rgba(0,122,255,0.3)] flex-1 md:flex-none">
                     <Plus className="w-4 h-4 mr-2" /> Nova Tarefa
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="bg-[#0A0A0A] border-[#27272A] text-white">
+                <DialogContent className="bg-[#0d0d0d] border-[#2a2a2a] text-white">
                   <DialogHeader>
                     <DialogTitle className="font-heading text-2xl">CRIAR TAREFA</DialogTitle>
                   </DialogHeader>
                   <div className="space-y-4 mt-4">
                     <div>
-                      <Label className="text-[#A1A1AA] uppercase text-xs tracking-wider mb-2 block">Título</Label>
-                      <Input data-testid="task-title-input" value={newTask.title} onChange={(e) => setNewTask({ ...newTask, title: e.target.value })} className="bg-[#121212] border-[#27272A] text-white" />
+                      <Label className="text-[#888888] uppercase text-xs tracking-wider mb-2 block">Título</Label>
+                      <Input data-testid="task-title-input" value={newTask.title} onChange={(e) => setNewTask({ ...newTask, title: e.target.value })} className="bg-[#1a1a1a] border-[#2a2a2a] text-white" />
                     </div>
                     <div>
-                      <Label className="text-[#A1A1AA] uppercase text-xs tracking-wider mb-2 block">Descrição</Label>
-                      <Textarea data-testid="task-description-input" value={newTask.description} onChange={(e) => setNewTask({ ...newTask, description: e.target.value })} className="bg-[#121212] border-[#27272A] text-white" />
+                      <Label className="text-[#888888] uppercase text-xs tracking-wider mb-2 block">Descrição</Label>
+                      <Textarea data-testid="task-description-input" value={newTask.description} onChange={(e) => setNewTask({ ...newTask, description: e.target.value })} className="bg-[#1a1a1a] border-[#2a2a2a] text-white" />
                     </div>
                     <div>
-                      <Label className="text-[#A1A1AA] uppercase text-xs tracking-wider mb-2 block">Recorrência</Label>
+                      <Label className="text-[#888888] uppercase text-xs tracking-wider mb-2 block">Recorrência</Label>
                       <Select value={newTask.recurrence} onValueChange={(v) => setNewTask({ ...newTask, recurrence: v })}>
-                        <SelectTrigger className="bg-[#121212] border-[#27272A] text-white"><SelectValue /></SelectTrigger>
+                        <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a] text-white"><SelectValue /></SelectTrigger>
                         <SelectContent>
                           <SelectItem value="once">Única vez</SelectItem>
                           <SelectItem value="daily">Diária</SelectItem>
@@ -286,9 +286,9 @@ export default function Tasks() {
                       </Select>
                     </div>
                     <div>
-                      <Label className="text-[#A1A1AA] uppercase text-xs tracking-wider mb-2 block">Prioridade</Label>
+                      <Label className="text-[#888888] uppercase text-xs tracking-wider mb-2 block">Prioridade</Label>
                       <Select value={newTask.priority} onValueChange={(v) => setNewTask({ ...newTask, priority: v })}>
-                        <SelectTrigger className="bg-[#121212] border-[#27272A] text-white"><SelectValue /></SelectTrigger>
+                        <SelectTrigger className="bg-[#1a1a1a] border-[#2a2a2a] text-white"><SelectValue /></SelectTrigger>
                         <SelectContent>
                           <SelectItem value="low">Baixa</SelectItem>
                           <SelectItem value="medium">Média</SelectItem>
@@ -296,7 +296,7 @@ export default function Tasks() {
                         </SelectContent>
                       </Select>
                     </div>
-                    <Button data-testid="task-submit-btn" onClick={handleCreateTask} className="w-full bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs tracking-widest">Criar</Button>
+                    <Button data-testid="task-submit-btn" onClick={handleCreateTask} className="w-full bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs tracking-widest">Criar</Button>
                   </div>
                 </DialogContent>
               </Dialog>
@@ -306,17 +306,17 @@ export default function Tasks() {
           {/* Date and Filter */}
           <div className="mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-3">
             <div className="flex items-center space-x-2 w-full sm:w-auto">
-              <Calendar className="w-5 h-5 text-[#007AFF]" />
-              <Input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} className="bg-[#0A0A0A] border-[#27272A] text-white font-mono flex-1 sm:flex-none" />
+              <Calendar className="w-5 h-5 text-[#00c896]" />
+              <Input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} className="bg-[#0d0d0d] border-[#2a2a2a] text-white font-mono flex-1 sm:flex-none" />
             </div>
             {viewMode === "list" && (
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full sm:w-auto">
-                <TabsList className="bg-[#0A0A0A] border-[#27272A] w-full overflow-x-auto flex-nowrap">
-                  <TabsTrigger value="all" className="data-[state=active]:bg-[#007AFF] text-xs">Todas</TabsTrigger>
-                  <TabsTrigger value="once" className="data-[state=active]:bg-[#007AFF] text-xs">Única</TabsTrigger>
-                  <TabsTrigger value="daily" className="data-[state=active]:bg-[#007AFF] text-xs">Diárias</TabsTrigger>
-                  <TabsTrigger value="weekly" className="data-[state=active]:bg-[#007AFF] text-xs">Semanais</TabsTrigger>
-                  <TabsTrigger value="monthly" className="data-[state=active]:bg-[#007AFF] text-xs">Mensais</TabsTrigger>
+                <TabsList className="bg-[#0d0d0d] border-[#2a2a2a] w-full overflow-x-auto flex-nowrap">
+                  <TabsTrigger value="all" className="data-[state=active]:bg-[#00c896] text-xs">Todas</TabsTrigger>
+                  <TabsTrigger value="once" className="data-[state=active]:bg-[#00c896] text-xs">Única</TabsTrigger>
+                  <TabsTrigger value="daily" className="data-[state=active]:bg-[#00c896] text-xs">Diárias</TabsTrigger>
+                  <TabsTrigger value="weekly" className="data-[state=active]:bg-[#00c896] text-xs">Semanais</TabsTrigger>
+                  <TabsTrigger value="monthly" className="data-[state=active]:bg-[#00c896] text-xs">Mensais</TabsTrigger>
                 </TabsList>
               </Tabs>
             )}
@@ -330,13 +330,13 @@ export default function Tasks() {
                   const ColIcon = col.icon;
                   const colTasks = kanbanTasks[col.id] || [];
                   return (
-                    <div key={col.id} className={"bg-[#0A0A0A]/50 border border-[#1A1A1A] rounded-xl p-3"}>
+                    <div key={col.id} className={"bg-[#0d0d0d]/50 border border-[#1A1A1A] rounded-xl p-3"}>
                       <div className="flex items-center justify-between mb-3 px-1">
                         <div className="flex items-center gap-2">
                           <ColIcon className="w-4 h-4" style={{ color: col.color }} />
                           <span className="font-heading text-xs tracking-wider" style={{ color: col.color }}>{col.title}</span>
                         </div>
-                        <span className="text-xs font-data text-[#52525B]">{colTasks.length}</span>
+                        <span className="text-xs font-data text-[#555555]">{colTasks.length}</span>
                       </div>
                       <Droppable droppableId={col.id}>
                         {(provided, snapshot) => (
@@ -344,7 +344,7 @@ export default function Tasks() {
                             ref={provided.innerRef}
                             {...provided.droppableProps}
                             className={"min-h-[120px] rounded-lg transition-colors p-1 " +
-                              (snapshot.isDraggingOver ? "bg-[#121212] border border-dashed border-[#27272A]" : "")
+                              (snapshot.isDraggingOver ? "bg-[#1a1a1a] border border-dashed border-[#2a2a2a]" : "")
                             }
                           >
                             {colTasks.map((task, idx) => (
@@ -359,7 +359,7 @@ export default function Tasks() {
                             ))}
                             {provided.placeholder}
                             {colTasks.length === 0 && !snapshot.isDraggingOver && (
-                              <div className="flex items-center justify-center h-20 text-[#27272A]">
+                              <div className="flex items-center justify-center h-20 text-[#2a2a2a]">
                                 <p className="text-xs">Arraste tarefas aqui</p>
                               </div>
                             )}
@@ -377,9 +377,9 @@ export default function Tasks() {
           {viewMode === "list" && (
             <div className="space-y-3">
               {tasks.length === 0 ? (
-                <Card className="bg-[#0A0A0A] border-[#27272A] p-8 text-center">
-                  <CheckSquare className="w-12 h-12 text-[#52525B] mx-auto mb-4" />
-                  <p className="text-[#A1A1AA]">
+                <Card className="bg-[#0d0d0d] border-[#2a2a2a] p-8 text-center">
+                  <CheckSquare className="w-12 h-12 text-[#555555] mx-auto mb-4" />
+                  <p className="text-[#888888]">
                     {activeTab === "all" ? "Nenhuma tarefa para esta data" : "Nenhuma tarefa " + (recurrenceLabels[activeTab] || "").toLowerCase()}
                   </p>
                 </Card>

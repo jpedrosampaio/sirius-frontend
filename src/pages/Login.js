@@ -58,24 +58,24 @@ export default function Login() {
         <div className="text-center mb-8">
           <SiriusLogo size="w-16 h-16 mx-auto mb-4" />
           <h1 className="font-heading text-4xl mb-2">SIRIUS</h1>
-          <p className="text-[#A1A1AA]">Entre no sistema de comando</p>
+          <p className="text-[#888888]">Entre no sistema de comando</p>
         </div>
 
-        <div className="bg-[#0A0A0A] border border-[#27272A] p-8 rounded-sm">
+        <div className="bg-[#0d0d0d] border border-[#2a2a2a] p-8 rounded-sm">
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
               <Label htmlFor="email" className="text-[#FFFFFF] uppercase text-xs tracking-wider mb-2 block">
                 E-mail
               </Label>
               <div className="relative">
-                <Mail className="absolute left-3 top-3 w-5 h-5 text-[#52525B]" />
+                <Mail className="absolute left-3 top-3 w-5 h-5 text-[#555555]" />
                 <Input
                   id="email"
                   data-testid="login-email-input"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="pl-10 bg-[#121212] border-[#27272A] text-white font-mono"
+                  className="pl-10 bg-[#1a1a1a] border-[#2a2a2a] text-white font-mono"
                   required
                 />
               </div>
@@ -86,14 +86,14 @@ export default function Login() {
                 Senha
               </Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-3 w-5 h-5 text-[#52525B]" />
+                <Lock className="absolute left-3 top-3 w-5 h-5 text-[#555555]" />
                 <Input
                   id="password"
                   data-testid="login-password-input"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10 bg-[#121212] border-[#27272A] text-white font-mono"
+                  className="pl-10 bg-[#1a1a1a] border-[#2a2a2a] text-white font-mono"
                   required
                 />
               </div>
@@ -103,7 +103,7 @@ export default function Login() {
               data-testid="login-submit-btn"
               type="submit"
               disabled={loading}
-              className="w-full bg-[#007AFF] hover:bg-[#0062CC] uppercase text-xs tracking-widest shadow-[0_0_10px_rgba(0,122,255,0.3)]"
+              className="w-full bg-[#00c896] hover:bg-[#0062CC] uppercase text-xs tracking-widest shadow-[0_0_10px_rgba(0,122,255,0.3)]"
             >
               {loading ? "AUTENTICANDO..." : "ENTRAR"}
             </Button>
@@ -113,7 +113,7 @@ export default function Login() {
                 type="button"
                 onClick={handleOfflineLogin}
                 variant="outline"
-                className="w-full mt-3 border-[#27272A] hover:bg-[#121212] uppercase text-xs tracking-widest"
+                className="w-full mt-3 border-[#2a2a2a] hover:bg-[#1a1a1a] uppercase text-xs tracking-widest"
               >
                 <Wifi className="w-4 h-4 mr-2" />
                 Modo Offline (Teste)
@@ -124,10 +124,10 @@ export default function Login() {
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-[#27272A]"></div>
+                <div className="w-full border-t border-[#2a2a2a]"></div>
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-[#0A0A0A] px-2 text-[#A1A1AA]">Ou</span>
+                <span className="bg-[#0d0d0d] px-2 text-[#888888]">Ou</span>
               </div>
             </div>
 
@@ -136,16 +136,16 @@ export default function Login() {
               type="button"
               onClick={handleGoogleLogin}
               variant="outline"
-              className="w-full mt-6 border-[#27272A] hover:bg-[#121212] uppercase text-xs tracking-widest"
+              className="w-full mt-6 border-[#2a2a2a] hover:bg-[#1a1a1a] uppercase text-xs tracking-widest"
             >
               <Chrome className="w-5 h-5 mr-2" />
               Entrar com Google
             </Button>
           </div>
 
-          <p className="mt-6 text-center text-sm text-[#A1A1AA]">
+          <p className="mt-6 text-center text-sm text-[#888888]">
             Não tem conta?{" "}
-            <Link to="/register" className="text-[#007AFF] hover:underline">
+            <Link to="/register" className="text-[#00c896] hover:underline">
               Registrar-se
             </Link>
           </p>

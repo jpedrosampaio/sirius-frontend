@@ -5,10 +5,5 @@
   "bundledWebRuntime": false,
   "android": {
     "allowMixedContent": true
-  },
-  "linux": {
-    "android": {
-      "allowMixedContent": true
-    }
   }
 }

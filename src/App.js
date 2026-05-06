@@ -34,10 +34,10 @@ function PageLoader() {
     <div className="flex items-center justify-center min-h-screen bg-[#050505]">
       <div className="flex flex-col items-center gap-4">
         <div className="relative w-12 h-12">
-          <div className="absolute inset-0 rounded-full border-2 border-[#27272A]" />
-          <div className="absolute inset-0 rounded-full border-2 border-t-[#007AFF] animate-spin" />
+          <div className="absolute inset-0 rounded-full border-2 border-[#2a2a2a]" />
+          <div className="absolute inset-0 rounded-full border-2 border-t-[#00c896] animate-spin" />
         </div>
-        <p className="text-sm text-[#52525B] uppercase tracking-widest font-medium">Carregando...</p>
+        <p className="text-sm text-[#555555] uppercase tracking-widest font-medium">Carregando...</p>
       </div>
     </div>
   );

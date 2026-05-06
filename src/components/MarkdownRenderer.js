@@ -7,7 +7,7 @@ function CodeBlock({ children, className }) {
   return (
     <div className="relative my-2 rounded-md overflow-hidden">
       {language && (
-        <div className="bg-[#2C2C2E] px-3 py-1 text-[10px] text-[#A1A1AA] uppercase tracking-wider border-b border-[#3A3A3C]">
+        <div className="bg-[#222222] px-3 py-1 text-[10px] text-[#888888] uppercase tracking-wider border-b border-[#3A3A3C]">
           {language}
         </div>
       )}
@@ -30,7 +30,7 @@ export default function MarkdownRenderer({ content, className = '' }) {
           code({ node, inline, className: codeClassName, children, ...props }) {
             if (inline) {
               return (
-                <code className="bg-[#2C2C2E] px-1.5 py-0.5 rounded text-[#00F0FF] text-xs font-mono" {...props}>
+                <code className="bg-[#222222] px-1.5 py-0.5 rounded text-[#00c896] text-xs font-mono" {...props}>
                   {children}
                 </code>
               );
@@ -70,18 +70,18 @@ export default function MarkdownRenderer({ content, className = '' }) {
             );
           },
           thead({ children }) {
-            return <thead className="bg-[#2C2C2E]">{children}</thead>;
+            return <thead className="bg-[#222222]">{children}</thead>;
           },
           th({ children }) {
-            return <th className="border border-[#3A3A3C] px-2 py-1.5 text-left font-semibold text-[#A1A1AA]">{children}</th>;
+            return <th className="border border-[#3A3A3C] px-2 py-1.5 text-left font-semibold text-[#888888]">{children}</th>;
           },
           td({ children }) {
-            return <td className="border border-[#27272A] px-2 py-1.5">{children}</td>;
+            return <td className="border border-[#2a2a2a] px-2 py-1.5">{children}</td>;
           },
           // Links
           a({ href, children }) {
             return (
-              <a href={href} target="_blank" rel="noopener noreferrer" className="text-[#007AFF] hover:underline">
+              <a href={href} target="_blank" rel="noopener noreferrer" className="text-[#00c896] hover:underline">
                 {children}
               </a>
             );
@@ -89,14 +89,14 @@ export default function MarkdownRenderer({ content, className = '' }) {
           // Blockquote
           blockquote({ children }) {
             return (
-              <blockquote className="border-l-2 border-[#007AFF] pl-3 my-2 text-[#A1A1AA] italic">
+              <blockquote className="border-l-2 border-[#00c896] pl-3 my-2 text-[#888888] italic">
                 {children}
               </blockquote>
             );
           },
           // Horizontal rule
           hr() {
-            return <hr className="border-[#27272A] my-3" />;
+            return <hr className="border-[#2a2a2a] my-3" />;
           },
           // Strong/Bold
           strong({ children }) {
@@ -105,7 +105,7 @@ export default function MarkdownRenderer({ content, className = '' }) {
           // Images
           img({ src, alt }) {
             return (
-              <img src={src} alt={alt} className="max-w-full rounded-md my-2 border border-[#27272A]" />
+              <img src={src} alt={alt} className="max-w-full rounded-md my-2 border border-[#2a2a2a]" />
             );
           },
         }}

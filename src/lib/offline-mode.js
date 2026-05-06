@@ -19,7 +19,7 @@ export const OFFLINE_DEMO_DATA = {
     { task_id: 't2', user_id: 'offline_user', title: 'Exemplo de tarefa 2', completed: true, date: '2024-01-01', priority: 'high', xp_reward: 15, recurrence: 'once', is_template: true, created_at: '2024-01-01' },
   ],
   habits: [
-    { habit_id: 'h1', user_id: 'offline_user', name: 'Exercício físico', description: 'Treino diário', color: '#007AFF', streak: 5, best_streak: 12, completions: ['2024-01-01', '2024-01-02'], created_at: '2024-01-01' },
+    { habit_id: 'h1', user_id: 'offline_user', name: 'Exercício físico', description: 'Treino diário', color: '#00c896', streak: 5, best_streak: 12, completions: ['2024-01-01', '2024-01-02'], created_at: '2024-01-01' },
     { habit_id: 'h2', user_id: 'offline_user', name: 'Leitura', description: 'Ler 20 páginas', color: '#FFD700', streak: 3, best_streak: 7, completions: [], created_at: '2024-01-01' },
   ],
   transactions: [
